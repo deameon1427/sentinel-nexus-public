@@ -18,3 +18,16 @@ Thumbs.db
 
 # Astro
 .astro/
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md
+
+#Planning and Execution
+.planning/
+.execution/
+
+# Test Objects and Artifacts for site building
+.aoo/
+
+# Claude Code
+.claude/
