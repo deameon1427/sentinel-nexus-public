@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About Sentinel Nexus | The AI Confidence Company"
+  description="We combine AI implementation, digital security, and responsible governance in a single integrated offering. Built for the AI era, not bolted on."
+>
+  <section class="hero-about">
+    <div class="container">
+      <h1>About Sentinel Nexus</h1>
+      <p class="hero-subtitle">The operational partner for the AI era</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="mission-block">
+        <h2>Our Mission</h2>
+        <p class="mission-text">
+          Sentinel Nexus empowers organizations to harness AI with confidence—implementing intelligent automation, defending digital ecosystems, and ensuring every AI initiative operates within ethical and regulatory boundaries.
+        </p>
+        <p class="mission-text">
+          We stand at the intersection of innovation and accountability, helping businesses move fast without breaking trust.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Who We Are</h2>
+
+      <div class="about-content">
+        <p>
+          We are not a traditional MSSP bolting AI onto legacy services. We are not a consulting firm delivering reports without results. We are not an AI vendor pushing tools without context.
+        </p>
+        <p>
+          Sentinel Nexus was built for the AI era. We recognized that organizations need more than point solutions—they need an integrated partner who can implement AI that works, secure what they build, and ensure it meets the governance standards that regulators and stakeholders demand.
+        </p>
+        <p>
+          Our team combines deep technical expertise with real-world operational experience. We've implemented automation at scale, defended against sophisticated threats, and helped organizations navigate complex regulatory landscapes. Now we bring that experience to the most important technology shift of our time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What Sets Us Apart</h2>
+
+      <div class="differentiators-grid">
+        <div class="diff-card">
+          <div class="diff-number">01</div>
+          <h3>Integrated Approach</h3>
+          <p>Implementation, security, and governance work together—not as separate silos. This prevents the costly rework that comes from treating them as afterthoughts.</p>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-number">02</div>
+          <h3>Operational Focus</h3>
+          <p>We don't just advise. We build, deploy, and manage. You get a partner accountable for outcomes, not just deliverables.</p>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-number">03</div>
+          <h3>AI-Era Expertise</h3>
+          <p>Our practice was designed from the ground up for AI systems—their unique risks, requirements, and opportunities.</p>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-number">04</div>
+          <h3>Framework-Grounded</h3>
+          <p>We operationalize proven standards (NIST AI RMF, ISO 42001, EU AI Act) rather than inventing proprietary methodologies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <h2>Ready to work with a partner built for the AI era?</h2>
+      <p>Let's discuss how we can help your organization harness AI with confidence.</p>
+      <a href="mailto:contact@sentinel-nexus.com" class="btn btn-primary btn-large">Start a Conversation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-about {
+    padding: 10rem 0 4rem;
+    background: radial-gradient(ellipse at top, #1a1a2e 0%, var(--color-bg) 70%);
+    text-align: center;
+  }
+
+  .hero-about h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-dark {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .mission-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mission-block h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .mission-text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+
+  .mission-text:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-content p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .about-content p:first-child {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .differentiators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .diff-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .diff-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .diff-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .diff-card p {
+    color: var(--color-text-muted);
+  }
+
+  .section-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #8b0000 100%);
+    text-align: center;
+    padding: 5rem 0;
+  }
+
+  .section-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-cta p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .section-cta .btn-primary {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .section-cta .btn-primary:hover {
+    background: #f0f0f0;
+  }
+</style>
