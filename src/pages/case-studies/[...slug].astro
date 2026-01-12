@@ -3,14 +3,14 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const caseStudies = await getCollection('caseStudies');
+  const caseStudies = await getCollection('case-studies');
   return caseStudies.map((caseStudy) => ({
     params: { slug: caseStudy.slug },
     props: caseStudy,
   }));
 }
 
-type Props = CollectionEntry<'caseStudies'>;
+type Props = CollectionEntry<'case-studies'>;
 
 const caseStudy = Astro.props;
 const { Content } = await caseStudy.render();

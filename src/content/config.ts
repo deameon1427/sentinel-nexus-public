@@ -49,4 +49,4 @@ const caseStudies = defineCollection({
   }),
 });
 
-export const collections = { blog, caseStudies };
+export const collections = { blog, 'case-studies': caseStudies };
