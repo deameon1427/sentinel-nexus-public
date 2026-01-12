@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+
+const caseStudies = await getCollection('caseStudies');
+---
+
+<Layout
+  title="Case Studies | Sentinel Nexus"
+  description="Real-world examples of AI implementation, security, and governance success. See how organizations achieve measurable results."
+>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Case Studies</h1>
+      <p class="hero-subtitle">Real results from real engagements. See how organizations implement AI with confidence.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="case-studies-grid">
+        {caseStudies.map((caseStudy) => (
+          <CaseStudyCard caseStudy={caseStudy} />
+        ))}
+      </div>
+
+      {caseStudies.length === 0 && (
+        <div class="no-content">
+          <p>Case studies coming soon. Check back for real-world examples of our work.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to become our next success story?</h2>
+        <p>Let's discuss how we can help your organization achieve similar results.</p>
+        <a href="https://schedule.sentinel-nexus.com/invite/ZPQfZd106v7m" class="btn btn-primary btn-large">
+          Schedule a Discovery Call
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 8rem 0 4rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+
+  .no-content {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--color-text-muted);
+  }
+
+  .cta-section {
+    padding: 5rem 0;
+    background: var(--color-bg-secondary);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .case-studies-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-content h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

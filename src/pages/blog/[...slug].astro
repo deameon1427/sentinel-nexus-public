@@ -1,0 +1,371 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const pillarColors: Record<string, string> = {
+  implementation: 'var(--color-accent-1)',
+  security: 'var(--color-accent-2)',
+  governance: 'var(--color-accent-3)',
+};
+
+const pillarLabels: Record<string, string> = {
+  implementation: 'Implementation',
+  security: 'Security',
+  governance: 'Governance',
+};
+
+// Get related posts (same pillar, excluding current)
+const allPosts = await getCollection('blog', ({ data }) => data.draft !== true);
+const relatedPosts = allPosts
+  .filter(p => p.slug !== post.slug && p.data.pillar === post.data.pillar)
+  .slice(0, 2);
+---
+
+<Layout
+  title={`${post.data.title} | Sentinel Nexus`}
+  description={post.data.description}
+>
+  <article class="blog-post">
+    <header class="post-header">
+      <div class="container">
+        <a href="/blog" class="back-link">&larr; Back to Insights</a>
+        <span class="pillar-badge" style={`background: ${pillarColors[post.data.pillar]}`}>
+          {pillarLabels[post.data.pillar]}
+        </span>
+        <h1>{post.data.title}</h1>
+        <div class="post-meta">
+          <span class="author">{post.data.author}</span>
+          <span class="separator">|</span>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+        </div>
+      </div>
+    </header>
+
+    {post.data.image && (
+      <div class="post-image">
+        <div class="container">
+          <img src={post.data.image} alt={post.data.imageAlt || post.data.title} />
+        </div>
+      </div>
+    )}
+
+    <div class="container">
+      <div class="post-layout">
+        <div class="post-content">
+          <Content />
+        </div>
+
+        <aside class="post-sidebar">
+          <div class="sidebar-section">
+            <h4>Tags</h4>
+            <div class="tags-list">
+              {post.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          {relatedPosts.length > 0 && (
+            <div class="sidebar-section">
+              <h4>Related Posts</h4>
+              <div class="related-posts">
+                {relatedPosts.map((related) => (
+                  <a href={`/blog/${related.slug}`} class="related-post">
+                    <span class="related-title">{related.data.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="sidebar-section cta-section">
+            <h4>Ready to discuss your AI initiative?</h4>
+            <p>Let's explore how we can help your organization implement AI with confidence.</p>
+            <a href="https://schedule.sentinel-nexus.com/invite/ZPQfZd106v7m" class="btn btn-primary">Schedule a Call</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    padding-top: 6rem;
+  }
+
+  .post-header {
+    padding: 2rem 0 3rem;
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  .pillar-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .post-header h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    max-width: 800px;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  .separator {
+    opacity: 0.5;
+  }
+
+  .post-image {
+    margin-bottom: 3rem;
+  }
+
+  .post-image img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .post-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .post-content {
+    max-width: none;
+  }
+
+  .post-content :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .post-content :global(h3) {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .post-content :global(p) {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .post-content :global(strong) {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .post-content :global(a) {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .post-content :global(a:hover) {
+    color: var(--color-primary-hover);
+  }
+
+  .post-content :global(blockquote) {
+    border-left: 3px solid var(--color-primary);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+
+  .post-content :global(code) {
+    background: var(--color-bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .post-content :global(pre) {
+    background: var(--color-bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-content :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .post-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
+  .sidebar-section {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-section h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--color-bg-secondary);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+  }
+
+  .related-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-post {
+    display: block;
+    padding: 0.75rem;
+    background: var(--color-bg-secondary);
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+
+  .related-post:hover {
+    background: var(--color-bg);
+  }
+
+  .related-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.4;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-secondary) 100%);
+  }
+
+  .cta-section p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .cta-section .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    .post-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .post-sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .sidebar-section {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .post-header h1 {
+      font-size: 2rem;
+    }
+
+    .post-meta {
+      flex-wrap: wrap;
+    }
+
+    .post-sidebar {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

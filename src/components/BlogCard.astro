@@ -1,0 +1,141 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
+const pillarColors: Record<string, string> = {
+  implementation: 'var(--color-accent-1)',
+  security: 'var(--color-accent-2)',
+  governance: 'var(--color-accent-3)',
+};
+
+const pillarLabels: Record<string, string> = {
+  implementation: 'Implementation',
+  security: 'Security',
+  governance: 'Governance',
+};
+---
+
+<article class="blog-card" data-pillar={post.data.pillar}>
+  <a href={`/blog/${post.slug}`} class="card-link">
+    {post.data.image && (
+      <div class="card-image">
+        <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />
+        <span class="pillar-badge" style={`background: ${pillarColors[post.data.pillar]}`}>
+          {pillarLabels[post.data.pillar]}
+        </span>
+      </div>
+    )}
+    <div class="card-content">
+      <time class="card-date" datetime={post.data.pubDate.toISOString()}>
+        {post.data.pubDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </time>
+      <h3 class="card-title">{post.data.title}</h3>
+      <p class="card-description">{post.data.description}</p>
+      <div class="card-tags">
+        {post.data.tags.slice(0, 3).map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-text-muted);
+  }
+
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .blog-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .pillar-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card-date {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg-secondary);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+  }
+</style>

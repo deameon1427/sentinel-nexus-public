@@ -1,0 +1,364 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('caseStudies');
+  return caseStudies.map((caseStudy) => ({
+    params: { slug: caseStudy.slug },
+    props: caseStudy,
+  }));
+}
+
+type Props = CollectionEntry<'caseStudies'>;
+
+const caseStudy = Astro.props;
+const { Content } = await caseStudy.render();
+
+const pillarColors: Record<string, string> = {
+  implementation: 'var(--color-accent-1)',
+  security: 'var(--color-accent-2)',
+  governance: 'var(--color-accent-3)',
+};
+
+const pillarLabels: Record<string, string> = {
+  implementation: 'Implementation',
+  security: 'Security',
+  governance: 'Governance',
+};
+---
+
+<Layout
+  title={`${caseStudy.data.title} | Sentinel Nexus Case Study`}
+  description={caseStudy.data.description}
+>
+  <article class="case-study">
+    <header class="case-study-header">
+      <div class="container">
+        <a href="/case-studies" class="back-link">&larr; Back to Case Studies</a>
+        <div class="header-pillars">
+          {caseStudy.data.pillar.map((p) => (
+            <span class="pillar-badge" style={`background: ${pillarColors[p]}`}>
+              {pillarLabels[p]}
+            </span>
+          ))}
+        </div>
+        <span class="industry-label">{caseStudy.data.industry}</span>
+        <h1>{caseStudy.data.title}</h1>
+        <p class="case-study-description">{caseStudy.data.description}</p>
+      </div>
+    </header>
+
+    <section class="metrics-banner">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="metric-value">{caseStudy.data.metrics.primary.value}</span>
+            <span class="metric-label">{caseStudy.data.metrics.primary.label}</span>
+          </div>
+          {caseStudy.data.metrics.secondary && (
+            <div class="metric">
+              <span class="metric-value">{caseStudy.data.metrics.secondary.value}</span>
+              <span class="metric-label">{caseStudy.data.metrics.secondary.label}</span>
+            </div>
+          )}
+          {caseStudy.data.metrics.tertiary && (
+            <div class="metric">
+              <span class="metric-value">{caseStudy.data.metrics.tertiary.value}</span>
+              <span class="metric-label">{caseStudy.data.metrics.tertiary.label}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="overview-section">
+      <div class="container">
+        <div class="overview-grid">
+          <div class="overview-item">
+            <h3>Client</h3>
+            <p>{caseStudy.data.client}</p>
+          </div>
+          <div class="overview-item">
+            <h3>Challenge</h3>
+            <p>{caseStudy.data.challenge}</p>
+          </div>
+          <div class="overview-item">
+            <h3>Outcome</h3>
+            <p>{caseStudy.data.outcome}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {caseStudy.data.image && (
+      <div class="case-study-image">
+        <div class="container">
+          <img src={caseStudy.data.image} alt={caseStudy.data.imageAlt || caseStudy.data.title} />
+        </div>
+      </div>
+    )}
+
+    <div class="container">
+      <div class="case-study-content">
+        <Content />
+      </div>
+    </div>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to achieve similar results?</h2>
+          <p>Let's discuss how we can help your organization implement AI with confidence.</p>
+          <a href="https://schedule.sentinel-nexus.com/invite/ZPQfZd106v7m" class="btn btn-primary btn-large">
+            Schedule a Discovery Call
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .case-study {
+    padding-top: 6rem;
+  }
+
+  .case-study-header {
+    padding: 2rem 0 3rem;
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  .header-pillars {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pillar-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+  }
+
+  .industry-label {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-study-header h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    max-width: 800px;
+  }
+
+  .case-study-description {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    line-height: 1.6;
+  }
+
+  .metrics-banner {
+    background: var(--color-bg-card);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 2.5rem 0;
+  }
+
+  .metrics-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  .metric {
+    text-align: center;
+  }
+
+  .metric-value {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .overview-section {
+    padding: 3rem 0;
+  }
+
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .overview-item {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .overview-item h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .overview-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  .case-study-image {
+    margin-bottom: 3rem;
+  }
+
+  .case-study-image img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .case-study-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+  }
+
+  .case-study-content :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .case-study-content :global(h3) {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .case-study-content :global(p) {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .case-study-content :global(ul),
+  .case-study-content :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .case-study-content :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .case-study-content :global(strong) {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .case-study-content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+
+  .case-study-content :global(em) {
+    color: var(--color-text-muted);
+  }
+
+  .cta-section {
+    padding: 5rem 0;
+    background: var(--color-bg-secondary);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .overview-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .metrics-grid {
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .case-study-header h1 {
+      font-size: 2rem;
+    }
+
+    .metrics-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+    }
+
+    .cta-content h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
