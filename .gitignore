@@ -30,4 +30,6 @@ Thumbs.db
 .aoo/
 
 # Claude Code
+CLAUDE.md
 .claude/
+*-cwd
