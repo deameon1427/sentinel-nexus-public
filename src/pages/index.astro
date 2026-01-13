@@ -1,22 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Layout title="Sentinel Nexus | AI Implementation, Security & Governance">
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="contact">
     <div class="container">
-      <p class="tagline">Implement. Secure. Govern.</p>
+      <p class="tagline" id="tagline">Implement. Secure. Govern.</p>
       <h1>AI transformation without the risk.</h1>
       <p class="hero-description">
         We implement AI that works, protect what you build, and ensure it meets governance standards before regulators come knocking. The full AI lifecycle—one trusted partner.
       </p>
+      <ContactForm />
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary btn-large">Schedule a Discovery Call</a>
         <a href="#services" class="btn btn-secondary btn-large">Explore Our Services</a>
       </div>
     </div>
   </section>
+
+  <script>
+    // Alternating tagline animation
+    const taglines = [
+      'Implement. Secure. Govern.',
+      'Automate. Orchestrate. Operate.'
+    ];
+    let taglineIndex = 0;
+    const taglineEl = document.getElementById('tagline');
+
+    setInterval(() => {
+      taglineEl?.classList.add('tagline-fade-out');
+      setTimeout(() => {
+        taglineIndex = (taglineIndex + 1) % taglines.length;
+        if (taglineEl) taglineEl.textContent = taglines[taglineIndex];
+        taglineEl?.classList.remove('tagline-fade-out');
+      }, 500);
+    }, 6000);
+  </script>
 
   <!-- Value Proposition Section -->
   <section class="section" id="why">
@@ -197,11 +217,11 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- CTA Section -->
-  <section class="section section-cta" id="contact">
+  <section class="section section-cta">
     <div class="container">
       <h2>Ready to Implement AI With Confidence?</h2>
       <p>Let's discuss where AI can drive the most value in your organization—and how to do it securely and responsibly.</p>
-      <a href="https://schedule.sentinel-nexus.com/invite/ZPQfZd106v7m" class="btn btn-primary btn-large">Schedule a Discovery Call</a>
+      <a href="#contact" class="btn btn-primary btn-large">Get in Touch</a>
     </div>
   </section>
 
@@ -248,7 +268,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="section section-final-cta">
     <div class="container">
       <h2>The AI era is here. Is your organization ready?</h2>
-      <a href="https://schedule.sentinel-nexus.com/invite/ZPQfZd106v7m" class="btn btn-primary btn-large">Let's Talk</a>
+      <a href="#contact" class="btn btn-primary btn-large">Let's Talk</a>
     </div>
   </section>
 </Layout>
@@ -270,6 +290,11 @@ import Layout from '../layouts/Layout.astro';
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
+    transition: opacity 0.5s ease;
+  }
+
+  .tagline-fade-out {
+    opacity: 0;
   }
 
   .hero h1 {

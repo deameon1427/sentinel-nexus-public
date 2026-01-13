@@ -1,0 +1,164 @@
+---
+// Contact form component - submits to n8n webhook
+---
+
+<form id="contact-form" class="contact-form">
+  <div class="form-row">
+    <input
+      type="text"
+      name="name"
+      placeholder="Full Name"
+      required
+      autocomplete="name"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      autocomplete="email"
+    />
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone (optional)"
+      autocomplete="tel"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary btn-large">
+    <span class="btn-text">Let's Talk</span>
+    <span class="btn-loading" style="display: none;">Sending...</span>
+  </button>
+</form>
+
+<div id="form-success" class="form-message success" style="display: none;">
+  <p>Thanks! We'll be in touch within 24 hours.</p>
+</div>
+
+<div id="form-error" class="form-message error" style="display: none;">
+  <p>Something went wrong. Please email <a href="mailto:info@sentinel-nexus.com">info@sentinel-nexus.com</a></p>
+</div>
+
+<style>
+  .contact-form {
+    max-width: 700px;
+    margin: 2rem auto 0;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .form-row input {
+    flex: 1;
+    min-width: 180px;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .form-row input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(207, 21, 21, 0.1);
+  }
+
+  .form-row input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .contact-form .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-message {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .form-message.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--color-accent-2);
+  }
+
+  .form-message.success p {
+    color: var(--color-accent-2);
+    font-weight: 500;
+  }
+
+  .form-message.error {
+    background: rgba(207, 21, 21, 0.1);
+    border: 1px solid var(--color-primary);
+  }
+
+  .form-message.error p {
+    color: var(--color-text);
+  }
+
+  .form-message.error a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .form-row {
+      flex-direction: column;
+    }
+
+    .form-row input {
+      min-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successEl = document.getElementById('form-success');
+  const errorEl = document.getElementById('form-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btnText = form.querySelector('.btn-text') as HTMLElement;
+    const btnLoading = form.querySelector('.btn-loading') as HTMLElement;
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    // Show loading state
+    if (btnText) btnText.style.display = 'none';
+    if (btnLoading) btnLoading.style.display = 'inline';
+    if (submitBtn) submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const res = await fetch('https://n8n.sentinel-nexus.com/webhook/contact-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        if (successEl) successEl.style.display = 'block';
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      form.style.display = 'none';
+      if (errorEl) errorEl.style.display = 'block';
+    }
+  });
+</script>
