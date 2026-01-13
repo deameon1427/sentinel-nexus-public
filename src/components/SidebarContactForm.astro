@@ -1,0 +1,151 @@
+---
+// Sidebar contact form - vertical layout for blog sidebar
+---
+
+<div class="sidebar-section cta-section">
+  <h4>Ready to discuss your AI initiative?</h4>
+
+  <form id="sidebar-contact-form" class="sidebar-form">
+    <input
+      type="text"
+      name="name"
+      placeholder="Name"
+      required
+      autocomplete="name"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      autocomplete="email"
+    />
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone (optional)"
+      autocomplete="tel"
+    />
+    <button type="submit" class="btn btn-primary">
+      <span class="btn-text">Get in Touch</span>
+      <span class="btn-loading" style="display: none;">Sending...</span>
+    </button>
+  </form>
+
+  <div id="sidebar-form-success" class="form-message success" style="display: none;">
+    <p>Thanks! We'll be in touch soon.</p>
+  </div>
+
+  <div id="sidebar-form-error" class="form-message error" style="display: none;">
+    <p>Something went wrong. <a href="mailto:info@sentinel-nexus.com">Email us</a></p>
+  </div>
+</div>
+
+<style>
+  .sidebar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sidebar-form input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .sidebar-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(207, 21, 21, 0.1);
+  }
+
+  .sidebar-form input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .sidebar-form .btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.25rem;
+  }
+
+  .form-message {
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .form-message.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--color-accent-2);
+  }
+
+  .form-message.success p {
+    color: var(--color-accent-2);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .form-message.error {
+    background: rgba(207, 21, 21, 0.1);
+    border: 1px solid var(--color-primary);
+  }
+
+  .form-message.error p {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .form-message.error a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('sidebar-contact-form') as HTMLFormElement | null;
+  const successEl = document.getElementById('sidebar-form-success');
+  const errorEl = document.getElementById('sidebar-form-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btnText = form.querySelector('.btn-text') as HTMLElement;
+    const btnLoading = form.querySelector('.btn-loading') as HTMLElement;
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    if (btnText) btnText.style.display = 'none';
+    if (btnLoading) btnLoading.style.display = 'inline';
+    if (submitBtn) submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const res = await fetch('https://n8n.sentinel-nexus.com/webhook/contact-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        if (successEl) successEl.style.display = 'block';
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      form.style.display = 'none';
+      if (errorEl) errorEl.style.display = 'block';
+    }
+  });
+</script>
