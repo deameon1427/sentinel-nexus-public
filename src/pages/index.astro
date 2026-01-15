@@ -273,10 +273,10 @@ import ContactForm from '../components/ContactForm.astro';
 <style>
   /* Hero */
   .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 200px);
     display: flex;
     align-items: center;
-    padding: 8rem 0 6rem;
+    padding: 8rem 0 1rem;
     background: radial-gradient(ellipse at top, #1a1a2e 0%, var(--color-bg) 70%);
   }
 
@@ -322,6 +322,11 @@ import ContactForm from '../components/ContactForm.astro';
 
   .section-dark {
     background: var(--color-bg-secondary);
+  }
+
+  /* Reduced top padding for section immediately after hero */
+  #why {
+    padding-top: 1rem;
   }
 
   .section-title {
