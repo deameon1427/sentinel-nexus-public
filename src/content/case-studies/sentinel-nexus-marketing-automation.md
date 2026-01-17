@@ -33,7 +33,7 @@ We needed a marketing platform that would:
 - **Run autonomously** with minimal manual intervention for content updates and lead management
 - **Scale efficiently** without requiring dedicated operations staff
 
-The constraint: a single-person team with limited time. Every hour spent on manual website tasks was an hour not spent serving clients.
+The constraint: a lean team with limited time. Every hour spent on manual website tasks was an hour not spent serving clients.
 
 Traditional approaches wouldn't work. WordPress with plugins creates maintenance burden and security exposure. SaaS website builders share data with third parties. Static sites solve some problems but typically lack automation capabilities.
 
