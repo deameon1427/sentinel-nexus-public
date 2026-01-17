@@ -147,6 +147,7 @@ Legacy workflow for email-based notifications as backup to Slack.
     │  Repo   │   webhooks   │  Alerts │
     └─────────┘              └─────────┘
 ```
+---
 
 **Key Design Decisions:**
 
