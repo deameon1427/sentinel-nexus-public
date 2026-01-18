@@ -88,6 +88,7 @@ import ContactForm from '../components/ContactForm.astro';
             <li>Hyperautomation strategy</li>
           </ul>
           <p class="pillar-outcome">Faster operations. Reduced costs. Competitive edge.</p>
+          <a href="/ai-implementation" class="pillar-link">Learn More &rarr;</a>
         </div>
 
         <!-- Pillar 2 -->
@@ -107,6 +108,7 @@ import ContactForm from '../components/ContactForm.astro';
             <li>Incident response and forensics</li>
           </ul>
           <p class="pillar-outcome">Resilience. Threat visibility. Rapid response.</p>
+          <a href="/ai-security" class="pillar-link">Learn More &rarr;</a>
         </div>
 
         <!-- Pillar 3 -->
@@ -128,6 +130,7 @@ import ContactForm from '../components/ContactForm.astro';
             <li>Third-party AI vendor risk assessments</li>
           </ul>
           <p class="pillar-outcome">Regulatory readiness. Risk reduction. Stakeholder trust.</p>
+          <a href="/ai-governance" class="pillar-link">Learn More &rarr;</a>
         </div>
       </div>
     </div>
@@ -471,6 +474,18 @@ import ContactForm from '../components/ContactForm.astro';
     color: var(--color-text);
     padding-top: 1rem;
     border-top: 1px solid var(--color-border);
+  }
+
+  .pillar-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .pillar-link:hover {
+    opacity: 0.8;
   }
 
   /* Industries */
