@@ -5,7 +5,7 @@ pubDate: 2026-01-19
 author: "Sentinel Nexus Team"
 pillar: "implementation"
 industry: "General"
-tags: ["AI Implementation", "LLM Architecture", "Enterprise AI", "Context Windows", "Agentic AI"]
+tags: ["AI Implementation", "LLM Architecture", "Enterprise AI", "Context Windows", "Agentic AI", "Agentic Orchestration"]
 image: "/images/blog/rlm-context-windows.jpg"
 imageAlt: "Code visualization representing AI processing capabilities"
 draft: false
