@@ -28,6 +28,7 @@ Thumbs.db
 
 # Test Objects and Artifacts for site building
 .aoo/
+scripts/
 
 # Claude Code
 CLAUDE.md
@@ -35,3 +36,7 @@ CLAUDE.md
 *-cwd
 # Test 1768319483
 # 1768331652
+
+# Content Generation Queue (processing artifacts)
+.content-queue/processing/
+.content-queue/done/
