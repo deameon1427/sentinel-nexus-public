@@ -16,7 +16,7 @@ metrics:
   tertiary:
     value: "$2.1M"
     label: "Annual Savings"
-image: "/images/case-studies/financial-automation.jpg"
+image: "/images/case-studies/financial-automation.webp"
 imageAlt: "Financial services automation dashboard"
 gated: true
 previewLength: 600

@@ -6,7 +6,7 @@ author: "Sentinel Nexus Team"
 pillar: "security"
 industry: "General"
 tags: ["AI Security", "MDR", "Threat Detection", "Model Security"]
-image: "/images/blog/ai-security-2026.jpg"
+image: "/images/blog/ai-security-2026.webp"
 imageAlt: "Security operations center monitoring AI systems"
 draft: false
 ---

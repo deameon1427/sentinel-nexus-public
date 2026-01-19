@@ -16,7 +16,7 @@ metrics:
   tertiary:
     value: "<24hr"
     label: "Content Cycle"
-image: "/images/case-studies/sentinel-nexus-automation.jpg"
+image: "/images/case-studies/sentinel-nexus-automation.webp"
 imageAlt: "Sentinel Nexus automation architecture"
 gated: false
 previewLength: 600

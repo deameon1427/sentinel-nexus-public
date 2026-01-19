@@ -6,7 +6,7 @@ author: "Sentinel Nexus Team"
 pillar: "governance"
 industry: "General"
 tags: ["EU AI Act", "Compliance", "AI Governance", "Regulation"]
-image: "/images/blog/eu-ai-act-compliance.jpg"
+image: "/images/blog/eu-ai-act-compliance.webp"
 imageAlt: "Compliance documentation and governance frameworks"
 draft: false
 ---

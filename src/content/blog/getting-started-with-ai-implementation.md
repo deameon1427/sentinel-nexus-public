@@ -6,7 +6,7 @@ author: "Sentinel Nexus Team"
 pillar: "implementation"
 industry: "General"
 tags: ["AI Implementation", "Automation", "Getting Started", "Best Practices"]
-image: "/images/blog/ai-implementation-guide.jpg"
+image: "/images/blog/ai-implementation-guide.webp"
 imageAlt: "Team planning AI implementation strategy"
 draft: false
 ---
