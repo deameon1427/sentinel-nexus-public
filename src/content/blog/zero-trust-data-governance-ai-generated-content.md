@@ -7,7 +7,7 @@ pillar: "governance"
 industry: "General"
 tags: ["AI Governance", "Data Quality", "Zero Trust", "Gartner", "Model Collapse"]
 image: "/images/blog/zero-trust-data-governance.webp"
-imageAlt: "Abstract data verification and governance concept"
+imageAlt: "Business team in conference room discussing data governance strategy"
 draft: false
 ---
 
