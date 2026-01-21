@@ -28,7 +28,7 @@ Thumbs.db
 
 # Test Objects and Artifacts for site building
 .aoo/
-scripts/
+local-dev/
 
 # Claude Code
 CLAUDE.md
@@ -40,3 +40,8 @@ CLAUDE.md
 # Content Generation Queue (processing artifacts)
 .content-queue/processing/
 .content-queue/done/
+.content-queue/output/
+
+# Local Development (n8n, Ollama)
+local-dev/.env
+local-dev/n8n_data/

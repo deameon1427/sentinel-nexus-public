@@ -107,3 +107,21 @@ Default: `llama3.2:3b` (can be changed in n8n workflow settings)
 **PR not created?**
 - Check GitHub token permissions in n8n
 - Verify branch protection rules allow bot commits
+
+## Local Development
+
+For faster content generation using local CUDA acceleration, see `local-dev/README.md`.
+
+### Quick Start (Local)
+
+```bash
+# Start local n8n with Ollama
+cd local-dev
+cp .env.example .env
+docker compose up -d
+
+# Access n8n at http://localhost:5678
+# Import workflow from local-dev/workflow-ollama-content-local.json
+```
+
+Local mode outputs to `.content-queue/output/` for review before committing.
