@@ -81,12 +81,16 @@ When a visitor submits the contact form:
 - Slack notification reaches the team within seconds
 - Lead record created for follow-up tracking
 
+Agentic workflows could enhance this by classifying inquiry type, scoring lead quality, and routing to the appropriate team member automatically.
+
 **2. RSS Feed Aggregator**
 Every 6 hours:
 - Fetches from 11 security and AI news sources
 - Deduplicates and categorizes articles
 - Merges with existing content (30-day retention)
 - Triggers site rebuild to update the Intel page
+
+Agentic workflows could extend this to autonomously extract key insights, identify emerging trends, and recommend related content for follow-up.
 
 **3. GitHub Auto-Deploy**
 On every push to main:

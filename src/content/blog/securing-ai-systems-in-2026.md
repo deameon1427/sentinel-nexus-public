@@ -29,7 +29,7 @@ Traditional cybersecurity focuses on protecting systems and data from unauthoriz
 
 ## Why Traditional Security Falls Short
 
-Standard security tools and approaches weren't designed for AI systems:
+Standard security tools and approaches weren't designed for AI systems. This gap widens as organizations deploy agentic workflows—automated multi-step AI interactions that compound risk surfaces across each decision point.
 
 **Perimeter security doesn't help** when the threat comes through legitimate API calls that slowly extract model capabilities.
 
@@ -58,7 +58,7 @@ Apply least-privilege principles to AI systems. Limit who can query models, acce
 AI systems often depend on pre-trained models, libraries, and datasets from external sources. Validate the integrity of these components and monitor for compromises.
 
 ### Incident Response
-Develop AI-specific incident response procedures. When a model is compromised, what's the remediation path? How do you validate that the threat has been contained?
+Develop AI-specific incident response procedures. When a model is compromised, what's the remediation path? How do you validate that the threat has been contained? Agentic workflows add complexity here—incidents may require tracing automated decision chains across multiple compromised systems.
 
 ## The Role of MDR for AI Systems
 

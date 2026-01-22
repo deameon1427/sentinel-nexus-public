@@ -73,7 +73,7 @@ We worked with senior loan officers to codify decision logic into an automated r
 - Automatic approval for applications meeting defined criteria
 - Intelligent routing for applications requiring human review
 
-The system didn't replace human judgment. Instead, it handled straightforward applications automatically while routing complex cases to the appropriate specialists.
+The system didn't replace human judgment. Instead, it handled straightforward applications automatically while routing complex cases to the appropriate specialists. Future phases could leverage agentic workflows to provide preliminary assessment of edge cases and intelligently route applications to the most appropriate specialist based on case characteristics.
 
 ### Phase 3: Governance and Compliance Integration
 
@@ -84,7 +84,7 @@ From day one, we built compliance into the solution:
 - Fair lending analysis integrated into the workflow
 - Regulatory reporting generated automatically
 
-This wasn't an afterthought. The governance framework was designed in parallel with the automation, ensuring the bank could demonstrate compliance to regulators.
+This wasn't an afterthought. The governance framework was designed in parallel with the automation, ensuring the bank could demonstrate compliance to regulators. Agentic workflows could extend this foundation to proactively monitor regulatory changes and flag existing approvals that may require re-evaluation.
 
 ## Implementation
 

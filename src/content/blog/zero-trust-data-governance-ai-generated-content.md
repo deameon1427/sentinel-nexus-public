@@ -59,7 +59,7 @@ Data governance for AI can't live solely with IT or data engineering. You need i
 
 ### Establish Active Verification Practices
 
-Move from passive, point-in-time quality checks to continuous verification. Monitor data sources for drift. Re-evaluate training data quality periodically. Build feedback loops that catch degradation before it impacts model performance.
+Move from passive, point-in-time quality checks to continuous verification. Monitor data sources for drift. Re-evaluate training data quality periodically. Build feedback loops that catch degradation before it impacts model performance. This is especially critical for agentic workflows—cascading agent decisions amplify contamination risks, making data quality issues compound rapidly across automated processes.
 
 ### Audit Your Current Training Data
 

@@ -41,9 +41,9 @@ Many AI projects fail not because of technical limitations, but because the unde
 
 Not all AI implementations are created equal. Some deliver quick wins with minimal risk. Others require significant investment before showing returns. For most organizations, we recommend starting with:
 
-**High-volume, rule-based processes** — Document processing, data entry validation, routine customer inquiries. These are ideal for automation because they're repetitive, well-defined, and currently consuming significant human effort.
+**High-volume, rule-based processes** — Document processing, data entry validation, routine customer inquiries. These are ideal for automation because they're repetitive, well-defined, and currently consuming significant human effort. As your organization matures, agentic workflows can extend these automations to handle complex, multi-step processes that require autonomous decision-making across systems.
 
-**Decision support, not decision making** — Rather than fully autonomous AI, start with systems that augment human judgment. This reduces risk while building organizational confidence.
+**Decision support, not decision making** — Rather than fully autonomous AI, start with systems that augment human judgment. This reduces risk while building organizational confidence. Agentic workflows enable greater autonomy over time, but governance guardrails ensure human oversight remains in place.
 
 **Processes with clear success metrics** — If you can't measure improvement, you can't prove value. Start where measurement is straightforward.
 

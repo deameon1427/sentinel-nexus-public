@@ -66,7 +66,7 @@ Automatic logging of system operation. Logs must be retained and accessible for 
 Clear instructions for users, including system capabilities, limitations, and known risks. Users should understand what the AI does and doesn't do.
 
 ### Human Oversight
-Design systems to allow effective human oversight. This includes the ability to understand outputs, intervene when necessary, and override or reverse decisions.
+Design systems to allow effective human oversight. This includes the ability to understand outputs, intervene when necessary, and override or reverse decisions. Agentic workflows complicate this requirement—governance frameworks need explicit agent decision logging and override capabilities at each step of automated processes.
 
 ### Accuracy, Robustness, and Cybersecurity
 Systems must achieve appropriate levels of accuracy for their intended purpose. They must be resilient to errors and attacks, with cybersecurity measures appropriate to the risk.

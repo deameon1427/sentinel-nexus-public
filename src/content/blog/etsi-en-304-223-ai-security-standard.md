@@ -43,6 +43,8 @@ Security starts before the first line of code. Requirements include:
 - Security requirements specification that addresses AI-unique threats
 - Selection of architectures that support security controls
 
+For organizations implementing agentic workflows, threat modeling must also address cascade failures and unintended agent interactions as new risk categories.
+
 ### Development Phase
 Building security in, not bolting it on:
 - Secure coding practices adapted for ML pipelines
