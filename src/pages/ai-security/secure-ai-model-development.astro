@@ -1,0 +1,438 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Secure AI Model Development | Sentinel Nexus"
+  description="Security built into your ML pipeline from training data to production deployment. Protect against data poisoning, model theft, and adversarial attacks."
+>
+  <section class="hero-service">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/ai-security">AI Security</a>
+        <span>/</span>
+        <span>Secure AI Model Development</span>
+      </nav>
+      <h1>Secure AI Model Development</h1>
+      <p class="hero-subtitle">Security Built Into Your ML Pipeline</p>
+      <p class="hero-description">
+        From training data to production deployment, we help you build security into every stage of the machine learning lifecycle. Because retrofitting security is costly—and often ineffective.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>Why Security Can't Be an Afterthought</h2>
+        <p>
+          AI models aren't just code—they're attack surfaces. Training data can be poisoned to embed backdoors. Models can be stolen through careful API querying. Adversarial inputs can manipulate outputs in dangerous ways. These aren't theoretical risks; they're active threats targeting production systems today.
+        </p>
+        <p>
+          Traditional secure software development lifecycles don't address ML-specific vulnerabilities. Data pipelines, training environments, model artifacts, and inference APIs all present unique security challenges that require specialized approaches.
+        </p>
+        <p>
+          Security retrofits rarely work well for ML systems. By the time you discover a vulnerability in your training data or model architecture, you may need to retrain from scratch—at significant cost. Building security in from the start is the only sustainable path.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">The ML Security Lifecycle</h2>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">01</div>
+          <h3>Data Pipeline Security</h3>
+          <p>Validate training data integrity at every step. Implement provenance tracking, detect anomalous data patterns, and prevent poisoning attacks before they corrupt your models.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">02</div>
+          <h3>Secure Training Environment</h3>
+          <p>Isolated compute environments with strict access controls. Comprehensive audit logging captures who accessed what data and when, enabling forensic investigation if needed.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">03</div>
+          <h3>Model Integrity Verification</h3>
+          <p>Cryptographic checksums and model signing ensure artifacts haven't been tampered with. Detect unauthorized modifications before compromised models reach production.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">04</div>
+          <h3>Adversarial Testing</h3>
+          <p>Systematic robustness testing against crafted adversarial inputs. Identify model weaknesses before attackers do and implement defenses that maintain accuracy.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">05</div>
+          <h3>Secure Deployment</h3>
+          <p>API hardening, rate limiting, and output sanitization protect production models. Prevent extraction attacks while maintaining the performance your applications require.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">06</div>
+          <h3>Runtime Monitoring</h3>
+          <p>Continuous drift detection identifies when models behave unexpectedly. Anomaly alerts and incident response playbooks ensure rapid action when threats materialize.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Common Vulnerabilities We Address</h2>
+
+      <div class="vulnerabilities-grid">
+        <div class="vulnerability-card">
+          <h3>Training Data Poisoning</h3>
+          <p>Attackers inject malicious samples into training data to embed backdoors or degrade model performance. We implement data validation, anomaly detection, and provenance tracking to ensure data integrity throughout the pipeline.</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Model Extraction Attacks</h3>
+          <p>Through systematic API queries, attackers can reconstruct proprietary models. We implement query analysis, rate limiting, and watermarking techniques to detect and prevent extraction attempts.</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Adversarial Input Manipulation</h3>
+          <p>Carefully crafted inputs cause models to produce incorrect outputs—misclassifying images, bypassing content filters, or generating harmful content. We test robustness and implement input validation defenses.</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Inference API Abuse</h3>
+          <p>Exposed APIs become targets for denial of service, prompt injection, and information extraction. We harden inference endpoints with authentication, authorization, and monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Framework Alignment</h2>
+      <p class="section-intro">Our approach aligns with leading AI security frameworks and standards, ensuring your security investments meet industry best practices and regulatory expectations.</p>
+
+      <div class="frameworks-grid">
+        <div class="framework-card">
+          <h3>OWASP ML Security Top 10</h3>
+          <p>Addressing the most critical machine learning security risks identified by the security community.</p>
+        </div>
+
+        <div class="framework-card">
+          <h3>NIST AI Risk Management Framework</h3>
+          <p>Systematic approach to identifying, assessing, and managing AI-related risks throughout the lifecycle.</p>
+        </div>
+
+        <div class="framework-card">
+          <h3>ETSI EN 304 223</h3>
+          <p>European standard for AI system security, providing technical requirements for trustworthy AI deployment.</p>
+          <a href="/blog/etsi-en-304-223-ai-security-standard" class="framework-link">Read our analysis &rarr;</a>
+        </div>
+
+        <div class="framework-card">
+          <h3>MITRE ATLAS</h3>
+          <p>Adversarial threat landscape for AI systems, documenting real-world attack techniques and mitigations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Sentinel Nexus Approach</h2>
+        <p>
+          Secure AI model development doesn't exist in isolation. It's part of an integrated approach that spans implementation, security, and governance. We embed security practices throughout the ML lifecycle while ensuring they support—rather than hinder—your development velocity.
+        </p>
+        <p>
+          Our security work connects directly to our other pillars, creating comprehensive protection for your AI investments.
+        </p>
+      </div>
+
+      <div class="pillars-callout">
+        <div class="pillar-link">
+          <h4>Secure Pipelines from Design</h4>
+          <p>Our implementation work builds security into ML pipelines from the architecture phase, not as an afterthought.</p>
+          <a href="/ai-implementation">Learn about AI Implementation &rarr;</a>
+        </div>
+        <div class="pillar-link">
+          <h4>Compliance & Audit Trails</h4>
+          <p>Governance frameworks ensure your secure development practices meet regulatory requirements and maintain auditable records.</p>
+          <a href="/ai-governance">Learn about AI Governance &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <h2>Ready to secure your AI development pipeline?</h2>
+      <p>Let's discuss how to build security into your ML lifecycle from the start.</p>
+      <a href="/#contact" class="btn btn-primary btn-large">Start a Conversation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-service {
+    padding: 10rem 0 4rem;
+    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15) 0%, var(--color-bg) 70%);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-accent-2);
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .hero-service h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent-2);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-dark {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: -1rem auto 2rem;
+    font-size: 1.125rem;
+  }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .lifecycle-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .lifecycle-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-2);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .lifecycle-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lifecycle-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .vulnerabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .vulnerability-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent-2);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .vulnerability-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .vulnerability-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .frameworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .framework-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .framework-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-accent-2);
+  }
+
+  .framework-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .framework-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .framework-link:hover {
+    opacity: 0.8;
+  }
+
+  .pillars-callout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pillar-link {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .pillar-link h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-link p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .pillar-link a {
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .pillar-link a:hover {
+    opacity: 0.8;
+  }
+
+  .section-cta {
+    background: linear-gradient(135deg, var(--color-accent-2) 0%, #047857 100%);
+    text-align: center;
+    padding: 5rem 0;
+  }
+
+  .section-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-cta p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .section-cta .btn-primary {
+    background: white;
+    color: var(--color-accent-2);
+  }
+
+  .section-cta .btn-primary:hover {
+    background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-service {
+      padding: 8rem 0 3rem;
+    }
+
+    .lifecycle-grid,
+    .vulnerabilities-grid,
+    .frameworks-grid,
+    .pillars-callout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

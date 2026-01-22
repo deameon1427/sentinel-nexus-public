@@ -44,6 +44,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="service-card">
           <h3>Secure AI Model Development</h3>
           <p>Build security into your AI development lifecycle from the start. We help you implement secure ML pipelines, protect training data, and ensure model integrity throughout deployment.</p>
+          <a href="/ai-security/secure-ai-model-development" class="service-link">Learn more &rarr;</a>
         </div>
 
         <div class="service-card">
@@ -241,6 +242,18 @@ import Layout from '../layouts/Layout.astro';
   .service-card p {
     color: var(--color-text-muted);
     line-height: 1.7;
+  }
+
+  .service-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .service-link:hover {
+    opacity: 0.8;
   }
 
   .threats-grid {
