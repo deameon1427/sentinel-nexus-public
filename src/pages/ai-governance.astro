@@ -59,6 +59,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="service-card">
           <h3>AI Risk & Governance Assessments</h3>
           <p>Evaluate your current AI governance maturity and identify gaps. Our comprehensive assessments provide a clear picture of risks and a roadmap for improvement.</p>
+          <a href="/ai-governance/closing-the-security-governance-gap" class="service-link">Learn more &rarr;</a>
         </div>
 
         <div class="service-card">
@@ -261,6 +262,18 @@ import Layout from '../layouts/Layout.astro';
   .service-card p {
     color: var(--color-text-muted);
     line-height: 1.7;
+  }
+
+  .service-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-accent-3);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .service-link:hover {
+    opacity: 0.8;
   }
 
   .frameworks-grid {
