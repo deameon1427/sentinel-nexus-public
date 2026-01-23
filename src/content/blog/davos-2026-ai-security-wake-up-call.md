@@ -95,4 +95,4 @@ The shift from adversarial AI fears to data leak concerns shows executives now u
 
 ---
 
-*Source: World Economic Forum Global Cybersecurity Outlook 2026, presented at Davos 2026. Analysis via Forbes, "The AI Security Wake-Up Call CEOs Didn't Budget For" by Güney Yildiz, January 22, 2026.*
+[*Source: World Economic Forum Global Cybersecurity Outlook 2026, presented at Davos 2026. Analysis via Forbes, "The AI Security Wake-Up Call CEOs Didn't Budget For" by Güney Yildiz, January 22, 2026.*](https://www.forbes.com/sites/guneyyildiz/2026/01/22/the-ai-security-wake-up-call-ceos-didnt-budget-for--what-davos-2026-data-reveals/)
