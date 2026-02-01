@@ -7,7 +7,7 @@ pillar: "security"
 industry: "General"
 tags: ["AI Security", "WEF", "Davos", "Enterprise Risk", "Data Protection"]
 image: "/images/blog/davos-2026-ai-security.webp"
-imageAlt: "Executives in conference room discussing AI security strategy"
+imageAlt: "View down hallway with glass wall into conference room with meeting in progress"
 draft: false
 ---
 
