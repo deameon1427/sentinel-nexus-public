@@ -1,0 +1,490 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="AI Red Teaming | Sentinel Nexus"
+  description="Proactive adversarial testing for AI systems. We probe your LLMs, agents, and ML pipelines for vulnerabilities using multi-agent attack simulations."
+>
+  <section class="hero-service">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/ai-security">AI Security</a>
+        <span>/</span>
+        <span>AI Red Teaming</span>
+      </nav>
+      <h1>AI Red Teaming</h1>
+      <p class="hero-subtitle">Find Vulnerabilities Before Attackers Do</p>
+      <p class="hero-description">
+        Traditional security testing wasn't designed for probabilistic systems. We use multi-agent attack simulations to probe your AI systems for vulnerabilities that conventional tools miss.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>Why AI Systems Need Different Testing</h2>
+        <p>
+          Standard penetration testing assumes predictable behavior. Query a database, exploit a buffer overflow, escalate privileges. The attack surface is static and the responses are deterministic.
+        </p>
+        <p>
+          AI systems don't work that way. Large language models generate different outputs for identical inputs. Agentic workflows chain multiple AI components with emergent behaviors. The attack surface shifts with every interaction.
+        </p>
+        <p>
+          Three fundamental mismatches exist between traditional security testing and AI systems: static tests can't assess dynamic behavior, single-point probes miss contextual attacks that build influence across conversations, and deterministic methods can't evaluate emergent properties that weren't explicitly programmed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Our Testing Methodology</h2>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">01</div>
+          <h3>Threat Modeling</h3>
+          <p>Map your AI systems' attack surfaces. Which components have external access? What data can they reach? Where do agents have autonomous authority? We document exposure points before testing begins.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">02</div>
+          <h3>Baseline Establishment</h3>
+          <p>Define expected and forbidden behaviors. What should your AI systems refuse to do? What information should they never reveal? These baselines become success criteria for adversarial testing.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">03</div>
+          <h3>Multi-Agent Attack Simulation</h3>
+          <p>Coordinated attacker, defender, and evaluator agents probe your systems systematically. This approach more accurately simulates how real attackers operate: iterating on strategies, learning from failures, and exploiting successful techniques.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">04</div>
+          <h3>Agentic-Specific Testing</h3>
+          <p>For autonomous AI systems, we test attack vectors unique to agentic workflows: memory poisoning, tool exploitation, goal hijacking, and cascading failures across multi-agent architectures.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">05</div>
+          <h3>Continuous Integration</h3>
+          <p>AI red teaming shouldn't be a one-time assessment. As models are updated and prompts are modified, new vulnerabilities emerge. We help integrate testing into your deployment pipelines.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">06</div>
+          <h3>Remediation Guidance</h3>
+          <p>Every finding comes with actionable recommendations. We don't just identify vulnerabilities—we help you understand root causes and implement effective defenses that maintain model performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Vulnerability Categories We Test</h2>
+
+      <div class="vulnerabilities-grid">
+        <div class="vulnerability-card">
+          <h3>Prompt Injection & Jailbreaks</h3>
+          <p>Malicious inputs that manipulate LLM behavior, bypass content filters, or override system instructions. We test both direct injection and indirect attacks through retrieved content.</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Data Extraction & Leakage</h3>
+          <p>Techniques that cause models to reveal training data, system prompts, or sensitive information. We probe for memorization vulnerabilities and context window exploitation.</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Agent Goal Hijacking</h3>
+          <p>Attacks that manipulate an agent's objectives through prompt injection or context poisoning, causing it to pursue malicious goals while appearing to function normally. (OWASP ASI01)</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Tool Misuse & Exploitation</h3>
+          <p>AI agents with access to external tools can be tricked into using those tools maliciously. An agent with code execution capabilities becomes a privilege escalation vector. (OWASP ASI02)</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Memory & Context Poisoning</h3>
+          <p>Agents with persistent memory can have that memory corrupted. Injecting malicious context creates persistent backdoors affecting all future interactions. (OWASP ASI06)</p>
+        </div>
+
+        <div class="vulnerability-card">
+          <h3>Cascading Agent Failures</h3>
+          <p>Multi-agent systems create dependency chains. When one agent fails or is compromised, the failure propagates through connected agents, potentially amplifying impact exponentially. (OWASP ASI08)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Framework Alignment</h2>
+      <p class="section-intro">Our testing methodology aligns with leading AI security frameworks, ensuring comprehensive coverage of known vulnerability patterns and emerging threats.</p>
+
+      <div class="frameworks-grid">
+        <div class="framework-card">
+          <h3>OWASP Top 10 for LLM Applications</h3>
+          <p>Comprehensive testing against the most critical LLM security risks: prompt injection, insecure output handling, training data poisoning, and more.</p>
+        </div>
+
+        <div class="framework-card">
+          <h3>OWASP Top 10 for Agentic Applications</h3>
+          <p>Specialized coverage for autonomous AI systems including goal hijacking, tool misuse, privilege abuse, and rogue agent behaviors.</p>
+          <a href="/blog/owasp-genai-red-teaming-governance" class="framework-link">Read our analysis &rarr;</a>
+        </div>
+
+        <div class="framework-card">
+          <h3>NIST AI Risk Management Framework</h3>
+          <p>Systematic approach to identifying, assessing, and managing AI-related risks aligned with federal guidelines and industry best practices.</p>
+        </div>
+
+        <div class="framework-card">
+          <h3>MITRE ATLAS</h3>
+          <p>Testing against documented real-world attack techniques from the Adversarial Threat Landscape for AI Systems knowledge base.</p>
+        </div>
+      </div>
+
+      <div class="related-content">
+        <h3>Related Reading</h3>
+        <ul>
+          <li><a href="/blog/ai-red-teaming-multi-agent-platforms">AI Red Teaming: Why Multi-Agent Platforms Are Changing Security Testing</a></li>
+          <li><a href="/blog/swarm-ai-red-teaming-implementation">Swarm-Based AI Red Teaming: Implementation Patterns</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Sentinel Nexus Approach</h2>
+        <p>
+          AI red teaming doesn't exist in isolation. It's part of an integrated security approach that spans implementation, testing, and governance. We connect adversarial findings to remediation strategies and compliance requirements.
+        </p>
+        <p>
+          Our red teaming work integrates with our other security services to provide comprehensive protection for your AI investments.
+        </p>
+      </div>
+
+      <div class="pillars-callout">
+        <div class="pillar-link">
+          <h4>Security Built Into Pipelines</h4>
+          <p>Red teaming findings inform secure development practices. We help you build defenses into your ML pipelines from the architecture phase.</p>
+          <a href="/ai-security/secure-ai-model-development">Learn about Secure AI Development &rarr;</a>
+        </div>
+        <div class="pillar-link">
+          <h4>Compliance & Documentation</h4>
+          <p>Red team assessments generate documentation required for regulatory compliance and audit trails under frameworks like EU AI Act and NIST.</p>
+          <a href="/ai-governance">Learn about AI Governance &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <h2>Ready to test your AI systems?</h2>
+      <p>Let's discuss how adversarial testing can strengthen your AI security posture.</p>
+      <a href="/#contact" class="btn btn-primary btn-large" data-umami-event="{AI Red Teaming | Start a Conversation Btn}">Start a Conversation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-service {
+    padding: 10rem 0 4rem;
+    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15) 0%, var(--color-bg) 70%);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-accent-2);
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .hero-service h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent-2);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-dark {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: -1rem auto 2rem;
+    font-size: 1.125rem;
+  }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .lifecycle-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .lifecycle-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-2);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .lifecycle-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lifecycle-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .vulnerabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .vulnerability-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent-2);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .vulnerability-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .vulnerability-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .frameworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .framework-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .framework-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-accent-2);
+  }
+
+  .framework-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .framework-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .framework-link:hover {
+    opacity: 0.8;
+  }
+
+  .related-content {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .related-content h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .related-content ul {
+    list-style: none;
+  }
+
+  .related-content li {
+    margin-bottom: 0.75rem;
+  }
+
+  .related-content a {
+    color: var(--color-accent-2);
+    transition: opacity 0.2s ease;
+  }
+
+  .related-content a:hover {
+    opacity: 0.8;
+  }
+
+  .pillars-callout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pillar-link {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .pillar-link h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-link p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .pillar-link a {
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .pillar-link a:hover {
+    opacity: 0.8;
+  }
+
+  .section-cta {
+    background: linear-gradient(135deg, var(--color-accent-2) 0%, #047857 100%);
+    text-align: center;
+    padding: 5rem 0;
+  }
+
+  .section-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-cta p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .section-cta .btn-primary {
+    background: white;
+    color: var(--color-accent-2);
+  }
+
+  .section-cta .btn-primary:hover {
+    background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-service {
+      padding: 8rem 0 3rem;
+    }
+
+    .lifecycle-grid,
+    .vulnerabilities-grid,
+    .frameworks-grid,
+    .pillars-callout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
