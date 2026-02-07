@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import BlogCard from '../../components/BlogCard.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 
 const posts = (await getCollection('blog', ({ data }) => {
   return data.draft !== true;
@@ -50,6 +51,10 @@ const pillars = [
           <p>No posts yet. Check back soon!</p>
         </div>
       )}
+
+      <div class="newsletter-wrapper">
+        <NewsletterSignup />
+      </div>
     </div>
   </section>
 </Layout>
@@ -147,6 +152,11 @@ const pillars = [
     text-align: center;
     padding: 4rem 0;
     color: var(--color-text-muted);
+  }
+
+  .newsletter-wrapper {
+    max-width: 500px;
+    margin: 3rem auto 0;
   }
 
   @media (max-width: 768px) {

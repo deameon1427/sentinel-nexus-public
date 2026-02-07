@@ -1,0 +1,164 @@
+---
+interface Props {
+  heading?: string;
+  subtext?: string;
+  source?: string;
+}
+
+const {
+  heading = "Get AI insights delivered weekly.",
+  subtext = "No spam. Unsubscribe anytime. Tactical advice on AI implementation, security, and governance.",
+  source = "newsletter"
+} = Astro.props;
+---
+
+<div class="newsletter-signup">
+  <h4>{heading}</h4>
+  <p class="newsletter-sub">{subtext}</p>
+  <form class="newsletter-form" data-source={source}>
+    <div class="newsletter-row">
+      <input
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        required
+        autocomplete="email"
+      />
+      <button type="submit" class="btn btn-primary" data-umami-event="{Newsletter | Subscribe Btn}">
+        <span class="btn-text">Subscribe</span>
+        <span class="btn-loading" style="display: none;">...</span>
+      </button>
+    </div>
+  </form>
+  <div class="newsletter-success" style="display: none;">
+    <p>You're in. Watch your inbox.</p>
+  </div>
+  <div class="newsletter-error" style="display: none;">
+    <p>Something went wrong. Try <a href="mailto:info@sentinel-nexus.com">emailing us</a>.</p>
+  </div>
+</div>
+
+<style>
+  .newsletter-signup {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .newsletter-signup h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .newsletter-sub {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .newsletter-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .newsletter-row input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .newsletter-row input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(207, 21, 21, 0.1);
+  }
+
+  .newsletter-row input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .newsletter-row .btn {
+    white-space: nowrap;
+  }
+
+  .newsletter-success p {
+    color: var(--color-accent-2);
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .newsletter-error p {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .newsletter-error a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 480px) {
+    .newsletter-row {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.newsletter-form').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = e.currentTarget as HTMLFormElement;
+      const btnText = f.querySelector('.btn-text') as HTMLElement;
+      const btnLoading = f.querySelector('.btn-loading') as HTMLElement;
+      const submitBtn = f.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const parent = f.closest('.newsletter-signup') as HTMLElement;
+
+      if (btnText) btnText.style.display = 'none';
+      if (btnLoading) btnLoading.style.display = 'inline';
+      if (submitBtn) submitBtn.disabled = true;
+
+      const formData = new FormData(f);
+      const data = {
+        ...Object.fromEntries(formData),
+        source: f.dataset.source || 'newsletter'
+      };
+
+      try {
+        const res = await fetch('https://n8n.sentinel-nexus.com/webhook/contact-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          f.style.display = 'none';
+          const sub = parent.querySelector('.newsletter-sub') as HTMLElement;
+          if (sub) sub.style.display = 'none';
+          const success = parent.querySelector('.newsletter-success') as HTMLElement;
+          if (success) success.style.display = 'block';
+        } else {
+          throw new Error('Failed');
+        }
+      } catch (err) {
+        f.style.display = 'none';
+        const sub = parent.querySelector('.newsletter-sub') as HTMLElement;
+        if (sub) sub.style.display = 'none';
+        const error = parent.querySelector('.newsletter-error') as HTMLElement;
+        if (error) error.style.display = 'block';
+      }
+    });
+  });
+</script>
