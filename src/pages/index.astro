@@ -154,6 +154,7 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
           <h3>Regulated Industries</h3>
           <span class="industry-label">Healthcare, Finance, Insurance, Government</span>
           <p>Your compliance burden is already heavy. Adding AI can't add risk. We ensure every AI initiative meets regulatory requirements from day one.</p>
+          <a href="/industries/fintech" class="industry-link">Explore Fintech & Financial Services →</a>
         </div>
 
         <div class="industry-card">
@@ -537,6 +538,19 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
 
   .industry-card p {
     color: var(--color-text-muted);
+  }
+
+  .industry-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #d97706;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .industry-link:hover {
+    opacity: 0.8;
   }
 
   /* Engagement */
