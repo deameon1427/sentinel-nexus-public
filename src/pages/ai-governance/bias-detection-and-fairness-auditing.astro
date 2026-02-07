@@ -1,0 +1,378 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Bias Detection & Fairness Auditing | Sentinel Nexus"
+  description="Identify, measure, and mitigate bias in AI systems before it leads to unfair outcomes, regulatory violations, or reputational harm. Ensure equitable AI that builds trust."
+>
+  <section class="hero-service">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/ai-governance">AI Governance</a>
+        <span>/</span>
+        <span>Bias Detection & Fairness Auditing</span>
+      </nav>
+      <h1>Bias Detection & Fairness Auditing</h1>
+      <p class="hero-subtitle">From Hidden Bias to Equitable AI</p>
+      <p class="hero-description">
+        As AI decisions influence hiring, lending, healthcare, and more, undetected bias creates disparate impact, legal exposure, and eroded trust. Recent surveys show over 70% of organizations acknowledge fairness risks in AI, yet fewer than 35% conduct regular bias audits. Close the gap with systematic detection and mitigation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Fairness Challenge in AI</h2>
+        <p>
+          AI systems learn from data—and data often carries historical and societal biases. The result: models that unintentionally discriminate across protected characteristics like race, gender, age, or socioeconomic status. Regulatory frameworks (EU AI Act high-risk systems, NIST AI RMF, emerging U.S. guidelines) increasingly require demonstrable fairness.
+        </p>
+        <p>
+          Many organizations perform superficial checks or none at all. Bias surfaces post-deployment through complaints, audits, or litigation—often after significant harm has occurred. This reactive approach is no longer sustainable.
+        </p>
+        <p>
+          True fairness requires proactive auditing across the AI lifecycle: data, model training, outputs, and ongoing monitoring. Organizations that act now reduce risk, demonstrate responsibility, and gain competitive advantage through trustworthy AI.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Fairness Maturity Framework</h2>
+      <p class="section-intro">Move from ad-hoc checks to embedded, lifecycle-wide fairness assurance that scales with your AI initiatives.</p>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">01</div>
+          <h3>Current State Assessment</h3>
+          <p>Map your AI systems and evaluate existing bias controls. Identify datasets, models, and use cases with potential fairness exposure. Baseline your maturity against NIST, ISO 42001, and EU AI Act expectations.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">02</div>
+          <h3>Data & Training Bias Auditing</h3>
+          <p>Analyze training data for imbalances, proxies for protected attributes, and historical inequities. Apply statistical tests and mitigation techniques (re-sampling, re-weighting) before models are built.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">03</div>
+          <h3>Pre-Deployment Fairness Validation</h3>
+          <p>Establish gates in your deployment pipeline. Measure fairness metrics (demographic parity, equalized odds, calibration) across subgroups. Require mitigation or executive sign-off for high-risk disparities.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">04</div>
+          <h3>Continuous Fairness Monitoring</h3>
+          <p>Implement runtime detection of drift in fairness performance. Track model outputs in production, alert on emerging biases, and trigger re-training or adjustments as data distributions shift.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">05</div>
+          <h3>Incident Response & Remediation</h3>
+          <p>Develop playbooks for fairness incidents. Include root-cause analysis, stakeholder communication, model rollback options, and post-incident improvements to prevent recurrence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Warning Signs Your Fairness Controls Are Lagging</h2>
+
+      <div class="warning-grid">
+        <div class="warning-card">
+          <h3>No Systematic Auditing</h3>
+          <p>Relying on developer intuition or absent checks. Many teams deploy without subgroup performance testing—leaving disparities undetected until external scrutiny.</p>
+        </div>
+
+        <div class="warning-card">
+          <h3>One-Time or Superficial Reviews</h3>
+          <p>Fairness checked only at launch, ignoring concept drift or population shifts. Fairness degrades silently in production without ongoing measurement.</p>
+        </div>
+
+        <div class="warning-card">
+          <h3>Limited Scope of Protected Attributes</h3>
+          <p>Testing only obvious categories (gender/race) while missing intersectional or proxy biases. Modern regulations demand broader, context-aware fairness.</p>
+        </div>
+
+        <div class="warning-card">
+          <h3>12-24 Months Behind Maturity Curve</h3>
+          <p>Your fairness processes lag AI deployment speed. As high-risk use cases proliferate, the exposure window widens—especially under emerging 2026+ enforcement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Cost of Inaction</h2>
+        <p>
+          Undetected bias is no longer just an ethical concern—it's a material business and legal risk. Disparate impact lawsuits, EU AI Act fines (up to 6% global revenue), reputational damage, loss of customer trust, and restricted market access are already occurring.
+        </p>
+        <p>
+          The 2026-2027 period marks peak vulnerability as regulators ramp up enforcement and public awareness grows. Organizations forced into reactive remediation face higher costs, disrupted operations, and lasting stakeholder skepticism.
+        </p>
+        <p>
+          Those who invest in proactive fairness auditing now achieve cleaner deployments, stronger compliance positions, and AI that genuinely earns trust.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Sentinel Nexus Approach</h2>
+        <p>
+          Effective bias detection requires technical rigor combined with governance structure. Tools alone create audit theater; governance without measurement leaves blind spots. We integrate both—delivering practical auditing programs tailored to your risk profile and regulatory obligations.
+        </p>
+      </div>
+
+      <div class="pillars-callout">
+        <div class="pillar-link">
+          <h4>AI Governance & Compliance</h4>
+          <p>Embed fairness into overarching policies, risk programs, and regulatory alignment (NIST AI RMF, EU AI Act, ISO 42001).</p>
+          <a href="/ai-governance">Learn about Responsible AI Governance &rarr;</a>
+        </div>
+        <div class="pillar-link">
+          <h4>Algorithmic Impact Assessments</h4>
+          <p>Conduct structured evaluations that include bias analysis as part of broader safety, privacy, and societal impact reviews.</p>
+          <a href="/ai-governance">Explore Related Services &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <h2>Ready to audit and strengthen AI fairness?</h2>
+      <p>Let's assess your current practices and build a roadmap to equitable, trustworthy AI.</p>
+      <a href="/#contact" class="btn btn-primary btn-large">Start a Conversation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Reuse identical styles from closing-the-security-governance-gap.astro */
+  .hero-service {
+    padding: 10rem 0 4rem;
+    background: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.15) 0%, var(--color-bg) 70%);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-accent-3);
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .hero-service h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent-3);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-dark {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: -1rem auto 2rem;
+    font-size: 1.125rem;
+  }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .lifecycle-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .lifecycle-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-3);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .lifecycle-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lifecycle-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .warning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .warning-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent-3);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .warning-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .warning-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .pillars-callout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pillar-link {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .pillar-link h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-link p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .pillar-link a {
+    color: var(--color-accent-3);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .pillar-link a:hover {
+    opacity: 0.8;
+  }
+
+  .section-cta {
+    background: linear-gradient(135deg, var(--color-accent-3) 0%, #5b21b6 100%);
+    text-align: center;
+    padding: 5rem 0;
+  }
+
+  .section-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-cta p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .section-cta .btn-primary {
+    background: white;
+    color: var(--color-accent-3);
+  }
+
+  .section-cta .btn-primary:hover {
+    background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-service {
+      padding: 8rem 0 3rem;
+    }
+
+    .lifecycle-grid,
+    .warning-grid,
+    .pillars-callout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
