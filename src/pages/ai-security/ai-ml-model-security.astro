@@ -1,0 +1,378 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="AI/ML Model Security | Sentinel Nexus"
+  description="Protect your AI/ML models from theft, poisoning, extraction, and adversarial manipulation. Implement defenses that preserve performance while securing proprietary intelligence."
+>
+  <section class="hero-service">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/ai-security">AI Security</a>
+        <span>/</span>
+        <span>AI/ML Model Security</span>
+      </nav>
+      <h1>AI/ML Model Security</h1>
+      <p class="hero-subtitle">Defend Your Intellectual Core</p>
+      <p class="hero-description">
+        Proprietary AI models are high-value targets. Attackers seek to steal, poison, extract, or manipulate them — compromising accuracy, leaking IP, or turning models against you. With enterprise AI systems vulnerable in minutes and model-targeted attacks surging, robust protections are essential.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Model Security Challenge</h2>
+        <p>
+          Traditional application security doesn't cover ML models. Models are black-box assets trained on sensitive data, exposed via APIs, and vulnerable to unique attacks: data/model poisoning during training, extraction via query farming, adversarial inputs that fool inference, and theft of weights/parameters.
+        </p>
+        <p>
+          Recent assessments show critical flaws in 100% of enterprise AI systems tested, with median compromise time of just 16 minutes under adversarial conditions. As models power core business functions, a compromised model means corrupted decisions, IP loss, regulatory exposure, and trust erosion.
+        </p>
+        <p>
+          Effective model security requires defenses across the lifecycle: secure training, hardened inference, runtime monitoring, and integrity verification — without degrading utility.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Model Security Maturity Framework</h2>
+      <p class="section-intro">Advance from exposed models to hardened, monitored assets that resist extraction, poisoning, and manipulation.</p>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">01</div>
+          <h3>Threat Modeling & Asset Inventory</h3>
+          <p>Map model exposure: training pipelines, storage, inference endpoints, APIs. Identify high-value models and classify sensitivity (proprietary IP, regulated use cases).</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">02</div>
+          <h3>Secure Training & Supply Chain</h3>
+          <p>Validate data sources, implement poisoning detection (anomaly checks, differential privacy), use trusted frameworks, and sign artifacts to prevent supply-chain compromise.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">03</div>
+          <h3>Model Hardening & Defenses</h3>
+          <p>Apply adversarial training, input sanitization, output filtering, rate limiting, watermarking, and differential privacy to resist extraction, evasion, and inversion attacks.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">04</div>
+          <h3>Runtime Protection & Monitoring</h3>
+          <p>Deploy API gateways with model-specific guards, monitor inference traffic for anomalous patterns (extraction queries, adversarial inputs), and log for forensic traceability.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">05</div>
+          <h3>Integrity Verification & Response</h3>
+          <p>Use model signing, periodic checksums, and drift detection. Build playbooks for model compromise: rollback, quarantine, forensic analysis, and retraining on clean data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Warning Signs Your Models Are Exposed</h2>
+
+      <div class="warning-grid">
+        <div class="warning-card">
+          <h3>Unrestricted API Access</h3>
+          <p>No rate limits, authentication, or query monitoring — enabling model extraction through repeated probing or farming attacks.</p>
+        </div>
+
+        <div class="warning-card">
+          <h3>No Poisoning Safeguards</h3>
+          <p>Training data ingested without validation — leaving models vulnerable to subtle corruption that degrades performance or inserts backdoors.</p>
+        </div>
+
+        <div class="warning-card">
+          <h3>Lack of Adversarial Robustness</h3>
+          <p>Models deployed without testing against crafted inputs — allowing evasion attacks that cause misclassification in critical applications.</p>
+        </div>
+
+        <div class="warning-card">
+          <h3>No Continuous Monitoring</h3>
+          <p>Inference traffic unmonitored — missing signs of theft, manipulation, or emerging threats in real time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Cost of Model Compromise</h2>
+        <p>
+          A stolen or poisoned model means IP theft, competitive disadvantage, corrupted business decisions, and potential liability under emerging regulations. With AI systems compromised in minutes and attacks accelerating, the window for damage is shrinking fast.
+        </p>
+        <p>
+          Remediation after breach is costly: model retraining, incident response, legal exposure, and lost trust. In 2026, as agentic AI and autonomous systems proliferate, unprotected models become prime insider-threat vectors.
+        </p>
+        <p>
+          Organizations that secure models proactively preserve value, ensure reliability, and position themselves as trustworthy AI stewards amid rising scrutiny.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Sentinel Nexus Approach</h2>
+        <p>
+          We secure models as critical assets — combining technical defenses, lifecycle integration, and continuous assurance. Our protections align with OWASP LLM/Agentic Top 10, NIST AI RMF, and MITRE ATLAS to deliver measurable resilience without performance trade-offs.
+        </p>
+      </div>
+
+      <div class="pillars-callout">
+        <div class="pillar-link">
+          <h4>AI Red Teaming</h4>
+          <p>Test model robustness against extraction, poisoning, and adversarial attacks using multi-agent simulations before deployment.</p>
+          <a href="/ai-security/ai-red-teaming">Learn about AI Red Teaming →</a>
+        </div>
+        <div class="pillar-link">
+          <h4>AI-Enhanced Threat Detection</h4>
+          <p>Monitor model endpoints and inference in real time for signs of theft, manipulation, or anomalous behavior.</p>
+          <a href="/ai-security/ai-enhanced-threat-detection">Learn about AI-Enhanced Threat Detection →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <h2>Ready to secure your AI/ML models?</h2>
+      <p>Let's inventory your models, assess exposures, and implement defenses that protect your intellectual core.</p>
+      <a href="/#contact" class="btn btn-primary btn-large">Start a Conversation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Styles matched to AI Security pillar (green accent-2) */
+  .hero-service {
+    padding: 10rem 0 4rem;
+    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15) 0%, var(--color-bg) 70%);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-accent-2);
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .hero-service h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent-2);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-dark {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: -1rem auto 2rem;
+    font-size: 1.125rem;
+  }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .lifecycle-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .lifecycle-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-2);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .lifecycle-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lifecycle-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .warning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .warning-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent-2);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .warning-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .warning-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .pillars-callout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pillar-link {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .pillar-link h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-link p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .pillar-link a {
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .pillar-link a:hover {
+    opacity: 0.8;
+  }
+
+  .section-cta {
+    background: linear-gradient(135deg, var(--color-accent-2) 0%, #047857 100%);
+    text-align: center;
+    padding: 5rem 0;
+  }
+
+  .section-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-cta p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .section-cta .btn-primary {
+    background: white;
+    color: var(--color-accent-2);
+  }
+
+  .section-cta .btn-primary:hover {
+    background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-service {
+      padding: 8rem 0 3rem;
+    }
+
+    .lifecycle-grid,
+    .warning-grid,
+    .pillars-callout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
