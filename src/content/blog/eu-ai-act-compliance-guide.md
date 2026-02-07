@@ -125,4 +125,4 @@ Compliance with the EU AI Act isn't optional if you're affected. But it's also a
 
 The investment in compliance today is an investment in sustainable AI adoption.
 
-**Need help assessing your compliance position?** Our governance team can help you inventory systems, identify gaps, and build a roadmap to compliance. [Schedule a conversation](/schedule) to discuss your situation.
+**Need help assessing your compliance position?** Our governance team can help you inventory systems, identify gaps, and build a roadmap to compliance. Use the contact form to discuss your situation.
