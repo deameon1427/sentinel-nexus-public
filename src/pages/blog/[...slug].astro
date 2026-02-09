@@ -42,13 +42,45 @@ const relatedPosts = allPosts
 // Build share URLs
 const postUrl = new URL(`/blog/${post.slug}`, Astro.site).href;
 const shareTitle = encodeURIComponent(post.data.title);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": post.data.image ? new URL(post.data.image, Astro.site).href : undefined,
+  "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": (post.data.updatedDate || post.data.pubDate).toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": post.data.author,
+    "url": "https://sentinel-nexus.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sentinel Nexus",
+    "url": "https://sentinel-nexus.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sentinel-nexus.com/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": postUrl
+  },
+  "keywords": post.data.tags.join(", ")
+};
 ---
 
 <Layout
   title={`${post.data.title} | Sentinel Nexus`}
   description={post.data.description}
+  image={post.data.image}
+  type="article"
 >
   <article class="blog-post">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
     <header class="post-header">
       <div class="container">
         <a href="/blog" class="back-link">&larr; Back to Insights</a>

@@ -2,6 +2,46 @@
 import Layout from '../layouts/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
+
+const faqData = [
+  {
+    question: "We're not sure if we're ready for AI. Can you help us figure that out?",
+    answer: "Absolutely. Our Discovery Sprint is designed exactly for this. In 2\u20134 weeks, we assess your current state, identify high-impact opportunities, and deliver a prioritized roadmap\u2014whether you're just exploring or ready to move."
+  },
+  {
+    question: "How is this different from hiring an AI consulting firm?",
+    answer: "Consultants deliver recommendations. We deliver results. We don't just assess and advise\u2014we implement, secure, and manage. You get a partner who's accountable for outcomes, not just deliverables."
+  },
+  {
+    question: "Do we need all three pillars, or can we engage for just one?",
+    answer: "Our services are modular. Many clients start with one pillar and expand as needs evolve. That said, we believe the pillars work best together\u2014secure implementation and proactive governance prevent costly rework later."
+  },
+  {
+    question: "What industries do you specialize in?",
+    answer: "We work across sectors but have deep experience in regulated industries (healthcare, financial services, insurance, government) where compliance requirements make governance non-negotiable."
+  },
+  {
+    question: "How do you handle AI governance when regulations are still evolving?",
+    answer: "We design governance programs around established frameworks (NIST AI RMF, ISO 42001, OECD Principles) that align with emerging regulations like the EU AI Act. This approach ensures you're ahead of requirements rather than scrambling to catch up."
+  },
+  {
+    question: "What's your approach to AI security\u2014is it different from traditional cybersecurity?",
+    answer: "AI systems introduce unique risks: model theft, data poisoning, adversarial attacks, and expanded data exposure. Our security practice addresses these AI-specific threats while building on proven cybersecurity fundamentals. It's not either/or\u2014it's both."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
 ---
 
 <Layout title="Sentinel Nexus | AI Implementation, Security & Governance">
@@ -239,36 +279,14 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
       <h2 class="section-title">Common Questions</h2>
 
       <div class="faq-grid">
-        <div class="faq-item">
-          <h3>We're not sure if we're ready for AI. Can you help us figure that out?</h3>
-          <p>Absolutely. Our Discovery Sprint is designed exactly for this. In 2–4 weeks, we assess your current state, identify high-impact opportunities, and deliver a prioritized roadmap—whether you're just exploring or ready to move.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How is this different from hiring an AI consulting firm?</h3>
-          <p>Consultants deliver recommendations. We deliver results. We don't just assess and advise—we implement, secure, and manage. You get a partner who's accountable for outcomes, not just deliverables.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Do we need all three pillars, or can we engage for just one?</h3>
-          <p>Our services are modular. Many clients start with one pillar and expand as needs evolve. That said, we believe the pillars work best together—secure implementation and proactive governance prevent costly rework later.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>What industries do you specialize in?</h3>
-          <p>We work across sectors but have deep experience in regulated industries (healthcare, financial services, insurance, government) where compliance requirements make governance non-negotiable.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How do you handle AI governance when regulations are still evolving?</h3>
-          <p>We design governance programs around established frameworks (NIST AI RMF, ISO 42001, OECD Principles) that align with emerging regulations like the EU AI Act. This approach ensures you're ahead of requirements rather than scrambling to catch up.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>What's your approach to AI security—is it different from traditional cybersecurity?</h3>
-          <p>AI systems introduce unique risks: model theft, data poisoning, adversarial attacks, and expanded data exposure. Our security practice addresses these AI-specific threats while building on proven cybersecurity fundamentals. It's not either/or—it's both.</p>
-        </div>
+        {faqData.map(item => (
+          <div class="faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </div>
+        ))}
       </div>
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     </div>
   </section>
 
