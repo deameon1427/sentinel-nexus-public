@@ -79,6 +79,6 @@ The core lesson from GRP-Obliteration is sobering but clear: AI safety alignment
 
 If your organization is deploying or fine-tuning LLMs and you're concerned about hidden alignment regressions — whether from GRP-Obliteration-style attacks, prompt-based drift, or agentic-specific risks — structured red teaming can surface these issues before they reach production.
 
-Our team specializes in multi-agent AI red team assessments that go beyond surface-level prompt attacks to evaluate training-time vulnerabilities, emergent behaviors, and end-to-end system resilience. [Reach out via the contact form](/contact) if you'd like to discuss how we can help quantify and harden your AI security posture.
+Our team specializes in multi-agent AI red team assessments that go beyond surface-level prompt attacks to evaluate training-time vulnerabilities, emergent behaviors, and end-to-end system resilience. [Reach out via the contact form](https://sentinel-nexus.com/#contact) if you'd like to discuss how we can help quantify and harden your AI security posture.
 
 **Source:** Microsoft Security Blog — "A one-prompt attack that breaks LLM safety alignment" (February 9, 2026), as reported and analyzed in InfoWorld (February 10, 2026).
