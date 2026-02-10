@@ -117,7 +117,7 @@ Legacy workflow for email-based notifications as backup to Slack.
 
 **Intel Page:**
 - Real-time aggregation of industry news
-- Four categories: Security News, AI & Cloud, Vulnerabilities, GRC Updates
+- Four categories: Security News, AI and Cloud, Vulnerabilities, GRC Updates
 - Automated refresh without manual curation
 
 **Case Studies:**

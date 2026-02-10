@@ -68,11 +68,11 @@ OWASP's newly released Top 10 for Agentic Applications provides a framework for 
 
 **ASI01: Agent Goal Hijack.** Attackers manipulate an agent's objectives through prompt injection or context poisoning, causing it to pursue malicious goals while appearing to function normally.
 
-**ASI02: Tool Misuse & Exploitation.** AI agents with access to external tools (APIs, databases, file systems) can be tricked into using those tools maliciously. An agent with code execution capabilities becomes a privilege escalation vector.
+**ASI02: Tool Misuse and Exploitation.** AI agents with access to external tools (APIs, databases, file systems) can be tricked into using those tools maliciously. An agent with code execution capabilities becomes a privilege escalation vector.
 
-**ASI03: Agent Identity & Privilege Abuse.** When agents authenticate to external systems, compromised agents inherit those privileges. An attacker who hijacks an agent gains access to everything the agent can reach.
+**ASI03: Agent Identity and Privilege Abuse.** When agents authenticate to external systems, compromised agents inherit those privileges. An attacker who hijacks an agent gains access to everything the agent can reach.
 
-**ASI06: Memory & Context Poisoning.** Agents with persistent memory can have that memory corrupted. Injecting malicious context into an agent's memory affects all future interactions, creating persistent backdoors.
+**ASI06: Memory and Context Poisoning.** Agents with persistent memory can have that memory corrupted. Injecting malicious context into an agent's memory affects all future interactions, creating persistent backdoors.
 
 **ASI08: Cascading Agent Failures.** Multi-agent systems create dependency chains. When one agent fails or is compromised, the failure propagates through connected agents, potentially amplifying impact exponentially.
 
