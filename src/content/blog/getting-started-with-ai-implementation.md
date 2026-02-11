@@ -90,4 +90,4 @@ AI implementation is a journey, not a destination. The organizations that succee
 
 If you're exploring AI implementation for your organization, we can help you assess your readiness, identify high-impact opportunities, and build a roadmap that makes sense for your specific context.
 
-**Ready to explore?** Our Discovery Sprint provides a structured 2-4 week assessment that identifies your highest-impact AI opportunities and potential roadblocks. [Schedule a conversation](https://sentinel-nexus.com/contact#) to learn more.
+**Ready to explore?** Our Discovery Sprint provides a structured 2-4 week assessment that identifies your highest-impact AI opportunities and potential roadblocks. [Schedule a conversation](https://sentinel-nexus.com/#contact) to learn more.

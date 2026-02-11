@@ -89,4 +89,4 @@ AI security is an evolving field. The threats we see today will be different fro
 
 If you're deploying AI systems and want to understand your security posture, we can help. Our security assessments identify vulnerabilities specific to AI implementations and provide actionable recommendations for remediation.
 
-**Want to assess your AI security posture?** [Schedule a discovery call](/schedule) to discuss your specific environment and concerns.
+**Want to assess your AI security posture?** [Schedule a discovery call](/#contact) to discuss your specific environment and concerns.
