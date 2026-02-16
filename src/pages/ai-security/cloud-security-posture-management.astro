@@ -1,0 +1,435 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Cloud Security Posture Management for AI | Sentinel Nexus"
+  description="Secure your AI cloud infrastructure with integrated CSPM and AI-SPM. Identify misconfigurations across model registries, training pipelines, and GPU clusters."
+>
+  <section class="hero-service">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/ai-security">AI Security</a>
+        <span>/</span>
+        <span>Cloud Security Posture Management</span>
+      </nav>
+      <h1>Cloud Security Posture Management for AI</h1>
+      <p class="hero-subtitle">Full-Stack Visibility Across Your AI Cloud Infrastructure</p>
+      <p class="hero-description">
+        Traditional CSPM tools assess cloud infrastructure — but they don't understand AI-specific assets. Model registries, training pipelines, GPU clusters, and inference endpoints introduce risks that standard configuration checks miss. Securing AI in the cloud requires integrating CSPM with AI Security Posture Management (AI-SPM).
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Expanding AI Cloud Attack Surface</h2>
+        <p>
+          Cloud providers have rapidly expanded their AI service offerings. Amazon Bedrock, Azure AI Foundry, Google Vertex AI, and dozens of specialized platforms now host model training, fine-tuning, and inference workloads. Each introduces asset types that traditional CSPM wasn't built to assess: model endpoints, notebook environments, vector databases, embedding stores, and training data pipelines.
+        </p>
+        <p>
+          Standard CSPM detects an open S3 bucket or a misconfigured security group. But it won't flag an overprivileged service account with access to your model registry, an unencrypted training dataset containing PII, or a publicly exposed inference endpoint accepting arbitrary prompts. These are AI-specific posture risks that require AI-specific assessment.
+        </p>
+        <p>
+          The gap between CSPM and AI-SPM is where breaches happen. Organizations that deploy AI workloads without extending their posture management to cover AI-specific assets inherit risk they can't see — until it materializes as data exfiltration, model theft, or regulatory violation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Our Assessment Methodology</h2>
+      <p class="section-intro">A systematic approach that bridges CSPM and AI-SPM to deliver full-stack AI security posture visibility across your cloud environments.</p>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">01</div>
+          <h3>AI Asset Discovery and Inventory</h3>
+          <p>Scan your cloud environments to build a complete inventory of AI assets: deployed models, training jobs, notebooks, data stores, vector databases, inference endpoints, and API keys. You can't secure what you don't know exists.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">02</div>
+          <h3>Configuration Assessment</h3>
+          <p>Evaluate every AI asset against security baselines. Check network exposure, encryption settings, access controls, logging configuration, and resource policies. Compare configurations against CIS benchmarks and cloud provider security best practices.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">03</div>
+          <h3>Identity and Access Analysis</h3>
+          <p>Map IAM policies, service account permissions, and role bindings across AI workloads. Identify overprivileged identities, unused access, cross-account exposure, and service accounts with access to both AI assets and sensitive data stores.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">04</div>
+          <h3>Data Flow Mapping</h3>
+          <p>Trace how data moves through your AI pipelines — from source through preprocessing, training, fine-tuning, and inference. Identify where sensitive data is processed, stored, or transmitted without adequate protection.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">05</div>
+          <h3>Compliance Alignment</h3>
+          <p>Map your AI cloud posture against regulatory frameworks: EU AI Act requirements for high-risk systems, NIST AI RMF controls, OWASP Top 10 for LLM applications, and industry-specific standards like HIPAA or PCI-DSS as they apply to AI workloads.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">06</div>
+          <h3>Continuous Monitoring and Remediation</h3>
+          <p>Posture management isn't a point-in-time assessment. Establish continuous monitoring with automated detection of configuration drift, new AI asset deployment, permission changes, and emerging misconfigurations. Prioritize findings by exploitability and impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Common AI Cloud Misconfigurations We Identify</h2>
+
+      <div class="misconfig-grid">
+        <div class="misconfig-card">
+          <h3>Publicly Exposed Model Endpoints</h3>
+          <p>Inference APIs accessible without authentication or with overly permissive CORS policies. Attackers can query models to extract training data, test adversarial inputs, or run up compute costs through abuse.</p>
+        </div>
+
+        <div class="misconfig-card">
+          <h3>Overprivileged Service Accounts</h3>
+          <p>AI pipeline service accounts with broad permissions across cloud resources. A compromised training job shouldn't have access to production databases, but we routinely find exactly this misconfiguration.</p>
+        </div>
+
+        <div class="misconfig-card">
+          <h3>Unencrypted Training Data</h3>
+          <p>Training datasets stored at rest without encryption, or transmitted between pipeline stages without TLS. When training data contains PII, proprietary information, or sensitive business data, this creates immediate compliance exposure.</p>
+        </div>
+
+        <div class="misconfig-card">
+          <h3>Exposed API Keys and Tokens</h3>
+          <p>AI service credentials committed to code repositories, stored in environment variables without secrets management, or embedded in notebook files shared across teams. Third-party AI service keys are especially common findings.</p>
+        </div>
+
+        <div class="misconfig-card">
+          <h3>Misconfigured Notebook Environments</h3>
+          <p>Jupyter and SageMaker notebooks with root access, public network exposure, or persistent storage containing sensitive data. Notebooks are often treated as ephemeral but persist far longer than intended.</p>
+        </div>
+
+        <div class="misconfig-card">
+          <h3>Unsecured Model Registries</h3>
+          <p>Model registries without access controls, versioning, or integrity verification. Without these controls, model artifacts can be tampered with, replaced, or exfiltrated — and you'd have no audit trail to detect it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Platform Coverage</h2>
+      <p class="section-intro">We assess AI security posture across major cloud platforms and their AI-specific services, as well as self-hosted and hybrid deployments.</p>
+
+      <div class="platforms-grid">
+        <div class="platform-card">
+          <h3>Amazon Web Services</h3>
+          <p>SageMaker, Bedrock, Comprehend, Rekognition, Lambda-based inference, S3 training data stores, IAM policies for AI workloads, VPC configurations for model endpoints, and CodeCommit/ECR for ML pipeline artifacts.</p>
+        </div>
+
+        <div class="platform-card">
+          <h3>Microsoft Azure</h3>
+          <p>Azure AI Foundry, Azure OpenAI Service, Azure Machine Learning, Cognitive Services, Key Vault for AI credentials, Managed Identity configurations, network security groups for inference clusters, and Azure DevOps ML pipelines.</p>
+        </div>
+
+        <div class="platform-card">
+          <h3>Google Cloud Platform</h3>
+          <p>Vertex AI, AI Platform, BigQuery ML, Cloud TPU configurations, Artifact Registry for models, IAM and service account bindings, VPC Service Controls for AI workloads, and Cloud Build ML pipeline security.</p>
+        </div>
+
+        <div class="platform-card">
+          <h3>Self-Hosted and Hybrid</h3>
+          <p>On-premises GPU clusters, Kubernetes-based ML platforms (Kubeflow, MLflow), private model registries, hybrid training pipelines spanning cloud and data center, and edge inference deployments with centralized model management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Sentinel Nexus Approach</h2>
+        <p>
+          Cloud security posture management for AI isn't just about running more scans. It requires understanding how AI systems are architected, how data flows through training and inference pipelines, and where the boundaries between traditional infrastructure and AI-specific assets create security gaps.
+        </p>
+        <p>
+          We integrate posture findings with your broader security program. Misconfigurations inform red teaming targets. Compliance gaps drive governance priorities. Detection rules feed into ongoing monitoring. The result is a posture management program that improves continuously — not a one-time report that gathers dust.
+        </p>
+      </div>
+
+      <div class="pillars-callout">
+        <div class="pillar-link">
+          <h4>Test What You Find</h4>
+          <p>Posture findings identify exposure. Red teaming proves exploitability. Together, they give you a prioritized view of actual risk — not just theoretical vulnerabilities.</p>
+          <a href="/ai-security/ai-red-teaming">Learn about AI Red Teaming &rarr;</a>
+        </div>
+        <div class="pillar-link">
+          <h4>Govern What You Deploy</h4>
+          <p>Cloud AI governance policies define acceptable configurations, required controls, and compliance baselines. Posture management enforces those policies automatically.</p>
+          <a href="/ai-governance">Learn about AI Governance &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <h2>Ready to assess your AI cloud security posture?</h2>
+      <p>Let's identify the misconfigurations and blind spots in your AI cloud infrastructure before attackers do.</p>
+      <a href="/#contact" class="btn btn-primary btn-large" data-umami-event="{Start a Conversation| cloud-security-posture-management}">Start a Conversation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-service {
+    padding: 10rem 0 4rem;
+    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15) 0%, var(--color-bg) 70%);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-accent-2);
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .hero-service h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent-2);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-dark {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: -1rem auto 2rem;
+    font-size: 1.125rem;
+  }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .lifecycle-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .lifecycle-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-2);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .lifecycle-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lifecycle-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .misconfig-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .misconfig-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent-2);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .misconfig-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .misconfig-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .platform-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .platform-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-accent-2);
+  }
+
+  .platform-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .pillars-callout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pillar-link {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .pillar-link h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-link p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .pillar-link a {
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .pillar-link a:hover {
+    opacity: 0.8;
+  }
+
+  .section-cta {
+    background: linear-gradient(135deg, var(--color-accent-2) 0%, #047857 100%);
+    text-align: center;
+    padding: 5rem 0;
+  }
+
+  .section-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-cta p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .section-cta .btn-primary {
+    background: white;
+    color: var(--color-accent-2);
+  }
+
+  .section-cta .btn-primary:hover {
+    background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-service {
+      padding: 8rem 0 3rem;
+    }
+
+    .lifecycle-grid,
+    .misconfig-grid,
+    .platforms-grid,
+    .pillars-callout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
