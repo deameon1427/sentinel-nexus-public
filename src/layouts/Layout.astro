@@ -4,6 +4,7 @@ interface Props {
   description?: string;
   image?: string;
   type?: string;
+  rssHref?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   description = "Implement AI that works. Protect what you build. Govern before regulators require it. Sentinel Nexus is your operational partner for the AI era.",
   image = "/og-image.png",
   type = "website",
+  rssHref,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -62,6 +64,7 @@ const ogImageURL = new URL(image, Astro.site);
     })} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {rssHref && <link rel="alternate" type="application/rss+xml" title="Sentinel Nexus Intel Feed" href={rssHref} />}
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

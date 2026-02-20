@@ -81,6 +81,7 @@ function formatUpdatedAt(dateString: string): string {
 <Layout
   title="Security and AI Intelligence | Sentinel Nexus"
   description="Curated security, AI, and governance news from trusted sources. Updated daily."
+  rssHref="/intel.xml"
 >
   <section class="intel-page">
     <div class="container">
@@ -91,6 +92,12 @@ function formatUpdatedAt(dateString: string): string {
         </p>
         <div class="intel-meta">
           <span class="last-updated">Last updated: {formatUpdatedAt(feedData.updated_at)}</span>
+          <a href="/intel.xml" class="rss-link" title="Subscribe to Intel RSS Feed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+            </svg>
+            RSS Feed
+          </a>
         </div>
       </header>
 
@@ -182,6 +189,24 @@ function formatUpdatedAt(dateString: string): string {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     border: 1px solid var(--color-border);
+  }
+
+  .rss-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: #f26522;
+    background: var(--color-bg-card);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(242, 101, 34, 0.3);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .rss-link:hover {
+    background: rgba(242, 101, 34, 0.1);
+    border-color: rgba(242, 101, 34, 0.6);
   }
 
   .feed-grid {
