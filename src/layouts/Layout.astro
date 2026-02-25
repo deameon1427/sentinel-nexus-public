@@ -127,6 +127,7 @@ const ogImageURL = new URL(image, Astro.site);
         </div>
         <div class="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Sentinel Nexus. All rights reserved. This site is a demonstration of an operational agentic AI orchestrator.</p>
+          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
         </div>
       </div>
     </footer>
@@ -335,6 +336,22 @@ const ogImageURL = new URL(image, Astro.site);
     padding-top: 2rem;
     color: var(--color-text-muted);
     font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-legal-link {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .footer-legal-link:hover {
+    color: var(--color-primary);
   }
 
   /* Responsive */

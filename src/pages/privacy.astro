@@ -1,0 +1,791 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdated = "February 24, 2026";
+const effectiveDate = "February 24, 2026";
+---
+
+<Layout
+  title="Privacy Policy | Sentinel Nexus"
+  description="Sentinel Nexus Privacy Policy — strict GDPR compliance, minimal data collection, no tracking, no data selling. We practice the governance we preach."
+>
+
+  <section class="hero-privacy">
+    <div class="container">
+      <div class="hero-badge">Privacy First</div>
+      <h1>Privacy Policy</h1>
+      <p class="hero-sub">Effective: {effectiveDate} &nbsp;·&nbsp; Last updated: {lastUpdated}</p>
+      <p class="hero-lead">We are an AI security and governance firm. Our own data practices are held to the same standard we set for our clients — strict, transparent, and GDPR-compliant by design, not by checkbox.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container policy-layout">
+
+      <!-- Sidebar TOC -->
+      <aside class="policy-toc">
+        <p class="toc-label">Contents</p>
+        <nav>
+          <a href="#tldr">TL;DR</a>
+          <a href="#controller">Data Controller</a>
+          <a href="#what-we-collect">What We Collect</a>
+          <a href="#legal-basis">Legal Basis</a>
+          <a href="#retention">Retention</a>
+          <a href="#third-parties">Third Parties</a>
+          <a href="#cookies">Cookies &amp; Analytics</a>
+          <a href="#transfers">Data Transfers</a>
+          <a href="#your-rights">Your GDPR Rights</a>
+          <a href="#exercising-rights">Exercising Rights</a>
+          <a href="#children">Children</a>
+          <a href="#changes">Policy Changes</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </aside>
+
+      <!-- Main policy content -->
+      <div class="policy-body">
+
+        <!-- TL;DR -->
+        <div id="tldr" class="tldr-block">
+          <h2>TL;DR &mdash; The Short Version</h2>
+          <ul class="tldr-list">
+            <li><span class="tldr-check">&#10003;</span> We collect only what we need to respond to you (name, email, optional phone).</li>
+            <li><span class="tldr-check">&#10003;</span> We never sell, rent, or broker your data. Ever.</li>
+            <li><span class="tldr-check">&#10003;</span> Our analytics are self-hosted, cookieless, and collect no personal data.</li>
+            <li><span class="tldr-check">&#10003;</span> No third-party ad networks, tracking pixels, or fingerprinting.</li>
+            <li><span class="tldr-check">&#10003;</span> We use Google Fonts — we disclose this and what it means below.</li>
+            <li><span class="tldr-check">&#10003;</span> Contact us at <a href="mailto:privacy@sentinel-nexus.com">privacy@sentinel-nexus.com</a> to exercise any GDPR right, any time.</li>
+          </ul>
+        </div>
+
+        <!-- 1. Data Controller -->
+        <div id="controller" class="policy-section">
+          <h2><span class="section-num">1</span> Data Controller</h2>
+          <p>The data controller for this website is:</p>
+          <div class="controller-card">
+            <p><strong>Sentinel Nexus</strong><br />
+            Email: <a href="mailto:privacy@sentinel-nexus.com">privacy@sentinel-nexus.com</a><br />
+            Website: <a href="https://sentinel-nexus.com">https://sentinel-nexus.com</a></p>
+          </div>
+          <p>Under the EU General Data Protection Regulation (GDPR) and applicable data protection laws, Sentinel Nexus is the controller of personal data collected through this website.</p>
+        </div>
+
+        <!-- 2. What We Collect -->
+        <div id="what-we-collect" class="policy-section">
+          <h2><span class="section-num">2</span> What We Collect and Why</h2>
+
+          <h3>2.1 Contact Form Submissions</h3>
+          <p>When you submit a contact inquiry through our website, we collect:</p>
+          <table class="data-table">
+            <thead>
+              <tr><th>Field</th><th>Required</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Full name</td><td>Yes</td><td>To address you correctly in our response</td></tr>
+              <tr><td>Email address</td><td>Yes</td><td>To reply to your inquiry</td></tr>
+              <tr><td>Phone number</td><td>No</td><td>Alternative contact method if you prefer a call</td></tr>
+            </tbody>
+          </table>
+          <p>This data is transmitted via an encrypted connection (HTTPS) to our self-hosted automation infrastructure (<code>n8n.sentinel-nexus.com</code>) for routing and response management. It is not transmitted to any third-party CRM or marketing platform.</p>
+
+          <h3>2.2 Analytics Data</h3>
+          <p>We use <strong>Umami Analytics</strong>, a self-hosted, open-source analytics platform. Umami is specifically designed to be GDPR-compliant without requiring a cookie consent banner because:</p>
+          <ul>
+            <li>It does not use cookies or local storage.</li>
+            <li>It does not collect personal data or persistent identifiers.</li>
+            <li>IP addresses are never stored — they are used only transiently to derive an approximate country, then discarded.</li>
+            <li>All analytics data is hosted on our own infrastructure within the EU.</li>
+          </ul>
+          <p>The data collected includes: page views, referrer domain (not full URL), browser type, device type, OS type, and country. None of this constitutes personal data under GDPR.</p>
+
+          <h3>2.3 Server Logs</h3>
+          <p>Our web server infrastructure may retain standard access logs (IP address, request path, timestamp, user agent) for up to <strong>7 days</strong> for security and abuse-prevention purposes. These logs are not linked to any other personal data and are not used for profiling.</p>
+        </div>
+
+        <!-- 3. Legal Basis -->
+        <div id="legal-basis" class="policy-section">
+          <h2><span class="section-num">3</span> Legal Basis for Processing</h2>
+          <p>Under GDPR Article 6, we rely on the following legal bases:</p>
+          <div class="basis-grid">
+            <div class="basis-card">
+              <h4>Legitimate Interest <small>(Art. 6(1)(f))</small></h4>
+              <p>Processing contact form submissions to respond to business inquiries. We have conducted a legitimate interest assessment (LIA) and determined that our interest in responding to inbound inquiries is not overridden by your fundamental rights, given the minimal data involved and your direct initiation of the contact.</p>
+            </div>
+            <div class="basis-card">
+              <h4>Legitimate Interest <small>(Art. 6(1)(f))</small></h4>
+              <p>Anonymised analytics for understanding website performance. No personal data is involved; this basis is noted for completeness only.</p>
+            </div>
+            <div class="basis-card">
+              <h4>Legitimate Interest <small>(Art. 6(1)(f))</small></h4>
+              <p>Server log retention for security monitoring and abuse prevention, limited to 7 days.</p>
+            </div>
+          </div>
+          <p class="note-block"><strong>Note:</strong> We do not rely on consent as a basis for any current processing. We do not operate email marketing lists and will never add you to one without explicit opt-in consent collected separately.</p>
+        </div>
+
+        <!-- 4. Retention -->
+        <div id="retention" class="policy-section">
+          <h2><span class="section-num">4</span> Data Retention</h2>
+          <table class="data-table">
+            <thead>
+              <tr><th>Data Type</th><th>Retention Period</th><th>Rationale</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Contact form submissions (name, email, phone)</td>
+                <td>12 months from last contact</td>
+                <td>Standard business correspondence cycle; deleted upon request at any time</td>
+              </tr>
+              <tr>
+                <td>Analytics data (aggregate, non-personal)</td>
+                <td>24 months rolling</td>
+                <td>Trend analysis; not personal data, but we apply retention limits as a matter of principle</td>
+              </tr>
+              <tr>
+                <td>Server access logs</td>
+                <td>7 days</td>
+                <td>Security monitoring only; auto-purged</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 5. Third Parties -->
+        <div id="third-parties" class="policy-section">
+          <h2><span class="section-num">5</span> Third Parties and Data Processors</h2>
+          <p>We do not sell, rent, trade, or broker your personal data to any third party. Below is a complete inventory of external services this site interacts with:</p>
+
+          <div class="vendor-card">
+            <div class="vendor-header">
+              <span class="vendor-name">Google Fonts API</span>
+              <span class="vendor-type vendor-external">External — Google LLC</span>
+            </div>
+            <p><strong>What it does:</strong> Loads the Inter typeface from Google's CDN (<code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>). When your browser requests the font, Google's servers receive your IP address and a <code>User-Agent</code> header.</p>
+            <p><strong>What Google says it does with this:</strong> According to Google's own documentation, IP addresses from Font API requests are not stored beyond the immediate request and are not used for profiling. However, as an external third party we cannot independently verify this.</p>
+            <p><strong>Legal basis:</strong> Legitimate interest in providing a consistent visual experience. We acknowledge this constitutes a transfer of technical metadata to a US-based processor.</p>
+            <p><strong>Safeguard:</strong> Google LLC participates in the EU-U.S. Data Privacy Framework (DPF). Standard Contractual Clauses also apply via Google's terms.</p>
+            <p class="note-block"><strong>Our stance:</strong> We are evaluating self-hosting the Inter font to eliminate this external dependency entirely. We disclose it now in the spirit of full transparency.</p>
+          </div>
+
+          <div class="vendor-card vendor-self">
+            <div class="vendor-header">
+              <span class="vendor-name">Umami Analytics</span>
+              <span class="vendor-type vendor-self-hosted">Self-Hosted — sentinel-nexus.com infrastructure</span>
+            </div>
+            <p><strong>What it does:</strong> Collects anonymised, aggregate page view data. No personal data, no cookies, no cross-site tracking. All data stays on our own servers.</p>
+          </div>
+
+          <div class="vendor-card vendor-self">
+            <div class="vendor-header">
+              <span class="vendor-name">n8n Workflow Automation</span>
+              <span class="vendor-type vendor-self-hosted">Self-Hosted — sentinel-nexus.com infrastructure</span>
+            </div>
+            <p><strong>What it does:</strong> Receives contact form submissions and routes them to our team. Self-hosted on our own infrastructure; your data does not leave our control.</p>
+          </div>
+
+          <p>There are no advertising networks, retargeting pixels, social media SDKs, session recording tools, heatmap services, or third-party chat widgets on this site.</p>
+        </div>
+
+        <!-- 6. Cookies -->
+        <div id="cookies" class="policy-section">
+          <h2><span class="section-num">6</span> Cookies and Tracking</h2>
+          <div class="highlight-block">
+            <strong>This website does not use cookies.</strong>
+          </div>
+          <p>Umami Analytics is specifically engineered to operate without cookies or any form of persistent browser storage. We do not set first-party cookies for analytics, session tracking, personalisation, or any other purpose.</p>
+          <p>Google Fonts may cause your browser to cache font files locally — this is standard browser caching behaviour and is not a cookie or tracking mechanism.</p>
+          <p>Because we do not use cookies, no cookie consent banner is required or shown. This is an intentional design decision.</p>
+        </div>
+
+        <!-- 7. Data Transfers -->
+        <div id="transfers" class="policy-section">
+          <h2><span class="section-num">7</span> International Data Transfers</h2>
+          <p>Our primary infrastructure is hosted within the EU/EEA. The only transfer of any data outside the EEA occurs when your browser loads fonts from Google's CDN (see Section 5 above).</p>
+          <p>This transfer is covered by:</p>
+          <ul>
+            <li>Google LLC's participation in the <strong>EU-U.S. Data Privacy Framework (DPF)</strong>, certified July 2023.</li>
+            <li>Standard Contractual Clauses (SCCs) incorporated into Google's service terms.</li>
+          </ul>
+          <p>Contact form data and analytics data remain on EU-hosted infrastructure and are not transferred internationally.</p>
+        </div>
+
+        <!-- 8. Your Rights -->
+        <div id="your-rights" class="policy-section">
+          <h2><span class="section-num">8</span> Your Rights Under GDPR</h2>
+          <p>You have the following rights with respect to any personal data we hold about you. These are not caveated, conditional, or subject to commercial qualification — they are your legal rights and we honour them unconditionally.</p>
+          <div class="rights-grid">
+            <div class="right-card">
+              <div class="right-icon">15</div>
+              <h4>Right of Access</h4>
+              <p>Request a copy of all personal data we hold about you and information about how it is processed.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">16</div>
+              <h4>Right to Rectification</h4>
+              <p>Request correction of any inaccurate personal data we hold.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">17</div>
+              <h4>Right to Erasure</h4>
+              <p>Request deletion of your personal data. We will comply promptly unless a legal obligation requires us to retain it.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">18</div>
+              <h4>Right to Restriction</h4>
+              <p>Request that we restrict processing of your data while a dispute is resolved.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">20</div>
+              <h4>Right to Portability</h4>
+              <p>Receive your personal data in a structured, machine-readable format (JSON or CSV) for transfer to another controller.</p>
+            </div>
+            <div class="right-card">
+              <div class="right-icon">21</div>
+              <h4>Right to Object</h4>
+              <p>Object to processing based on legitimate interests. We will cease processing unless we can demonstrate compelling legitimate grounds that override your interests.</p>
+            </div>
+          </div>
+          <p>You also have the right to <strong>withdraw consent</strong> at any time (where consent is the legal basis) and the right to <strong>lodge a complaint</strong> with your national supervisory authority. In the EU, the lead authority for cross-border matters is determined by where you reside. A list of EU supervisory authorities is available at <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener noreferrer">edpb.europa.eu</a>.</p>
+        </div>
+
+        <!-- 9. Exercising Rights -->
+        <div id="exercising-rights" class="policy-section">
+          <h2><span class="section-num">9</span> How to Exercise Your Rights</h2>
+          <p>Email <a href="mailto:privacy@sentinel-nexus.com">privacy@sentinel-nexus.com</a> with the subject line <strong>"GDPR Rights Request"</strong> and describe the right you wish to exercise. Include sufficient information to identify the personal data concerned (e.g., the email address you submitted via the contact form).</p>
+          <div class="sla-block">
+            <div class="sla-item">
+              <span class="sla-num">1 month</span>
+              <span class="sla-label">Response time commitment (GDPR Article 12 requires this; we target faster)</span>
+            </div>
+            <div class="sla-item">
+              <span class="sla-num">Free</span>
+              <span class="sla-label">No charge for rights requests unless they are manifestly unfounded or excessive</span>
+            </div>
+            <div class="sla-item">
+              <span class="sla-num">No ID required</span>
+              <span class="sla-label">We will verify identity using the email address on file — we will not request government ID for standard inquiries</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Children -->
+        <div id="children" class="policy-section">
+          <h2><span class="section-num">10</span> Children's Privacy</h2>
+          <p>This website is directed at business professionals and is not intended for individuals under the age of 16. We do not knowingly collect personal data from children. If you believe a child has submitted personal data to us, contact <a href="mailto:privacy@sentinel-nexus.com">privacy@sentinel-nexus.com</a> and we will delete it immediately.</p>
+        </div>
+
+        <!-- 11. Changes -->
+        <div id="changes" class="policy-section">
+          <h2><span class="section-num">11</span> Changes to This Policy</h2>
+          <p>We will update this policy to reflect changes in our practices or applicable law. Material changes will be communicated by updating the "Last updated" date at the top of this page. We will not retroactively weaken the protections in this policy without clear notification.</p>
+          <p>Continued use of the website following a policy update does not constitute consent to the updated terms — we rely on legitimate interest, not consent, for processing described here.</p>
+        </div>
+
+        <!-- 12. Contact -->
+        <div id="contact" class="policy-section">
+          <h2><span class="section-num">12</span> Contact and Data Protection Enquiries</h2>
+          <div class="controller-card">
+            <p><strong>Privacy enquiries and rights requests:</strong><br />
+            <a href="mailto:privacy@sentinel-nexus.com">privacy@sentinel-nexus.com</a></p>
+            <p style="margin-top: 1rem;"><strong>General contact:</strong><br />
+            <a href="mailto:info@sentinel-nexus.com">info@sentinel-nexus.com</a></p>
+          </div>
+          <p>We do not have a formal Data Protection Officer (DPO) requirement under Article 37 GDPR as we do not engage in large-scale, systematic processing of special category data. However, privacy enquiries are treated with priority and handled by a named member of our team.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Hero */
+  .hero-privacy {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(180deg, rgba(207, 21, 21, 0.06) 0%, transparent 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    background: rgba(207, 21, 21, 0.12);
+    border: 1px solid rgba(207, 21, 21, 0.35);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-privacy h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-sub {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-lead {
+    max-width: 680px;
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Layout */
+  .section {
+    padding: 4rem 0 6rem;
+  }
+
+  .policy-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* TOC sidebar */
+  .policy-toc {
+    position: sticky;
+    top: 100px;
+    padding: 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .toc-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .policy-toc nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .policy-toc nav a {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+    padding: 0.15rem 0;
+  }
+
+  .policy-toc nav a:hover {
+    color: var(--color-text);
+  }
+
+  /* Policy body */
+  .policy-body {
+    min-width: 0;
+  }
+
+  .policy-section {
+    margin-bottom: 3.5rem;
+    padding-bottom: 3.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .policy-section:last-child {
+    border-bottom: none;
+  }
+
+  .policy-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .policy-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.75rem 0 0.75rem;
+    color: var(--color-text);
+  }
+
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(207, 21, 21, 0.15);
+    border: 1px solid rgba(207, 21, 21, 0.3);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .policy-section p {
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .policy-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .policy-section ul,
+  .policy-section ol {
+    color: var(--color-text-muted);
+    padding-left: 1.5rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .policy-section ul li,
+  .policy-section ol li {
+    margin-bottom: 0.4rem;
+  }
+
+  .policy-section a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-color: rgba(207, 21, 21, 0.4);
+    transition: text-decoration-color 0.2s;
+  }
+
+  .policy-section a:hover {
+    text-decoration-color: var(--color-primary);
+  }
+
+  code {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875em;
+    color: var(--color-accent-2);
+  }
+
+  /* TL;DR block */
+  .tldr-block {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.07), rgba(16, 185, 129, 0.03));
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .tldr-block h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-accent-2);
+    border: none;
+  }
+
+  .tldr-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .tldr-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .tldr-check {
+    color: var(--color-accent-2);
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .tldr-list a {
+    color: var(--color-accent-2);
+    text-decoration: underline;
+  }
+
+  /* Tables */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.9rem;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .data-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .data-table tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  /* Controller card */
+  .controller-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .controller-card p {
+    color: var(--color-text);
+    margin-bottom: 0;
+  }
+
+  .controller-card a {
+    color: var(--color-primary) !important;
+  }
+
+  /* Legal basis grid */
+  .basis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .basis-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+
+  .basis-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.65rem;
+    color: var(--color-text);
+  }
+
+  .basis-card small {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .basis-card p {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+  }
+
+  /* Note block */
+  .note-block {
+    background: rgba(59, 130, 246, 0.07);
+    border-left: 3px solid var(--color-accent-1);
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem !important;
+    color: var(--color-text-muted);
+    margin: 1.25rem 0;
+  }
+
+  /* Vendor cards */
+  .vendor-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .vendor-card p {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .vendor-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .vendor-card.vendor-self {
+    border-color: rgba(16, 185, 129, 0.25);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.04), transparent);
+  }
+
+  .vendor-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.9rem;
+  }
+
+  .vendor-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+
+  .vendor-type {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  .vendor-external {
+    background: rgba(207, 21, 21, 0.1);
+    border: 1px solid rgba(207, 21, 21, 0.25);
+    color: var(--color-primary);
+  }
+
+  .vendor-self-hosted {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: var(--color-accent-2);
+  }
+
+  /* Highlight block */
+  .highlight-block {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 1.05rem;
+    color: var(--color-accent-2);
+    margin-bottom: 1rem;
+  }
+
+  /* Rights grid */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .right-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+
+  .right-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent-3);
+    margin-bottom: 0.75rem;
+  }
+
+  .right-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .right-card p {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+  }
+
+  /* SLA block */
+  .sla-block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .sla-item {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sla-num {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .sla-label {
+    font-size: 0.83rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .policy-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .policy-toc {
+      position: static;
+    }
+
+    .policy-toc nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .rights-grid,
+    .basis-grid,
+    .sla-block {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-privacy {
+      padding: 6rem 0 3rem;
+    }
+
+    .data-table {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+</style>
