@@ -1,0 +1,491 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="AI Incident Response & Forensics | Sentinel Nexus"
+  description="Specialized incident response and digital forensics for AI systems. We investigate compromised models, data breaches, and agentic failures with AI-aware methodologies."
+>
+  <section class="hero-service">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/ai-security">AI Security</a>
+        <span>/</span>
+        <span>Incident Response & Forensics</span>
+      </nav>
+      <h1>AI Incident Response & Forensics</h1>
+      <p class="hero-subtitle">When AI Systems Fail, Every Minute Counts</p>
+      <p class="hero-description">
+        Traditional incident response playbooks weren't designed for probabilistic systems. When your AI is compromised—through prompt injection, model manipulation, or agentic failures—you need investigators who understand both cybersecurity and machine learning.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>AI Incidents Are Different</h2>
+        <p>
+          When a traditional system is breached, the evidence trail is often clear: logs show unauthorized access, files were exfiltrated, credentials were compromised. The forensic process follows established patterns of evidence collection and analysis.
+        </p>
+        <p>
+          AI system incidents defy these patterns. A compromised LLM may produce subtly manipulated outputs without triggering any security alerts. An agent with poisoned memory continues to operate while pursuing hijacked objectives. Model weights may have been corrupted during training months before the incident manifests.
+        </p>
+        <p>
+          These incidents require investigators who understand both the cybersecurity fundamentals and the unique characteristics of machine learning systems. The attack surface is different, the evidence is different, and the remediation strategies are different.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Our Incident Response Methodology</h2>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">01</div>
+          <h3>Rapid Triage</h3>
+          <p>Immediate assessment of the AI system's current state. We determine if the system should be isolated, rolled back, or monitored while we investigate. Speed matters—but so does preserving evidence.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">02</div>
+          <h3>AI-Specific Evidence Collection</h3>
+          <p>Beyond standard log collection, we capture model states, embedding snapshots, agent memory contents, and interaction histories. These artifacts are critical for understanding AI-specific attack vectors.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">03</div>
+          <h3>Attack Vector Analysis</h3>
+          <p>We trace the incident to its root cause. Was it prompt injection through user input? Indirect injection via retrieved content? Training data poisoning? Tool exploitation in agentic workflows? The vector determines the remediation.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">04</div>
+          <h3>Impact Assessment</h3>
+          <p>Determine what was compromised. For LLMs, this includes analyzing whether sensitive information was extracted, whether the model was used to generate harmful content, or whether downstream systems were affected.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">05</div>
+          <h3>Containment and Remediation</h3>
+          <p>Implement immediate fixes while planning long-term solutions. This may include prompt hardening, guardrail implementation, model rollback, or architectural changes to prevent recurrence.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <div class="lifecycle-number">06</div>
+          <h3>Documentation and Reporting</h3>
+          <p>Comprehensive incident documentation aligned with NIST SP 800-61r3 and AI-specific frameworks. Reports include technical findings, business impact, and actionable recommendations for prevention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">AI-Specific Incident Categories</h2>
+
+      <div class="incident-grid">
+        <div class="incident-card">
+          <h3>Model Manipulation Attacks</h3>
+          <p>Incidents where attackers have influenced model behavior through prompt injection, jailbreaks, or context manipulation. We trace how the attack succeeded and what boundaries were violated.</p>
+        </div>
+
+        <div class="incident-card">
+          <h3>Data Exfiltration via AI</h3>
+          <p>When AI systems are exploited to extract training data, system prompts, or sensitive information from context windows. We determine what was leaked and through which interaction patterns.</p>
+        </div>
+
+        <div class="incident-card">
+          <h3>Agentic System Failures</h3>
+          <p>Autonomous AI systems that have executed unintended actions—whether through goal hijacking, tool misuse, or cascading failures across multi-agent architectures. We reconstruct the decision chain.</p>
+        </div>
+
+        <div class="incident-card">
+          <h3>Training Pipeline Compromise</h3>
+          <p>Incidents where the model training process itself was compromised—poisoned datasets, corrupted fine-tuning, or supply chain attacks on model weights. These require deep investigation into the ML pipeline.</p>
+        </div>
+
+        <div class="incident-card">
+          <h3>Adversarial Input Exploitation</h3>
+          <p>Attacks using crafted inputs that cause AI systems to misclassify, hallucinate, or behave unpredictably. We analyze the adversarial patterns and their propagation through the system.</p>
+        </div>
+
+        <div class="incident-card">
+          <h3>AI-Enabled Insider Threats</h3>
+          <p>When employees or contractors misuse AI systems to bypass controls, extract data, or cause harm. We correlate AI interaction logs with user behavior patterns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Framework Alignment</h2>
+      <p class="section-intro">Our incident response methodology aligns with established cybersecurity and emerging AI-specific frameworks to ensure comprehensive, defensible investigations.</p>
+
+      <div class="frameworks-grid">
+        <div class="framework-card">
+          <h3>NIST SP 800-61r3</h3>
+          <p>The 2025 revision integrates incident response into broader cybersecurity risk management. We follow its six-category model: Govern, Identify, Protect, Detect, Respond, and Recover.</p>
+        </div>
+
+        <div class="framework-card">
+          <h3>NIST AI RMF Playbook</h3>
+          <p>Suggested actions aligned to the AI Risk Management Framework's four functions: Govern, Map, Measure, and Manage. We integrate AI risk considerations throughout the incident lifecycle.</p>
+        </div>
+
+        <div class="framework-card">
+          <h3>MITRE ATLAS</h3>
+          <p>The Adversarial Threat Landscape for AI Systems knowledge base documents real-world attack techniques. We map incidents to ATLAS tactics and techniques for standardized reporting.</p>
+        </div>
+
+        <div class="framework-card">
+          <h3>OWASP Top 10 for LLM & Agentic</h3>
+          <p>Incident classification aligned with OWASP's documented vulnerability categories for both LLM applications and autonomous agent systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Forensic Capabilities</h2>
+      <p class="section-intro">Digital forensics for AI systems requires specialized techniques beyond traditional evidence collection.</p>
+
+      <div class="capabilities-grid">
+        <div class="capability-card">
+          <h3>Model State Preservation</h3>
+          <p>Capturing and preserving model weights, configurations, and embedding states at the time of incident. This enables before-and-after comparison and potential rollback.</p>
+        </div>
+
+        <div class="capability-card">
+          <h3>Interaction Timeline Reconstruction</h3>
+          <p>Building comprehensive timelines of all interactions with AI systems, including prompts, responses, tool calls, and external API requests. We identify the attack progression.</p>
+        </div>
+
+        <div class="capability-card">
+          <h3>Agent Memory Forensics</h3>
+          <p>For agentic systems, we analyze persistent memory stores, conversation histories, and retrieved context to identify poisoning or manipulation.</p>
+        </div>
+
+        <div class="capability-card">
+          <h3>Chain of Custody for AI Evidence</h3>
+          <p>Maintaining forensic integrity with documented evidence handling procedures adapted for AI artifacts. Our methods support legal admissibility requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content-block">
+        <h2>The Sentinel Nexus Approach</h2>
+        <p>
+          AI incident response doesn't exist in isolation. Effective response requires understanding how the system was built, what security controls were in place, and what governance policies apply. We connect incident findings to both technical remediation and compliance requirements.
+        </p>
+        <p>
+          Our incident response work integrates with our other services to provide comprehensive protection and continuous improvement for your AI investments.
+        </p>
+      </div>
+
+      <div class="pillars-callout">
+        <div class="pillar-link">
+          <h4>Proactive Security Testing</h4>
+          <p>The best incident response is prevention. Our red teaming services identify vulnerabilities before attackers exploit them, reducing incident likelihood and severity.</p>
+          <a href="/ai-security/ai-red-teaming">Learn about AI Red Teaming &rarr;</a>
+        </div>
+        <div class="pillar-link">
+          <h4>Governance and Compliance</h4>
+          <p>Incidents often trigger regulatory reporting requirements. We help ensure your response meets EU AI Act, NIST, and industry-specific compliance obligations.</p>
+          <a href="/ai-governance">Learn about AI Governance &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta">
+    <div class="container">
+      <h2>AI incident in progress?</h2>
+      <p>Get expert help investigating and remediating compromised AI systems.</p>
+      <a href="/#contact" class="btn btn-primary btn-large" data-umami-event="{Start a Conversation | incident-response-and-forensics}">Start a Conversation</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-service {
+    padding: 10rem 0 4rem;
+    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15) 0%, var(--color-bg) 70%);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-accent-2);
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .hero-service h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent-2);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-dark {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: -1rem auto 2rem;
+    font-size: 1.125rem;
+  }
+
+  .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-block p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .lifecycle-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .lifecycle-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-2);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .lifecycle-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .lifecycle-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .incident-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .incident-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent-2);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .incident-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .incident-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .frameworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .framework-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .framework-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-accent-2);
+  }
+
+  .framework-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .capability-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .capability-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .capability-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .pillars-callout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pillar-link {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .pillar-link h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-link p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .pillar-link a {
+    color: var(--color-accent-2);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .pillar-link a:hover {
+    opacity: 0.8;
+  }
+
+  .section-cta {
+    background: linear-gradient(135deg, var(--color-accent-2) 0%, #047857 100%);
+    text-align: center;
+    padding: 5rem 0;
+  }
+
+  .section-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-cta p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .section-cta .btn-primary {
+    background: white;
+    color: var(--color-accent-2);
+  }
+
+  .section-cta .btn-primary:hover {
+    background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-service {
+      padding: 8rem 0 3rem;
+    }
+
+    .lifecycle-grid,
+    .incident-grid,
+    .frameworks-grid,
+    .capabilities-grid,
+    .pillars-callout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
