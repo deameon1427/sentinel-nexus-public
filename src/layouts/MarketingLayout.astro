@@ -1,0 +1,209 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  campaignId?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Sentinel Nexus — AI implementation, security, and governance consulting.",
+  ogImage = "/og-image.png",
+} = Astro.props;
+
+const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:site_name" content="Sentinel Nexus" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://umami.sentinel-nexus.com/script.js" data-website-id="a355a588-1ade-4b6d-b0d5-381309a23fc2"></script>
+  </head>
+  <body>
+    <header class="lp-header">
+      <div class="lp-container">
+        <a href="https://sentinel-nexus.com" class="logo">
+          <span class="logo-icon">S</span>
+          <span class="logo-text">Sentinel Nexus</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="lp-footer">
+      <div class="lp-container">
+        <p>&copy; {new Date().getFullYear()} Sentinel Nexus. All rights reserved.</p>
+        <a href="https://sentinel-nexus.com/privacy">Privacy Policy</a>
+      </div>
+    </footer>
+
+    <script>
+      // Capture URL params into sessionStorage for form attribution
+      const params = new URLSearchParams(window.location.search);
+      ['source', 'campaign', 'medium', 'content'].forEach(k => {
+        const v = params.get(k);
+        if (v) sessionStorage.setItem(`lp_${k}`, v);
+      });
+      sessionStorage.setItem('lp_page', window.location.pathname);
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #12121a;
+    --color-bg-card: #1a1a24;
+    --color-text: #e4e4e7;
+    --color-text-muted: #a1a1aa;
+    --color-primary: #cf1515;
+    --color-primary-hover: #ef4444;
+    --color-accent-1: #3b82f6;
+    --color-accent-2: #10b981;
+    --color-accent-3: #8b5cf6;
+    --color-border: #27272a;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --max-width: 1200px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  .lp-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+  }
+
+  /* LP Header */
+  .lp-header {
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.25rem 0;
+    background: rgba(10, 10, 15, 0.95);
+  }
+
+  .lp-header .lp-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--color-primary);
+    border-radius: 8px;
+    font-weight: 700;
+    color: white;
+  }
+
+  /* LP Footer */
+  .lp-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 1.5rem 0;
+    background: var(--color-bg-secondary);
+    margin-top: 4rem;
+  }
+
+  .lp-footer .lp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .lp-footer a {
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .lp-footer a:hover {
+    color: var(--color-primary);
+  }
+</style>

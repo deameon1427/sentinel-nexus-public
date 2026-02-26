@@ -1,0 +1,208 @@
+---
+interface Props {
+  heading?: string;
+  ctaLabel?: string;
+  successMessage?: string;
+}
+
+const {
+  heading = "Get in touch",
+  ctaLabel = "Submit",
+  successMessage = "Thank you! We'll be in touch within one business day.",
+} = Astro.props;
+---
+
+<div class="mf-wrapper">
+  {heading && <h2 class="mf-heading">{heading}</h2>}
+
+  <form class="mf-form" id="marketing-form">
+    <div class="mf-field">
+      <label for="mf-name">Full Name</label>
+      <input type="text" id="mf-name" name="name" placeholder="Jane Smith" required />
+    </div>
+    <div class="mf-field">
+      <label for="mf-email">Work Email</label>
+      <input type="email" id="mf-email" name="email" placeholder="jane@acme.com" required />
+    </div>
+    <div class="mf-field">
+      <label for="mf-phone">Phone <span class="optional">(optional)</span></label>
+      <input type="tel" id="mf-phone" name="phone" placeholder="+1 555 0100" />
+    </div>
+    <button type="submit" class="btn btn-primary mf-submit">{ctaLabel}</button>
+  </form>
+
+  <div class="mf-success" id="mf-success" style="display:none">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+      <polyline points="22 4 12 14.01 9 11.01"/>
+    </svg>
+    <p>{successMessage}</p>
+  </div>
+
+  <div class="mf-error" id="mf-error" style="display:none">
+    <p>Something went wrong. Please try again or email us directly at <a href="mailto:contact@sentinel-nexus.com">contact@sentinel-nexus.com</a>.</p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('marketing-form') as HTMLFormElement | null;
+  const successEl = document.getElementById('mf-success');
+  const errorEl = document.getElementById('mf-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const name = (form.querySelector('#mf-name') as HTMLInputElement).value.trim();
+    const email = (form.querySelector('#mf-email') as HTMLInputElement).value.trim();
+    const phone = (form.querySelector('#mf-phone') as HTMLInputElement).value.trim();
+
+    const source = sessionStorage.getItem('lp_source') ?? undefined;
+    const campaign = sessionStorage.getItem('lp_campaign') ?? undefined;
+    const medium = sessionStorage.getItem('lp_medium') ?? undefined;
+    const content = sessionStorage.getItem('lp_content') ?? undefined;
+    const page = sessionStorage.getItem('lp_page') ?? window.location.pathname;
+    const poll_answer = sessionStorage.getItem('lp_poll_answer') ?? undefined;
+    const poll_id = sessionStorage.getItem('lp_poll_id') ?? undefined;
+
+    const payload: Record<string, string | undefined> = {
+      name, email,
+      ...(phone && { phone }),
+      ...(source && { source }),
+      ...(campaign && { campaign }),
+      ...(medium && { medium }),
+      ...(content && { content }),
+      page,
+      ...(poll_answer && { poll_answer }),
+      ...(poll_id && { poll_id }),
+    };
+
+    // Fire Umami custom event
+    try {
+      (window as any).umami?.track('marketing-form-submit', { source, campaign, page });
+    } catch (_) {}
+
+    try {
+      const res = await fetch('https://n8n.sentinel-nexus.com/webhook/marketing-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      form.style.display = 'none';
+      if (successEl) successEl.style.display = 'flex';
+    } catch (_) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitBtn.dataset.label ?? 'Submit';
+      if (errorEl) errorEl.style.display = 'block';
+    }
+  });
+</script>
+
+<style>
+  .mf-wrapper {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .mf-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+  }
+
+  .mf-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .mf-field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .optional {
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+
+  .mf-field input {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    width: 100%;
+  }
+
+  .mf-field input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .mf-field input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  .mf-submit {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .mf-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .mf-success {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--color-accent-2);
+  }
+
+  .mf-success p {
+    color: var(--color-text);
+    font-size: 1.05rem;
+  }
+
+  .mf-error {
+    margin-top: 1rem;
+    padding: 0.875rem 1rem;
+    background: rgba(207, 21, 21, 0.1);
+    border: 1px solid rgba(207, 21, 21, 0.3);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .mf-error a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>

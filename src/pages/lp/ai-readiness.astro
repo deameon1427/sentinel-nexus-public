@@ -1,0 +1,181 @@
+---
+import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import MarketingForm from '../../components/MarketingForm.astro';
+---
+
+<MarketingLayout
+  title="AI Readiness Call | Sentinel Nexus"
+  description="Book a free 30-minute AI readiness call with a Sentinel Nexus consultant. Find out where your organization stands — and what to do next."
+>
+  <section class="lp-hero">
+    <div class="lp-container">
+      <div class="lp-grid">
+        <div class="lp-copy">
+          <p class="lp-eyebrow">Free 30-Minute Consultation</p>
+          <h1 class="lp-headline">Is your organization ready for AI?</h1>
+          <p class="lp-subtext">
+            Most AI initiatives stall not from lack of ambition — but from unclear foundations.
+            In 30 minutes, we'll map your data readiness, identify quick wins, and show you
+            exactly where to start.
+          </p>
+          <ul class="lp-benefits">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Honest assessment of your current AI maturity
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Prioritized 90-day roadmap tailored to your industry
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              No sales pitch — just a working session with a practitioner
+            </li>
+          </ul>
+        </div>
+
+        <div class="lp-form-col">
+          <MarketingForm
+            heading="Book your free 30-minute call"
+            ctaLabel="Book My Call"
+            successMessage="We'll reach out within one business day to confirm a time."
+          />
+          <p class="lp-privacy">
+            No spam. No sharing your data. <a href="https://sentinel-nexus.com/privacy">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-social-proof">
+    <div class="lp-container">
+      <div class="lp-stats">
+        <div class="lp-stat">
+          <span class="lp-stat-value">3–6×</span>
+          <span class="lp-stat-label">faster time-to-value vs. DIY AI teams</span>
+        </div>
+        <div class="lp-stat">
+          <span class="lp-stat-value">Day 1</span>
+          <span class="lp-stat-label">security and governance baked in from the start</span>
+        </div>
+        <div class="lp-stat">
+          <span class="lp-stat-value">Full stack</span>
+          <span class="lp-stat-label">implementation, security, and governance — one partner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>
+
+<style>
+  .lp-hero {
+    padding: 4rem 0 3rem;
+  }
+
+  .lp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .lp-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .lp-headline {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .lp-subtext {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+    font-size: 1.05rem;
+  }
+
+  .lp-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .lp-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .lp-benefits svg {
+    color: var(--color-accent-2);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .lp-privacy {
+    margin-top: 0.875rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .lp-privacy a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .lp-social-proof {
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 0;
+  }
+
+  .lp-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .lp-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .lp-stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .lp-stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 640px) {
+    .lp-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lp-stats {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

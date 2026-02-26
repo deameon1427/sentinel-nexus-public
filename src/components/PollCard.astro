@@ -1,0 +1,204 @@
+---
+interface Option {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  question: string;
+  options: Option[];
+  pollId: string;
+  followUpHeading?: string;
+}
+
+const { question, options, pollId, followUpHeading = "Based on your answer, here's how we can help:" } = Astro.props;
+---
+
+<div class="poll-card" data-poll-id={pollId}>
+  <div class="poll-question-section" id={`poll-${pollId}`}>
+    <p class="poll-label">Quick Poll</p>
+    <h2 class="poll-question">{question}</h2>
+    <div class="poll-options">
+      {options.map(opt => (
+        <button
+          class="poll-option"
+          data-option-id={opt.id}
+          data-poll-id={pollId}
+          type="button"
+        >
+          <span class="poll-option-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="poll-followup" id={`poll-followup-${pollId}`} style="display:none">
+    <p class="poll-answer-summary">
+      Your answer: <strong id={`poll-selected-${pollId}`}></strong>
+    </p>
+    {followUpHeading && <p class="poll-followup-heading">{followUpHeading}</p>}
+    <slot />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.poll-option').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const pollId = btn.dataset.pollId!;
+      const optionId = btn.dataset.optionId!;
+      const optionLabel = btn.textContent?.trim() ?? optionId;
+
+      // Visual selection
+      document.querySelectorAll<HTMLButtonElement>(`.poll-option[data-poll-id="${pollId}"]`).forEach(b => {
+        b.classList.remove('selected');
+      });
+      btn.classList.add('selected');
+
+      // Store in sessionStorage
+      sessionStorage.setItem('lp_poll_answer', optionId);
+      sessionStorage.setItem('lp_poll_id', pollId);
+
+      // Fire anonymous poll event to n8n
+      const source = sessionStorage.getItem('lp_source') ?? undefined;
+      const campaign = sessionStorage.getItem('lp_campaign') ?? undefined;
+      const page = sessionStorage.getItem('lp_page') ?? window.location.pathname;
+
+      try {
+        (window as any).umami?.track('poll-answer', { poll_id: pollId, answer: optionId, source, campaign });
+      } catch (_) {}
+
+      try {
+        fetch('https://n8n.sentinel-nexus.com/webhook/marketing-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'poll_answer',
+            poll_id: pollId,
+            answer: optionId,
+            ...(source && { source }),
+            ...(campaign && { campaign }),
+            page,
+          }),
+        });
+      } catch (_) {}
+
+      // Show follow-up form after short delay
+      await new Promise(r => setTimeout(r, 300));
+
+      const questionSection = document.getElementById(`poll-${pollId}`);
+      const followup = document.getElementById(`poll-followup-${pollId}`);
+      const selectedLabel = document.getElementById(`poll-selected-${pollId}`);
+
+      if (selectedLabel) selectedLabel.textContent = optionLabel;
+      if (questionSection) questionSection.style.display = 'none';
+      if (followup) followup.style.display = 'block';
+    });
+  });
+</script>
+
+<style>
+  .poll-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .poll-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-1);
+    margin-bottom: 0.75rem;
+  }
+
+  .poll-question {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.35;
+  }
+
+  .poll-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .poll-option {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 1.25rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .poll-option:hover {
+    border-color: var(--color-accent-1);
+    background: rgba(59, 130, 246, 0.05);
+  }
+
+  .poll-option.selected {
+    border-color: var(--color-accent-1);
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  .poll-option-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    color: transparent;
+  }
+
+  .poll-option.selected .poll-option-check {
+    border-color: var(--color-accent-1);
+    background: var(--color-accent-1);
+    color: white;
+  }
+
+  .poll-followup {
+    animation: fade-in 0.3s ease;
+  }
+
+  .poll-answer-summary {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .poll-answer-summary strong {
+    color: var(--color-accent-1);
+  }
+
+  .poll-followup-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
