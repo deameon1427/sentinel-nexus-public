@@ -124,6 +124,18 @@
 </style>
 
 <script>
+  function getABVariant(): string {
+    try { return (JSON.parse(localStorage.getItem('sn_ab_theme') || '{}') as any).v || 'dark'; } catch(e) { return 'dark'; }
+  }
+  function markConverted(): void {
+    try {
+      const raw = localStorage.getItem('sn_ab_theme');
+      if (!raw) return;
+      const s = JSON.parse(raw); s.converted = true;
+      localStorage.setItem('sn_ab_theme', JSON.stringify(s));
+    } catch(e) {}
+  }
+
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const successEl = document.getElementById('form-success');
   const errorEl = document.getElementById('form-error');
@@ -153,6 +165,8 @@
       if (res.ok) {
         form.style.display = 'none';
         if (successEl) successEl.style.display = 'block';
+        (window as any).umami?.track('contact-form-submit', { ab_theme: getABVariant() });
+        markConverted();
       } else {
         throw new Error('Submission failed');
       }

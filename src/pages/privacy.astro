@@ -51,7 +51,7 @@ const effectiveDate = "February 24, 2026";
           <ul class="tldr-list">
             <li><span class="tldr-check">&#10003;</span> We collect only what we need to respond to you (name, email, optional phone).</li>
             <li><span class="tldr-check">&#10003;</span> We never sell, rent, or broker your data. Ever.</li>
-            <li><span class="tldr-check">&#10003;</span> Our analytics are self-hosted, cookieless, and collect no personal data.</li>
+            <li><span class="tldr-check">&#10003;</span> Our analytics are self-hosted, cookieless, and collect no personal data. One functional localStorage entry stores your UI theme preference.</li>
             <li><span class="tldr-check">&#10003;</span> No third-party ad networks, tracking pixels, or fingerprinting.</li>
             <li><span class="tldr-check">&#10003;</span> We use Google Fonts — we disclose this and what it means below.</li>
             <li><span class="tldr-check">&#10003;</span> Contact us at <a href="mailto:privacy@sentinel-nexus.com">privacy@sentinel-nexus.com</a> to exercise any GDPR right, any time.</li>
@@ -91,7 +91,7 @@ const effectiveDate = "February 24, 2026";
           <h3>2.2 Analytics Data</h3>
           <p>We use <strong>Umami Analytics</strong>, a self-hosted, open-source analytics platform. Umami is specifically designed to be GDPR-compliant without requiring a cookie consent banner because:</p>
           <ul>
-            <li>It does not use cookies or local storage.</li>
+            <li>It does not use cookies or persistent tracking identifiers.</li>
             <li>It does not collect personal data or persistent identifiers.</li>
             <li>IP addresses are never stored — they are used only transiently to derive an approximate country, then discarded.</li>
             <li>All analytics data is hosted on our own infrastructure within the EU.</li>
@@ -195,6 +195,7 @@ const effectiveDate = "February 24, 2026";
           <p>Umami Analytics is specifically engineered to operate without cookies or any form of persistent browser storage. We do not set first-party cookies for analytics, session tracking, personalisation, or any other purpose.</p>
           <p>Google Fonts may cause your browser to cache font files locally — this is standard browser caching behaviour and is not a cookie or tracking mechanism.</p>
           <p>Because we do not use cookies, no cookie consent banner is required or shown. This is an intentional design decision.</p>
+          <p>This website uses a single <code>localStorage</code> entry (<code>sn_ab_theme</code>) to record your assigned display theme variant for UX consistency across visits. It contains no personal data — only the theme name (<code>dark</code>/<code>light</code>), two boolean flags, and a timestamp. This is functional storage under the ePrivacy Directive's strictly-necessary exemption and does not require a consent banner.</p>
         </div>
 
         <!-- 7. Data Transfers -->

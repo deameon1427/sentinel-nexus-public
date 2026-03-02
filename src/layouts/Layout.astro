@@ -22,6 +22,31 @@ const ogImageURL = new URL(image, Astro.site);
 <!doctype html>
 <html lang="en">
   <head>
+    <script>(function(){
+  var KEY = 'sn_ab_theme';
+  var v = 'dark';
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (!raw) {
+      v = Math.random() < 0.5 ? 'dark' : 'light';
+      localStorage.setItem(KEY, JSON.stringify({ v: v, converted: false, bounced: false, assignedAt: Date.now() }));
+    } else {
+      var s = JSON.parse(raw);
+      if (s.converted) {
+        v = s.v;
+      } else if (s.bounced) {
+        v = s.v === 'dark' ? 'light' : 'dark';
+        s.v = v; s.bounced = false;
+        localStorage.setItem(KEY, JSON.stringify(s));
+      } else {
+        v = s.v;
+      }
+    }
+  } catch(e) {}
+  document.documentElement.setAttribute('data-theme', v);
+  window.__snVariant = v;
+})();
+</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -131,6 +156,22 @@ const ogImageURL = new URL(image, Astro.site);
         </div>
       </div>
     </footer>
+    <script>(function(){
+  var KEY = 'sn_ab_theme';
+  function markBounce() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var s = JSON.parse(raw);
+      if (!s.converted) { s.bounced = true; localStorage.setItem(KEY, JSON.stringify(s)); }
+    } catch(e) {}
+  }
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') markBounce();
+  });
+  window.addEventListener('beforeunload', markBounce);
+})();
+</script>
   </body>
 </html>
 
@@ -149,6 +190,20 @@ const ogImageURL = new URL(image, Astro.site);
     --color-border: #27272a;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --max-width: 1200px;
+  }
+
+  [data-theme="light"] {
+    --color-bg: #f8f8fc;
+    --color-bg-secondary: #f0f0f6;
+    --color-bg-card: #ffffff;
+    --color-text: #18181b;
+    --color-text-muted: #52525b;
+    --color-primary: #cf1515;
+    --color-primary-hover: #b91c1c;
+    --color-accent-1: #2563eb;
+    --color-accent-2: #059669;
+    --color-accent-3: #7c3aed;
+    --color-border: #d4d4d8;
   }
 
   * {
@@ -229,6 +284,10 @@ const ogImageURL = new URL(image, Astro.site);
     background: rgba(10, 10, 15, 0.9);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
+  }
+
+  [data-theme="light"] .navbar {
+    background: rgba(248, 248, 252, 0.9);
   }
 
   .nav-content {

@@ -45,6 +45,18 @@ const {
 </div>
 
 <script>
+  function getABVariant(): string {
+    try { return (JSON.parse(localStorage.getItem('sn_ab_theme') || '{}') as any).v || 'dark'; } catch(e) { return 'dark'; }
+  }
+  function markConverted(): void {
+    try {
+      const raw = localStorage.getItem('sn_ab_theme');
+      if (!raw) return;
+      const s = JSON.parse(raw); s.converted = true;
+      localStorage.setItem('sn_ab_theme', JSON.stringify(s));
+    } catch(e) {}
+  }
+
   const form = document.getElementById('marketing-form') as HTMLFormElement | null;
   const successEl = document.getElementById('mf-success');
   const errorEl = document.getElementById('mf-error');
@@ -82,7 +94,7 @@ const {
 
     // Fire Umami custom event
     try {
-      (window as any).umami?.track('marketing-form-submit', { source, campaign, page });
+      (window as any).umami?.track('marketing-form-submit', { source, campaign, page, ab_theme: getABVariant() });
     } catch (_) {}
 
     try {
@@ -96,6 +108,7 @@ const {
 
       form.style.display = 'none';
       if (successEl) successEl.style.display = 'flex';
+      markConverted();
     } catch (_) {
       submitBtn.disabled = false;
       submitBtn.textContent = submitBtn.dataset.label ?? 'Submit';

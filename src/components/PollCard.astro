@@ -47,6 +47,10 @@ const { question, options, pollId, followUpHeading = "Based on your answer, here
 </div>
 
 <script>
+  function getABVariant(): string {
+    try { return (JSON.parse(localStorage.getItem('sn_ab_theme') || '{}') as any).v || 'dark'; } catch(e) { return 'dark'; }
+  }
+
   document.querySelectorAll<HTMLButtonElement>('.poll-option').forEach(btn => {
     btn.addEventListener('click', async () => {
       const pollId = btn.dataset.pollId!;
@@ -69,7 +73,7 @@ const { question, options, pollId, followUpHeading = "Based on your answer, here
       const page = sessionStorage.getItem('lp_page') ?? window.location.pathname;
 
       try {
-        (window as any).umami?.track('poll-answer', { poll_id: pollId, answer: optionId, source, campaign });
+        (window as any).umami?.track('poll-answer', { poll_id: pollId, answer: optionId, source, campaign, ab_theme: getABVariant() });
       } catch (_) {}
 
       try {
