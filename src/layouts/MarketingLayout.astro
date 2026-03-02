@@ -20,6 +20,7 @@ const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
   <head>
     <script>(function(){
   var KEY = 'sn_ab_theme';
+  var SESS = 'sn_ab_session';
   var v = 'dark';
   try {
     var raw = localStorage.getItem(KEY);
@@ -30,7 +31,7 @@ const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
       var s = JSON.parse(raw);
       if (s.converted) {
         v = s.v;
-      } else if (s.bounced) {
+      } else if (s.bounced && !sessionStorage.getItem(SESS)) {
         v = s.v === 'dark' ? 'light' : 'dark';
         s.v = v; s.bounced = false;
         localStorage.setItem(KEY, JSON.stringify(s));
@@ -38,6 +39,7 @@ const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
         v = s.v;
       }
     }
+    sessionStorage.setItem(SESS, '1');
   } catch(e) {}
   document.documentElement.setAttribute('data-theme', v);
   window.__snVariant = v;
