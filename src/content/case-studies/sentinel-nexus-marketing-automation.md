@@ -4,7 +4,7 @@ description: "How Sentinel Nexus built its own website as a demonstration of AI-
 client: "Sentinel Nexus"
 industry: "Technology"
 pillar: ["implementation", "security", "governance"]
-challenge: "Build a marketing website that demonstrates our automation expertise—with AI content pipelines, real-time lead capture, and privacy-first infrastructure—while practicing what we preach."
+challenge: "Build a marketing website that demonstrates our automation expertise - with AI content pipelines, real-time lead capture, and privacy-first infrastructure - while practicing what we preach."
 outcome: "A fully automated marketing platform with 5 active workflows, 100% self-hosted infrastructure, and sub-24-hour content cycles from RSS aggregation to deployment."
 metrics:
   primary:
@@ -45,10 +45,10 @@ We applied the same methodology we use with clients: start with requirements, de
 
 **Technology Selection:**
 
-- **Astro** for the static site framework—fast builds, content collections, zero client-side JavaScript by default
-- **n8n** for workflow orchestration—self-hosted, visual workflow builder, extensive integrations
-- **Vultr VPS** for infrastructure—single server running all components, full control
-- **Git** for content management—version control, PR-based workflows, no CMS overhead
+- **Astro** for the static site framework - fast builds, content collections, zero client-side JavaScript by default
+- **n8n** for workflow orchestration - self-hosted, visual workflow builder, extensive integrations
+- **Vultr VPS** for infrastructure - single server running all components, full control
+- **Git** for content management - version control, PR-based workflows, no CMS overhead
 
 **Architecture Principles:**
 
@@ -155,10 +155,10 @@ Legacy workflow for email-based notifications as backup to Slack.
 
 **Key Design Decisions:**
 
-- **Local JSON storage** instead of external database—reduces dependencies, simplifies backup
-- **Webhook-driven workflows** instead of polling—immediate response, efficient resource use
-- **Static site generation** instead of server-side rendering—eliminates runtime security surface
-- **Self-hosted n8n** instead of Zapier/Make—full data control, no usage limits
+- **Local JSON storage** instead of external database - reduces dependencies, simplifies backup
+- **Webhook-driven workflows** instead of polling - immediate response, efficient resource use
+- **Static site generation** instead of server-side rendering - eliminates runtime security surface
+- **Self-hosted n8n** instead of Zapier/Make - full data control, no usage limits
 
 ## Results
 
@@ -193,7 +193,7 @@ Six weeks from concept to production:
 
 **n8n is the right tool for this scale.** Visual workflow design accelerates development. Self-hosting eliminates execution limits. The learning curve is modest for anyone comfortable with APIs.
 
-**Static sites aren't limiting—they're liberating.** By generating HTML at build time, we eliminated an entire category of security concerns and operational complexity. The "limitation" of no server-side code became an advantage.
+**Static sites aren't limiting - they're liberating.** By generating HTML at build time, we eliminated an entire category of security concerns and operational complexity. The "limitation" of no server-side code became an advantage.
 
 **Automation compounds.** Each workflow we built enabled the next. The RSS aggregator depends on the auto-deploy. The contact handler builds on the notification patterns. Starting small and expanding incrementally proved more effective than designing everything upfront.
 
@@ -210,7 +210,7 @@ The foundation supports continued expansion:
 
 The architecture scales without fundamental changes. New workflows plug into existing patterns. New content types use established collections.
 
-This is what we mean by "operational partner." Not just advice—working systems that demonstrate the approach.
+This is what we mean by "operational partner." Not just advice - working systems that demonstrate the approach.
 
 ---
 

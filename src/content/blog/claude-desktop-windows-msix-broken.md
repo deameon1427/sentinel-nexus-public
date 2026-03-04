@@ -15,9 +15,9 @@ If you've tried to install or update Claude Desktop on Windows recently and hit 
 
 ## What Broke and When
 
-Around February 10, 2026, Anthropic shipped "Cowork" — a new VM-based collaboration feature for Claude Desktop on Windows. Along with that release, they transitioned the Windows installer from the older Squirrel-based `.exe` format to **MSIX**, Microsoft's modern app packaging standard.
+Around February 10, 2026, Anthropic shipped "Cowork"  -  a new VM-based collaboration feature for Claude Desktop on Windows. Along with that release, they transitioned the Windows installer from the older Squirrel-based `.exe` format to **MSIX**, Microsoft's modern app packaging standard.
 
-The new installer, version 1.0.0.0 (signed February 13, 2026), introduced a requirement that wasn't present before: **Trusted App Installs must be enabled**. The previous version, 1.1.3189, installed without this requirement. This is a textbook regression — a working feature broken by a packaging change, documented across multiple open GitHub issues ([#26457](https://github.com/anthropics/claude-code/issues/26457), [#25385](https://github.com/anthropics/claude-code/issues/25385), [#25162](https://github.com/anthropics/claude-code/issues/25162)).
+The new installer, version 1.0.0.0 (signed February 13, 2026), introduced a requirement that wasn't present before: **Trusted App Installs must be enabled**. The previous version, 1.1.3189, installed without this requirement. This is a textbook regression  -  a working feature broken by a packaging change, documented across multiple open GitHub issues ([#26457](https://github.com/anthropics/claude-code/issues/26457), [#25385](https://github.com/anthropics/claude-code/issues/25385), [#25162](https://github.com/anthropics/claude-code/issues/25162)).
 
 There is no official Anthropic fix or timeline as of this writing.
 
@@ -41,7 +41,7 @@ The installer silently fails with error code `0x80073CFA`, leaving you without a
 Installation failed: signature verification failed: signature check failed:
 exec: "powershell.exe": executable file not found in %PATH%
 ```
-This happens even when PowerShell is installed and working normally. The installer's PowerShell detection logic is broken — it fails to find PowerShell at its standard system path.
+This happens even when PowerShell is installed and working normally. The installer's PowerShell detection logic is broken  -  it fails to find PowerShell at its standard system path.
 
 **On some Windows 10 IoT Enterprise LTSC systems:**
 The installer incorrectly reports "Windows S Mode must be disabled to install Claude," when S Mode is not actually enabled. The installer is misreading the `EditionID` string.
@@ -50,7 +50,7 @@ The installer incorrectly reports "Windows S Mode must be disabled to install Cl
 
 To understand why Developer Mode is suddenly required, you need to understand how MSIX installation works on Windows.
 
-MSIX packages distributed through the **Microsoft Store** install without restrictions. MSIX packages distributed **outside the Store** — which is how Claude Desktop is distributed, directly from claude.com — require one of two things: either the package is signed by a certificate that Windows already trusts, or the user has enabled "Trusted App Installs" (a setting that's part of Developer Mode).
+MSIX packages distributed through the **Microsoft Store** install without restrictions. MSIX packages distributed **outside the Store**  -  which is how Claude Desktop is distributed, directly from claude.com  -  require one of two things: either the package is signed by a certificate that Windows already trusts, or the user has enabled "Trusted App Installs" (a setting that's part of Developer Mode).
 
 Anthropic's previous Squirrel-based installer was a standard `.exe` and didn't have this restriction. Moving to MSIX without publishing through the Store or solving the certificate trust problem is what created the wall users are now hitting.
 
@@ -60,7 +60,7 @@ This is not a Microsoft policy targeting Claude specifically. It's a standard Wi
 
 For individual users on personal machines, enabling Developer Mode is inconvenient but possible. For enterprise and managed environments, it's a policy problem.
 
-Developer Mode is typically disabled via Group Policy, Intune, or other MDM solutions in corporate environments — and for good reason. Enabling it opens up sideloading capabilities that conflict with application control policies and security baselines like CIS Benchmarks and DISA STIGs. An IT administrator cannot reasonably enable Developer Mode fleet-wide just to install one application.
+Developer Mode is typically disabled via Group Policy, Intune, or other MDM solutions in corporate environments  -  and for good reason. Enabling it opens up sideloading capabilities that conflict with application control policies and security baselines like CIS Benchmarks and DISA STIGs. An IT administrator cannot reasonably enable Developer Mode fleet-wide just to install one application.
 
 This means organizations that were actively evaluating or deploying Claude Desktop as a productivity tool now have a broken upgrade path and a deployment blocker, with no official workaround that meets enterprise security requirements.
 

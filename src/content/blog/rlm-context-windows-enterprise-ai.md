@@ -11,13 +11,13 @@ imageAlt: "Code visualization representing AI processing capabilities"
 draft: false
 ---
 
-Every enterprise AI implementation eventually hits the same wall: context windows. Your LLM can write brilliant code, analyze complex documents, and reason through multi-step problems—until you ask it to process more information than fits in its working memory. Then you're back to duct-taping solutions together.
+Every enterprise AI implementation eventually hits the same wall: context windows. Your LLM can write brilliant code, analyze complex documents, and reason through multi-step problems - until you ask it to process more information than fits in its working memory. Then you're back to duct-taping solutions together.
 
-MIT researchers have broken through this barrier. Their new architecture, Recursive Language Models (RLMs), expands effective context by two orders of magnitude—100x beyond standard limits. This isn't incremental improvement. It's a fundamental shift in what's possible with production AI systems.
+MIT researchers have broken through this barrier. Their new architecture, Recursive Language Models (RLMs), expands effective context by two orders of magnitude - 100x beyond standard limits. This isn't incremental improvement. It's a fundamental shift in what's possible with production AI systems.
 
 ## The Context Window Problem You've Been Working Around
 
-Context windows are the "working memory" of large language models. Every token of input—your prompt, the document you're analyzing, the conversation history—consumes part of this fixed budget. When you exceed it, the model simply can't see the rest.
+Context windows are the "working memory" of large language models. Every token of input - your prompt, the document you're analyzing, the conversation history - consumes part of this fixed budget. When you exceed it, the model simply can't see the rest.
 
 For enterprise applications, this creates constant friction. You've probably built workarounds:
 
@@ -25,13 +25,13 @@ For enterprise applications, this creates constant friction. You've probably bui
 
 **RAG pipelines**: Retrieving only the "relevant" snippets for each query. Effective for needle-in-haystack searches, but retrieval itself is imperfect. The system only finds what its embedding model thinks is relevant.
 
-**Summarization chains**: Condensing long content into shorter summaries, then reasoning over those. Every summarization step loses information—sometimes exactly the detail you needed.
+**Summarization chains**: Condensing long content into shorter summaries, then reasoning over those. Every summarization step loses information - sometimes exactly the detail you needed.
 
 These approaches work. Organizations ship production systems using all of them. But they're workarounds, each with trade-offs in complexity, latency, and information fidelity. The underlying constraint remains.
 
 ## How Recursive Language Models Work
 
-The MIT team—Alex Zhang, Tim Kraska, and Omar Khattab from CSAIL—took a different approach. Instead of fighting context limits, they let the model manage its own context programmatically.
+The MIT team - Alex Zhang, Tim Kraska, and Omar Khattab from CSAIL - took a different approach. Instead of fighting context limits, they let the model manage its own context programmatically.
 
 Here's the core insight: what if we give the model tools to examine and decompose text, rather than forcing everything into the prompt at once?
 
@@ -45,7 +45,7 @@ The result: effective context expansion of 100x or more beyond the base model's 
 
 Expanded context means nothing if it tanks performance or explodes costs. The MIT research addresses both concerns.
 
-On benchmarks requiring extremely long context—tasks where models must reason across millions of tokens—RLMs achieved roughly 2x performance improvements over base models using standard approaches. This isn't surprising: when a task requires information beyond what fits in context, traditional models fail regardless of their underlying capability.
+On benchmarks requiring extremely long context - tasks where models must reason across millions of tokens - RLMs achieved roughly 2x performance improvements over base models using standard approaches. This isn't surprising: when a task requires information beyond what fits in context, traditional models fail regardless of their underlying capability.
 
 More interesting is the cost story. RLMs achieve these results with comparable or lower costs than naive approaches. The recursive decomposition avoids redundant processing. You're not re-embedding the same documents repeatedly or paying for context you're not using.
 
@@ -53,7 +53,7 @@ The research tested on GPT-5 and Qwen3-Coder-480B, demonstrating the approach wo
 
 ## Emergent Behaviors That Change the Game
 
-The most fascinating aspect of RLMs isn't the explicit architecture—it's what the models learn to do on their own.
+The most fascinating aspect of RLMs isn't the explicit architecture - it's what the models learn to do on their own.
 
 Given tools to manage context programmatically, models developed sophisticated strategies the researchers didn't explicitly design:
 
@@ -63,7 +63,7 @@ Given tools to manage context programmatically, models developed sophisticated s
 
 **Answer verification**: Models learned to check their own work by making additional sub-calls to verify conclusions. This self-correction emerges naturally from the recursive structure.
 
-These behaviors connect directly to the agentic AI trajectory we're already seeing. The same capabilities that let models manage their own context—tool use, recursive reasoning, self-verification—are the building blocks of autonomous AI systems. RLMs suggest that giving models the right primitives leads to emergent sophistication.
+These behaviors connect directly to the agentic AI trajectory we're already seeing. The same capabilities that let models manage their own context - tool use, recursive reasoning, self-verification - are the building blocks of autonomous AI systems. RLMs suggest that giving models the right primitives leads to emergent sophistication.
 
 ## What This Means for Your AI Implementation Strategy
 
