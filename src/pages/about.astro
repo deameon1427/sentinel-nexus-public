@@ -18,7 +18,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="mission-block">
         <h2>Our Mission</h2>
         <p class="mission-text">
-          Sentinel Nexus empowers organizations to harness AI with confidence—implementing intelligent automation, defending digital ecosystems, and ensuring every AI initiative operates within ethical and regulatory boundaries.
+          Sentinel Nexus empowers organizations to harness AI with confidence implementing intelligent automation, defending digital ecosystems, and ensuring every AI initiative operates within ethical and regulatory boundaries.
         </p>
         <p class="mission-text">
           We stand at the intersection of innovation and accountability, helping businesses move fast without breaking trust.
@@ -136,6 +136,10 @@ import Layout from '../layouts/Layout.astro';
     padding: 10rem 0 4rem;
     background: radial-gradient(ellipse at top, #1a1a2e 0%, var(--color-bg) 70%);
     text-align: center;
+  }
+
+  :global([data-theme="light"]) .hero-about {
+    background: radial-gradient(ellipse at top, rgba(207, 21, 21, 0.08) 0%, var(--color-bg) 70%);
   }
 
   .hero-about h1 {
