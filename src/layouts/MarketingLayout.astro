@@ -72,7 +72,7 @@ const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
     <header class="lp-header">
       <div class="lp-container">
         <a href="https://sentinel-nexus.com" class="logo">
-          <span class="logo-icon">S</span>
+          <img src="/images/icon-with-initals.webp" alt="Sentinel Nexus" class="logo-icon" />
           <span class="logo-text">Sentinel Nexus</span>
         </a>
       </div>
@@ -231,15 +231,10 @@ const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
   }
 
   .logo-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 36px;
     height: 36px;
-    background: var(--color-primary);
     border-radius: 8px;
-    font-weight: 700;
-    color: white;
+    object-fit: contain;
   }
 
   /* LP Footer */
