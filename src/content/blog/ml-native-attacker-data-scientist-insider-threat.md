@@ -6,7 +6,7 @@ author: "Sentinel Nexus Team"
 pillar: "security"
 industry: "General"
 tags: ["AI Security", "Insider Threat", "Adversarial ML", "Model Poisoning", "Threat Modeling", "MITRE ATLAS"]
-image: "/images/blog/ml-native-attacker-insider-threat.webp"
+image: "/images/blog/insider-threat-ml.webp"
 imageAlt: "Abstract visualization of a machine learning pipeline with hidden malicious nodes"
 draft: false
 ---
