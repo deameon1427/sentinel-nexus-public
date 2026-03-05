@@ -1,19 +1,21 @@
 ---
-title: "EU AI Act Compliance: What You Need to Know Now"
-description: "The EU AI Act is here. This practical guide explains risk classifications, requirements, and how to prepare your AI initiatives for compliance."
+title: "EU AI Act Compliance Guide: August 2026 High-Risk AI Deadline"
+description: "EU AI Act high-risk AI system rules are enforceable August 2, 2026. This practical guide covers risk classification, conformity assessments, AI risk registers, and the Digital Omnibus extension."
 pubDate: 2026-01-08
 author: "Sentinel Nexus Team"
 pillar: "governance"
 industry: "General"
-tags: ["EU AI Act", "Compliance", "AI Governance", "Regulation"]
+tags: ["EU AI Act", "Compliance", "AI Governance", "Regulation", "High-Risk AI", "Conformity Assessment", "AI Risk Register", "Digital Omnibus"]
 image: "/images/blog/eu-ai-act-compliance.webp"
 imageAlt: "Compliance documentation and governance frameworks"
 draft: false
 ---
 
-The EU AI Act is no longer a future concern. It's here, and organizations deploying AI systems need to understand their obligations. This isn't just a European issue. If your AI systems affect EU citizens, these requirements likely apply to you.
+The EU AI Act's high-risk AI system rules are now enforceable — August 2, 2026 is the compliance deadline for Annex III systems. If your organization deploys AI for hiring, credit scoring, biometric identification, critical infrastructure, law enforcement, or education, you are in scope. Non-compliance carries penalties up to €35 million or 7% of global annual turnover, whichever is higher.
 
-Here's what you need to know to navigate compliance.
+This isn't just a European issue. If your AI systems affect EU citizens or are used in EU markets, these requirements likely apply regardless of where your organization is headquartered.
+
+Here's what you need to know — and do — now.
 
 ## The Risk-Based Approach
 
@@ -73,19 +75,23 @@ Systems must achieve appropriate levels of accuracy for their intended purpose. 
 
 ## Timeline and Enforcement
 
-The regulation is being phased in:
-- **February 2025**: Prohibitions on unacceptable risk AI take effect
-- **August 2025**: Requirements for general-purpose AI models
-- **August 2026**: Full requirements for high-risk systems
+The regulation is being phased in — and the most consequential deadline is now:
 
-Penalties for non-compliance are significant: up to 7% of global annual turnover for the most serious violations.
+- **February 2025**: Prohibitions on unacceptable risk AI took effect
+- **August 2025**: Requirements for general-purpose AI models (GPAI)
+- **August 2, 2026**: Full requirements for high-risk AI systems (Annex III) — **this is the current enforcement deadline**
+- **August 2027**: Requirements for high-risk AI systems listed in Annex I (safety components in existing regulated products)
+
+Penalties for non-compliance reach up to 7% of global annual turnover or €35 million for the most serious violations, and up to 3% (€15M) for other infringements.
+
+**A note on the Digital Omnibus:** The European Commission's Digital Omnibus proposal (November 2025) would extend certain high-risk enforcement deadlines to December 2, 2027 — but only if linked harmonized standards aren't available in time. This is not a blanket postponement. Organizations should treat August 2026 as the operative deadline and treat any extension as a potential reprieve, not a planning assumption.
 
 ## Practical Steps to Prepare
 
 Compliance isn't achieved overnight. Start now:
 
-### 1. Inventory Your AI Systems
-Document all AI systems you develop, deploy, or use. Classify them according to the Act's risk categories.
+### 1. Inventory and Classify Your AI Systems
+Document all AI systems you develop, deploy, or use. Classify each against the Act's risk categories — particularly Annex III's high-risk categories. This classification review is the prerequisite for everything else.
 
 ### 2. Gap Analysis
 For high-risk systems, compare current practices against Act requirements. Identify gaps in documentation, governance, and technical controls.
@@ -93,8 +99,8 @@ For high-risk systems, compare current practices against Act requirements. Ident
 ### 3. Governance Framework
 Establish or update your AI governance framework. Define roles, responsibilities, and processes for AI development and deployment.
 
-### 4. Documentation Sprint
-Technical documentation is a significant requirement. Start building comprehensive documentation for high-risk systems now.
+### 4. Build Your Compliance Deliverables
+High-risk systems require three core deliverables before August 2026: a **control catalog** (mapping your controls to Act requirements), a **compliance matrix** (demonstrating which requirements are met), and an **AI risk register** (ongoing documentation of identified risks and mitigations). Technical documentation, conformity assessment records, and EU database registration complete the picture.
 
 ### 5. Training
 Ensure your teams understand the requirements. This includes developers, data scientists, compliance staff, and leadership.

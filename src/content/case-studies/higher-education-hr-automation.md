@@ -1,6 +1,6 @@
 ---
 title: "Major University Automates HR Operations with LLM-Powered Orchestration"
-description: "How a research university transformed HR services with Ellucian Banner integration, automated reporting, and AI-powered employee self-service."
+description: "How a research university deployed agentic AI workflow automation across Banner HR systems to cut cycle times 64% and eliminate manual reporting."
 client: "Major Research University"
 industry: "Higher Education"
 pillar: ["implementation", "governance"]

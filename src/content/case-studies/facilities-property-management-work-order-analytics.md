@@ -1,6 +1,6 @@
 ---
 title: "Mid-Size FM Firm Recovers $247K Annually with AI Work Order Intelligence"
-description: "AI work order analytics helped a mid-size FM firm uncover $247K in recoverable costs from vendor billing drift and SLA penalties."
+description: "How an AI analytics implementation surfaced $247K in annual recoverable costs from vendor billing drift - with ongoing governance controls to sustain the gains."
 pubDate: 2026-03-04
 client: "Mid-Size Commercial Property Management Firm"
 industry: "Facilities & Property Management"

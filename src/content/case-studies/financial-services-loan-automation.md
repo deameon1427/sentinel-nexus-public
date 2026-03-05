@@ -1,6 +1,6 @@
 ---
 title: "Regional Bank Automates 80% of Loan Processing"
-description: "How a mid-market financial institution transformed their loan operations with intelligent document processing and AI governance."
+description: "How a mid-market bank used agentic AI automation and AI governance controls to automate 80% of loan processing and achieve full regulatory compliance."
 client: "Regional Financial Institution"
 industry: "Financial Services"
 pillar: ["implementation", "governance"]
