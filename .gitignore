@@ -34,6 +34,9 @@ local-dev/
 CLAUDE.md
 .claude/
 *-cwd
+
+# OpenCode AI CLI
+opencode.json
 # Test 1768319483
 # 1768331652
 
