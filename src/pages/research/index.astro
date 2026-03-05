@@ -1,0 +1,258 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const allWhitepapers = await getCollection('whitepapers');
+const whitepapers = allWhitepapers
+  .filter((wp) => !wp.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const pillarColors: Record<string, string> = {
+  implementation: 'var(--color-accent-1)',
+  security: 'var(--color-accent-2)',
+  governance: 'var(--color-accent-3)',
+};
+
+const pillarLabels: Record<string, string> = {
+  implementation: 'Implementation',
+  security: 'Security',
+  governance: 'Governance',
+};
+---
+
+<Layout
+  title="Research | Sentinel Nexus"
+  description="Sentinel Nexus research papers on AI security, governance, and implementation. Frameworks, models, and formal analysis from our practitioners."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-label">Research</div>
+      <h1>Sentinel Nexus Research</h1>
+      <p class="hero-subtitle">Formal frameworks, mathematical models, and deep technical analysis from our practitioners.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {whitepapers.length > 0 ? (
+        <div class="whitepapers-grid">
+          {whitepapers.map((wp) => (
+            <article class="whitepaper-card">
+              <a href={`/research/${wp.slug}`} class="card-image-link">
+                <img src={wp.data.image} alt={wp.data.imageAlt || wp.data.title} class="card-image" />
+              </a>
+              <div class="card-body">
+                <div class="card-meta">
+                  <div class="card-pillars">
+                    {wp.data.pillar.map((p) => (
+                      <span class="pillar-badge" style={`background: ${pillarColors[p]}`}>
+                        {pillarLabels[p]}
+                      </span>
+                    ))}
+                  </div>
+                  <span class="card-date">
+                    {wp.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                  </span>
+                </div>
+                <h2 class="card-title">
+                  <a href={`/research/${wp.slug}`}>{wp.data.title}</a>
+                </h2>
+                <p class="card-abstract">{wp.data.abstract.slice(0, 160)}...</p>
+                <div class="card-footer">
+                  <span class="card-author">By {wp.data.author}</span>
+                  <a href={`/research/${wp.slug}`} class="read-link">Read Paper &rarr;</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="no-content">
+          <p>Research papers coming soon.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 8rem 0 4rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .whitepapers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 2rem;
+  }
+
+  .whitepaper-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .whitepaper-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .card-image-link {
+    display: block;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .whitepaper-card:hover .card-image {
+    transform: scale(1.03);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .card-pillars {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .pillar-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+  }
+
+  .card-date {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-title a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .card-title a:hover {
+    color: var(--color-primary);
+  }
+
+  .card-abstract {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+    margin-top: auto;
+  }
+
+  .card-author {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .read-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .read-link:hover {
+    opacity: 0.8;
+  }
+
+  .no-content {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 6rem 0 3rem;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .whitepapers-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

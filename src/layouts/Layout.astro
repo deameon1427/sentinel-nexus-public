@@ -5,6 +5,7 @@ interface Props {
   image?: string;
   type?: string;
   rssHref?: string;
+  math?: boolean;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   image = "/og-image.png",
   type = "website",
   rssHref,
+  math = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -93,6 +95,7 @@ const ogImageURL = new URL(image, Astro.site);
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {rssHref && <link rel="alternate" type="application/rss+xml" title="Sentinel Nexus Intel Feed" href={rssHref} />}
+    {math && <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.css" />}
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

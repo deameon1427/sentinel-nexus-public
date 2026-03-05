@@ -1,0 +1,371 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import WhitepaperGate from '../../components/WhitepaperGate.astro';
+
+export async function getStaticPaths() {
+  const whitepapers = await getCollection('whitepapers');
+  return whitepapers.map((wp) => ({
+    params: { slug: wp.slug },
+    props: wp,
+  }));
+}
+
+type Props = CollectionEntry<'whitepapers'>;
+
+const whitepaper = Astro.props;
+const { Content } = await whitepaper.render();
+
+const pillarColors: Record<string, string> = {
+  implementation: 'var(--color-accent-1)',
+  security: 'var(--color-accent-2)',
+  governance: 'var(--color-accent-3)',
+};
+
+const pillarLabels: Record<string, string> = {
+  implementation: 'Implementation',
+  security: 'Security',
+  governance: 'Governance',
+};
+
+const formattedDate = whitepaper.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout
+  title={`${whitepaper.data.title} | Sentinel Nexus Research`}
+  description={whitepaper.data.description}
+  image={whitepaper.data.image}
+  type="article"
+  math={whitepaper.data.math}
+>
+
+  <article class="whitepaper">
+    <header class="whitepaper-header">
+      <div class="container">
+        <a href="/research" class="back-link">&larr; Back to Research</a>
+        <div class="header-pillars">
+          {whitepaper.data.pillar.map((p) => (
+            <span class="pillar-badge" style={`background: ${pillarColors[p]}`}>
+              {pillarLabels[p]}
+            </span>
+          ))}
+          <span class="paper-label">Research Paper</span>
+        </div>
+        <h1>{whitepaper.data.title}</h1>
+        <div class="header-meta">
+          <span class="author">By {whitepaper.data.author}</span>
+          <span class="separator">&bull;</span>
+          <time datetime={whitepaper.data.pubDate.toISOString()}>{formattedDate}</time>
+          {whitepaper.data.tags.length > 0 && (
+            <>
+              <span class="separator">&bull;</span>
+              <div class="tags">
+                {whitepaper.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
+
+    {whitepaper.data.image && (
+      <div class="hero-image-wrapper">
+        <div class="container">
+          <img
+            src={whitepaper.data.image}
+            alt={whitepaper.data.imageAlt || whitepaper.data.title}
+            class="hero-image"
+          />
+        </div>
+      </div>
+    )}
+
+    <div class="container">
+      <div class="whitepaper-content">
+        <section class="abstract-section">
+          <h2 class="abstract-heading">Abstract</h2>
+          <p class="abstract-text">{whitepaper.data.abstract}</p>
+        </section>
+
+        <hr class="section-divider" />
+
+        <WhitepaperGate slug={whitepaper.slug} previewLength={whitepaper.data.previewLength}>
+          <div slot="preview" class="paper-body preview-body">
+            <Content />
+          </div>
+          <div slot="full" class="paper-body full-body">
+            <Content />
+          </div>
+        </WhitepaperGate>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .whitepaper {
+    padding-top: 6rem;
+  }
+
+  .whitepaper-header {
+    padding: 2rem 0 3rem;
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  .header-pillars {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .pillar-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+  }
+
+  .paper-label {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .whitepaper-header h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    max-width: 800px;
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .separator {
+    opacity: 0.4;
+  }
+
+  .author {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .hero-image-wrapper {
+    margin: 2rem 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .whitepaper-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 5rem;
+  }
+
+  .abstract-section {
+    margin: 2.5rem 0 2rem;
+  }
+
+  .abstract-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .abstract-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+
+  .paper-body :global(h1) {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .paper-body :global(h2) {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .paper-body :global(h3) {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .paper-body :global(p) {
+    margin-bottom: 1.2rem;
+    line-height: 1.75;
+    color: var(--color-text);
+  }
+
+  .paper-body :global(ul),
+  .paper-body :global(ol) {
+    margin-bottom: 1.2rem;
+    padding-left: 1.5rem;
+  }
+
+  .paper-body :global(li) {
+    margin-bottom: 0.4rem;
+    line-height: 1.65;
+  }
+
+  .paper-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .paper-body :global(th),
+  .paper-body :global(td) {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+
+  .paper-body :global(th) {
+    background: var(--color-bg-secondary);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .paper-body :global(td) {
+    color: var(--color-text-muted);
+  }
+
+  .paper-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2.5rem 0;
+  }
+
+  .paper-body :global(strong) {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .paper-body :global(em) {
+    color: var(--color-text-muted);
+  }
+
+  .paper-body :global(code) {
+    background: var(--color-bg-secondary);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.875em;
+    color: var(--color-primary);
+  }
+
+  .paper-body :global(pre) {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .paper-body :global(pre code) {
+    background: none;
+    padding: 0;
+    color: var(--color-text);
+  }
+
+  /* KaTeX math display */
+  .paper-body :global(.katex-display) {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .preview-body {
+    max-height: 600px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .whitepaper-header h1 {
+      font-size: 1.85rem;
+    }
+
+    .hero-image {
+      max-height: 280px;
+    }
+  }
+</style>
