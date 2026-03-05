@@ -212,4 +212,4 @@ Understanding that landscape — and learning how to monitor it — may become o
 
 ---
 
-*Sentinel Nexus Research has developed a formal mathematical treatment of the Intent Vector Model and its applications to adversarial AI. If you're working on AI red teaming programs or latent space security monitoring for enterprise AI deployments, reach out through the contact form.*
+*The formal mathematical treatment of the Intent Vector Model - including Hilbert space agent representations, influence field equations, and jailbreak geometry proofs - is available as a research paper: [Intent Vector Fields: A Mathematical Framework for Human Influence and AI Adversarial Manipulation](/research/intent-vector-fields-mathematical-framework). If you're working on AI red teaming programs or latent space security monitoring, reach out through the contact form.*

@@ -253,3 +253,7 @@ DeGroot, M. (1974). *Learning processes in social networks.*
 Maclay, G., & Ahmad, M. (2021). *Agent-based vector models of social influence.*
 
 Miranda, M. et al. (2024). *Indirect social influence and diffusion of innovations.*
+
+---
+
+*For a practitioner-oriented introduction to these concepts and their security implications, see the companion article: [Intent Vectors and the Geometry of Influence](/blog/intent-vectors-latent-space-ai-red-teaming).*
