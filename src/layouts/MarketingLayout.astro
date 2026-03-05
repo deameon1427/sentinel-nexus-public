@@ -32,6 +32,7 @@ const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
       if (s.converted) {
         v = s.v;
       } else if (s.bounced && !sessionStorage.getItem(SESS)) {
+        localStorage.setItem('sn_ab_pending', s.v);
         v = s.v === 'dark' ? 'light' : 'dark';
         s.v = v; s.bounced = false;
         localStorage.setItem(KEY, JSON.stringify(s));
@@ -112,6 +113,15 @@ const ogImageURL = new URL(ogImage, 'https://sentinel-nexus.com');
     if (document.visibilityState === 'hidden') markBounce();
   });
   window.addEventListener('beforeunload', markBounce);
+  window.addEventListener('load', function() {
+    try {
+      var pending = localStorage.getItem('sn_ab_pending');
+      if (pending) {
+        localStorage.removeItem('sn_ab_pending');
+        umami?.track('ab-theme-bounce', { ab_theme: pending });
+      }
+    } catch(e) {}
+  });
 })();
 </script>
   </body>
