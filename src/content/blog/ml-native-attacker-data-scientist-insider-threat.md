@@ -1,6 +1,6 @@
 ---
 title: "The ML-Native Attacker: When Your Data Scientist Is the Threat Model"
-description: "A new attacker profile is emerging - one with gradient descent in their toolkit and legitimate access to your training pipelines. Here's what that means for AI security."
+description: "A new attacker class uses ML expertise - backdoors, template injection, poisoned gradients - from inside your pipelines. Here's the threat model."
 pubDate: 2026-03-05
 author: "Sentinel Nexus Team"
 pillar: "security"
