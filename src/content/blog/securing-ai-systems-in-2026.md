@@ -1,6 +1,6 @@
 ---
 title: "Securing AI Systems in 2026: CTEM, MXDR, and the Agentic Attack Surface"
-description: "Agentic AI is now the enterprise's fastest-growing attack surface. Here's how Continuous Threat Exposure Management (CTEM), MXDR, and ITDR close the gaps traditional security leaves open."
+description: "Agentic AI is the enterprise's fastest-growing attack surface. Here's how CTEM, MXDR, and ITDR close the gaps traditional security leaves open."
 pubDate: 2026-01-10
 author: "Sentinel Nexus Team"
 pillar: "security"

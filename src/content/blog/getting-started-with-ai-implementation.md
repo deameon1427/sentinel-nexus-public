@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Agentic AI Implementation: A Practical Guide"
-description: "Most agentic AI initiatives stall at the pilot stage. Here's the practical roadmap for moving from AI readiness assessment to autonomous agent deployment in enterprise operations."
+description: "Most agentic AI initiatives stall at the pilot stage. Here's a practical roadmap from AI readiness assessment to autonomous agent deployment."
 pubDate: 2026-01-12
 author: "Sentinel Nexus Team"
 pillar: "implementation"

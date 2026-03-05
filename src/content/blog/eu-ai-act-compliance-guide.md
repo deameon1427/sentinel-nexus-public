@@ -1,6 +1,6 @@
 ---
 title: "EU AI Act Compliance Guide: August 2026 High-Risk AI Deadline"
-description: "EU AI Act high-risk AI system rules are enforceable August 2, 2026. This practical guide covers risk classification, conformity assessments, AI risk registers, and the Digital Omnibus extension."
+description: "High-risk AI rules under the EU AI Act are enforceable August 2026. A practical guide to risk classification, conformity assessments, and AI risk registers."
 pubDate: 2026-01-08
 author: "Sentinel Nexus Team"
 pillar: "governance"

@@ -1,6 +1,6 @@
 ---
 title: "Building a Self-Operating Marketing Engine"
-description: "How Sentinel Nexus built a fully agentic AI marketing engine - automated content pipelines, lead capture, and self-hosted infrastructure - as a live proof of concept."
+description: "How Sentinel Nexus built a fully agentic AI marketing engine with automated content pipelines, lead capture, and self-hosted infrastructure."
 client: "Sentinel Nexus"
 industry: "Technology"
 pillar: ["implementation", "security", "governance"]
