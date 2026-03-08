@@ -11,7 +11,7 @@ imageAlt: "Security operations center monitoring AI systems"
 draft: false
 ---
 
-If you're deploying AI systems and relying on traditional security controls, you have blind spots. Agentic AI — autonomous systems that browse, query external APIs, execute code, and orchestrate multi-step workflows — is now the enterprise's fastest-growing attack surface. Nearly half of security leaders expect it to be the top attack vector by end of 2026.
+If you're deploying AI systems and relying on traditional security controls, you have blind spots. Agentic AI - autonomous systems that browse, query external APIs, execute code, and orchestrate multi-step workflows - is now the enterprise's fastest-growing attack surface. Nearly half of security leaders expect it to be the top attack vector by end of 2026.
 
 The threats that matter in this environment aren't just the classic AI risks like data poisoning and prompt injection. They're the compound risk created when autonomous agents operate across your identity stack, cloud infrastructure, and data stores with minimal human oversight.
 
@@ -64,13 +64,13 @@ Develop AI-specific incident response procedures. When a model is compromised, w
 
 ## From MDR to MXDR: Why the Upgrade Matters
 
-Managed Detection and Response (MDR) was built for a world where the perimeter was an endpoint or a firewall. That world is gone. Managed Extended Detection and Response (MXDR) extends coverage across endpoints, cloud workloads, identity, network, and AI infrastructure under a unified detection and response model — so no part of your environment goes unmonitored.
+Managed Detection and Response (MDR) was built for a world where the perimeter was an endpoint or a firewall. That world is gone. Managed Extended Detection and Response (MXDR) extends coverage across endpoints, cloud workloads, identity, network, and AI infrastructure under a unified detection and response model - so no part of your environment goes unmonitored.
 
 For AI systems, effective MXDR requires:
 
 - **AI-aware threat intelligence**: Understanding attack patterns specific to LLMs, agents, and ML pipelines
 - **Specialized detection rules**: Identifying model manipulation, data poisoning, prompt injection, and agent misbehavior
-- **Identity Threat Detection and Response (ITDR)**: AI agents run under service account identities that are high-value targets — ITDR detects when those identities are compromised before lateral movement occurs
+- **Identity Threat Detection and Response (ITDR)**: AI agents run under service account identities that are high-value targets - ITDR detects when those identities are compromised before lateral movement occurs
 - **Expert analysts**: Professionals who understand both traditional threats and AI-specific risk vectors
 - **Rapid response**: Capabilities to contain and remediate AI security incidents, including tracing compromised agent decision chains
 
@@ -80,7 +80,7 @@ Generic MDR services without AI-specific coverage will miss threats that are inc
 
 Continuous Threat Exposure Management (CTEM) is how leading organizations are getting ahead of the breach-detect-respond cycle. Rather than periodic scans and one-time assessments, CTEM runs as an ongoing program:
 
-1. **Scope**: Define what matters — AI systems, cloud workloads, identity infrastructure, third-party integrations
+1. **Scope**: Define what matters - AI systems, cloud workloads, identity infrastructure, third-party integrations
 2. **Discover**: Continuously identify exposures across the scoped environment
 3. **Prioritize**: Rank exposures by exploitability and business impact, not just CVSS score
 4. **Validate**: Confirm exploitability through controlled testing before investing remediation effort

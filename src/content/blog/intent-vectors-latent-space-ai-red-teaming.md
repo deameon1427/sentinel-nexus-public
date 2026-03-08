@@ -13,7 +13,7 @@ draft: false
 
 Security teams are used to thinking in terms of logs, network packets, and authentication events. Artificial intelligence systems operate in a very different medium: **vector space**. The decisions of modern machine learning systems are not made through explicit rules but through geometric relationships between vectors representing meaning, context, and behavior.
 
-Understanding this geometry is becoming increasingly important for security practitioners. New forms of AI attacks — including latent steering, jailbreak vectors, and embedding manipulation — exploit the structure of this vector space rather than the textual inputs that security controls traditionally monitor.
+Understanding this geometry is becoming increasingly important for security practitioners. New forms of AI attacks - including latent steering, jailbreak vectors, and embedding manipulation - exploit the structure of this vector space rather than the textual inputs that security controls traditionally monitor.
 
 One way to reason about this landscape is through what we call the **Intent Vector Model**: the idea that human goals, agent behaviors, and model outputs can all be understood as vectors operating within a shared influence field.
 
@@ -84,7 +84,7 @@ Where `|A|` and `|B|` represent intent magnitudes and `θ` represents alignment 
 
 When the vectors align, influence increases. When they diverge, influence diminishes.
 
-This framework mirrors how machine learning embeddings work. Semantic similarity between two embeddings is typically calculated using **cosine similarity** — effectively the normalized dot product.
+This framework mirrors how machine learning embeddings work. Semantic similarity between two embeddings is typically calculated using **cosine similarity** - effectively the normalized dot product.
 
 The same mathematical structure appears in both human influence modeling and AI decision geometry.
 
@@ -148,20 +148,20 @@ This suggests a shift in defensive strategy. Instead of monitoring prompts alone
 
 Emerging defensive techniques include:
 
-**Activation monitoring** — Models can be instrumented to observe internal activation patterns and detect anomalies associated with unsafe behaviors.
+**Activation monitoring** - Models can be instrumented to observe internal activation patterns and detect anomalies associated with unsafe behaviors.
 
-**Vector similarity filtering** — Incoming embeddings can be compared against known clusters associated with jailbreak attempts:
+**Vector similarity filtering** - Incoming embeddings can be compared against known clusters associated with jailbreak attempts:
 
 ```python
 if cosine_similarity(input_vector, jailbreak_cluster) > threshold:
     block_request()
 ```
 
-**Adversarial training** — Models can be trained against known steering vectors to make them less effective.
+**Adversarial training** - Models can be trained against known steering vectors to make them less effective.
 
 ## Toward Latent Security Monitoring
 
-One possible future architecture resembles a traditional intrusion detection system — but operating inside neural networks.
+One possible future architecture resembles a traditional intrusion detection system - but operating inside neural networks.
 
 Instead of network packets, the system monitors **vector trajectories**. Instead of suspicious IP addresses, it identifies **suspicious semantic directions**.
 
@@ -208,7 +208,7 @@ For defenders, this means the attack surface of AI systems is no longer just the
 
 It is the **entire vector landscape inside the model**.
 
-Understanding that landscape — and learning how to monitor it — may become one of the defining security challenges of the agentic AI era.
+Understanding that landscape - and learning how to monitor it - may become one of the defining security challenges of the agentic AI era.
 
 ---
 

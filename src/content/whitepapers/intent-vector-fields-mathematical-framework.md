@@ -32,7 +32,7 @@ Human interaction has historically been modeled through:
 
 Recent developments in **machine learning and embedding models** demonstrate that meaning and cognition can be represented as vectors in high-dimensional spaces.
 
-This paper proposes a unified model — **Intent Vector Theory** — where individuals act as **vector sources within a social field**, and interactions can be mathematically represented using vector algebra.
+This paper proposes a unified model - **Intent Vector Theory** - where individuals act as **vector sources within a social field**, and interactions can be mathematically represented using vector algebra.
 
 ---
 

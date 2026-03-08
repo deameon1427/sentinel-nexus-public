@@ -11,11 +11,11 @@ imageAlt: "Compliance documentation and governance frameworks"
 draft: false
 ---
 
-The EU AI Act's high-risk AI system rules are now enforceable — August 2, 2026 is the compliance deadline for Annex III systems. If your organization deploys AI for hiring, credit scoring, biometric identification, critical infrastructure, law enforcement, or education, you are in scope. Non-compliance carries penalties up to €35 million or 7% of global annual turnover, whichever is higher.
+The EU AI Act's high-risk AI system rules are now enforceable - August 2, 2026 is the compliance deadline for Annex III systems. If your organization deploys AI for hiring, credit scoring, biometric identification, critical infrastructure, law enforcement, or education, you are in scope. Non-compliance carries penalties up to €35 million or 7% of global annual turnover, whichever is higher.
 
 This isn't just a European issue. If your AI systems affect EU citizens or are used in EU markets, these requirements likely apply regardless of where your organization is headquartered.
 
-Here's what you need to know — and do — now.
+Here's what you need to know - and do - now.
 
 ## The Risk-Based Approach
 
@@ -75,23 +75,23 @@ Systems must achieve appropriate levels of accuracy for their intended purpose. 
 
 ## Timeline and Enforcement
 
-The regulation is being phased in — and the most consequential deadline is now:
+The regulation is being phased in - and the most consequential deadline is now:
 
 - **February 2025**: Prohibitions on unacceptable risk AI took effect
 - **August 2025**: Requirements for general-purpose AI models (GPAI)
-- **August 2, 2026**: Full requirements for high-risk AI systems (Annex III) — **this is the current enforcement deadline**
+- **August 2, 2026**: Full requirements for high-risk AI systems (Annex III) - **this is the current enforcement deadline**
 - **August 2027**: Requirements for high-risk AI systems listed in Annex I (safety components in existing regulated products)
 
 Penalties for non-compliance reach up to 7% of global annual turnover or €35 million for the most serious violations, and up to 3% (€15M) for other infringements.
 
-**A note on the Digital Omnibus:** The European Commission's Digital Omnibus proposal (November 2025) would extend certain high-risk enforcement deadlines to December 2, 2027 — but only if linked harmonized standards aren't available in time. This is not a blanket postponement. Organizations should treat August 2026 as the operative deadline and treat any extension as a potential reprieve, not a planning assumption.
+**A note on the Digital Omnibus:** The European Commission's Digital Omnibus proposal (November 2025) would extend certain high-risk enforcement deadlines to December 2, 2027 - but only if linked harmonized standards aren't available in time. This is not a blanket postponement. Organizations should treat August 2026 as the operative deadline and treat any extension as a potential reprieve, not a planning assumption.
 
 ## Practical Steps to Prepare
 
 Compliance isn't achieved overnight. Start now:
 
 ### 1. Inventory and Classify Your AI Systems
-Document all AI systems you develop, deploy, or use. Classify each against the Act's risk categories — particularly Annex III's high-risk categories. This classification review is the prerequisite for everything else.
+Document all AI systems you develop, deploy, or use. Classify each against the Act's risk categories - particularly Annex III's high-risk categories. This classification review is the prerequisite for everything else.
 
 ### 2. Gap Analysis
 For high-risk systems, compare current practices against Act requirements. Identify gaps in documentation, governance, and technical controls.
