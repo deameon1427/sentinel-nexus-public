@@ -1,0 +1,206 @@
+---
+// AcademyEnrollForm.astro
+// Submits to n8n /webhook/academy-enroll
+// On success: stores token + name in localStorage, redirects to Module 1
+---
+
+<div class="aef-wrapper">
+  <h2 class="aef-heading">Enroll Free</h2>
+  <p class="aef-subtext">Your business email unlocks all modules and your certificate upon completion.</p>
+
+  <form class="aef-form" id="academy-enroll-form" novalidate>
+    <div class="aef-field">
+      <label for="aef-name">Full Name</label>
+      <input type="text" id="aef-name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+    </div>
+    <div class="aef-field">
+      <label for="aef-email">Business Email</label>
+      <input type="email" id="aef-email" name="email" placeholder="jane@acme.com" required autocomplete="email" />
+      <span class="aef-hint">Personal email addresses (Gmail, Yahoo, etc.) are not accepted.</span>
+    </div>
+    <div class="aef-field">
+      <label for="aef-phone">Phone <span class="optional">(optional)</span></label>
+      <input type="tel" id="aef-phone" name="phone" placeholder="+1 555 0100" autocomplete="tel" />
+    </div>
+    <button type="submit" class="btn btn-primary aef-submit">Enroll Now &mdash; It's Free</button>
+  </form>
+
+  <div class="aef-error" id="aef-error" style="display:none">
+    <p id="aef-error-msg">Something went wrong. Please try again.</p>
+  </div>
+
+  <p class="aef-privacy">No spam. No data sharing. <a href="https://sentinel-nexus.com/privacy">Privacy Policy</a>.</p>
+</div>
+
+<script>
+  const form = document.getElementById('academy-enroll-form') as HTMLFormElement | null;
+  const errorEl = document.getElementById('aef-error');
+  const errorMsg = document.getElementById('aef-error-msg');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalLabel = submitBtn.textContent ?? 'Enroll Now';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enrolling…';
+
+    if (errorEl) errorEl.style.display = 'none';
+
+    const name = (form.querySelector('#aef-name') as HTMLInputElement).value.trim();
+    const email = (form.querySelector('#aef-email') as HTMLInputElement).value.trim();
+    const phone = (form.querySelector('#aef-phone') as HTMLInputElement).value.trim();
+
+    try {
+      const res = await fetch('https://n8n.sentinel-nexus.com/webhook/academy-enroll', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, ...(phone && { phone }) }),
+      });
+
+      const data = await res.json() as { success: boolean; token?: string; name?: string; reason?: string };
+
+      if (!res.ok || !data.success) {
+        const reason = data.reason ?? 'Please try again or contact us at contact@sentinel-nexus.com';
+        if (errorMsg) errorMsg.textContent = reason;
+        if (errorEl) errorEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        return;
+      }
+
+      try {
+        localStorage.setItem('sn_academy_token', data.token ?? '');
+        localStorage.setItem('sn_academy_name', data.name ?? name.split(' ')[0]);
+        // Mark A/B theme as converted
+        const raw = localStorage.getItem('sn_ab_theme');
+        if (raw) {
+          const s = JSON.parse(raw); s.converted = true;
+          localStorage.setItem('sn_ab_theme', JSON.stringify(s));
+        }
+      } catch (_) {}
+
+      try {
+        (window as any).umami?.track('academy-enroll', { email_domain: email.split('@')[1] });
+      } catch (_) {}
+
+      // Redirect to Module 1
+      window.location.href = '/module/module-1-ai-attack-surface';
+
+    } catch (_) {
+      if (errorMsg) errorMsg.textContent = 'Network error. Please try again.';
+      if (errorEl) errorEl.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  });
+</script>
+
+<style>
+  .aef-wrapper {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .aef-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .aef-subtext {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .aef-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .aef-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .aef-field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .optional {
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+
+  .aef-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    opacity: 0.8;
+  }
+
+  .aef-field input {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    width: 100%;
+  }
+
+  .aef-field input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .aef-field input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  .aef-submit {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .aef-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .aef-error {
+    margin-top: 1rem;
+    padding: 0.875rem 1rem;
+    background: rgba(207, 21, 21, 0.1);
+    border: 1px solid rgba(207, 21, 21, 0.3);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .aef-privacy {
+    margin-top: 0.875rem;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .aef-privacy a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

@@ -1,0 +1,459 @@
+---
+// AcademyQuiz.astro
+// Client-side multiple-choice quiz. Pass threshold: 80%.
+// On pass: saves progress to localStorage, optionally fires completion webhook (if isFinal).
+
+interface QuizOption {
+  id: string;
+  label: string;
+}
+
+interface QuizQuestion {
+  question: string;
+  options: QuizOption[];
+  correct: string;
+}
+
+interface Props {
+  questions: QuizQuestion[];
+  moduleSlug: string;
+  isFinal?: boolean;
+  nextModuleSlug?: string;
+  nextModuleTitle?: string;
+}
+
+const {
+  questions,
+  moduleSlug,
+  isFinal = false,
+  nextModuleSlug,
+  nextModuleTitle,
+} = Astro.props;
+
+const quizData = JSON.stringify(questions);
+const PASS_THRESHOLD = 80;
+---
+
+<div class="quiz-wrapper" id="quiz-wrapper">
+  <div class="quiz-header">
+    <h3 class="quiz-title">Module Assessment</h3>
+    <p class="quiz-instructions">Select the best answer for each question. You need {PASS_THRESHOLD}% or higher to pass.</p>
+  </div>
+
+  <div id="quiz-questions">
+    {questions.map((q, qi) => (
+      <div class="quiz-question" data-qi={qi}>
+        <p class="quiz-q-text"><span class="quiz-q-num">{qi + 1}.</span> {q.question}</p>
+        <div class="quiz-options">
+          {q.options.map(opt => (
+            <label class="quiz-option">
+              <input type="radio" name={`q${qi}`} value={opt.id} />
+              <span class="quiz-option-label">{opt.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="quiz-actions">
+    <button class="btn btn-primary" id="quiz-submit">Submit Answers</button>
+  </div>
+
+  <div id="quiz-results" style="display:none" class="quiz-results">
+    <div id="quiz-pass" style="display:none" class="quiz-pass">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      <div>
+        <p class="quiz-result-headline">Module Passed!</p>
+        <p id="quiz-score-text" class="quiz-score-text"></p>
+      </div>
+    </div>
+
+    <div id="quiz-fail" style="display:none" class="quiz-fail">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <div>
+        <p class="quiz-result-headline">Not quite &mdash; keep going!</p>
+        <p id="quiz-fail-text" class="quiz-score-text"></p>
+      </div>
+    </div>
+
+    <div id="quiz-next-actions" style="display:none" class="quiz-next-actions">
+    </div>
+
+    <div id="quiz-completion" style="display:none" class="quiz-completion">
+      <div class="completion-badge">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+        </svg>
+      </div>
+      <h3>Certification Complete!</h3>
+      <p>Your certificate is being generated and will arrive in your inbox shortly.</p>
+      <div id="cert-verify-link" style="display:none">
+        <p class="cert-verify-text">View your certificate at:</p>
+        <a id="cert-verify-url" href="#" class="cert-link" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+      <div class="completion-share">
+        <p>Share your achievement:</p>
+        <a
+          href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Facademy.sentinel-nexus.com&title=I%20earned%20the%20AI%20Security%20Fundamentals%20Certificate%20from%20Sentinel%20Nexus%20Academy&summary=Free%20certification%20for%20security%20practitioners%20working%20with%20AI%20systems."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary linkedin-btn"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+          Share on LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <button id="quiz-retry" style="display:none" class="btn btn-secondary quiz-retry">Try Again</button>
+  </div>
+</div>
+
+<script define:vars={{ quizData, moduleSlug, isFinal, nextModuleSlug, nextModuleTitle, PASS_THRESHOLD }}>
+  const questions = JSON.parse(quizData);
+
+  const submitBtn = document.getElementById('quiz-submit');
+  const resultsEl = document.getElementById('quiz-results');
+  const passEl = document.getElementById('quiz-pass');
+  const failEl = document.getElementById('quiz-fail');
+  const scoreText = document.getElementById('quiz-score-text');
+  const failText = document.getElementById('quiz-fail-text');
+  const retryBtn = document.getElementById('quiz-retry');
+  const nextActions = document.getElementById('quiz-next-actions');
+  const completionEl = document.getElementById('quiz-completion');
+  const certVerifyDiv = document.getElementById('cert-verify-link');
+  const certVerifyUrl = document.getElementById('cert-verify-url');
+
+  function saveProgress(passed, score) {
+    try {
+      const raw = localStorage.getItem('sn_academy_progress') ?? '{}';
+      const progress = JSON.parse(raw);
+      progress[moduleSlug] = { passed, score, timestamp: Date.now() };
+      localStorage.setItem('sn_academy_progress', JSON.stringify(progress));
+    } catch(_) {}
+  }
+
+  async function fireCompletion(score) {
+    const token = localStorage.getItem('sn_academy_token') ?? '';
+    try {
+      const res = await fetch('https://n8n.sentinel-nexus.com/webhook/academy-complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enrollment_token: token, score, module_slug: moduleSlug }),
+      });
+      const data = await res.json();
+      if (data.verify_url) {
+        try { localStorage.setItem('sn_academy_cert_url', data.verify_url); } catch(_) {}
+        if (certVerifyUrl) certVerifyUrl.href = data.verify_url;
+        if (certVerifyUrl) certVerifyUrl.textContent = data.verify_url;
+        if (certVerifyDiv) certVerifyDiv.style.display = 'block';
+      }
+    } catch(_) {}
+  }
+
+  submitBtn?.addEventListener('click', () => {
+    const questionsContainer = document.getElementById('quiz-questions');
+    if (!questionsContainer) return;
+
+    let answered = 0;
+    let correct = 0;
+
+    questions.forEach((q, qi) => {
+      const selected = questionsContainer.querySelector(`input[name="q${qi}"]:checked`);
+      if (selected) {
+        answered++;
+        const questionEl = questionsContainer.querySelector(`[data-qi="${qi}"]`);
+        // Mark correct/wrong visually
+        questionsContainer.querySelectorAll(`input[name="q${qi}"]`).forEach(input => {
+          input.disabled = true;
+          const label = input.closest('.quiz-option');
+          if (input.value === q.correct) {
+            label?.classList.add('correct');
+          } else if (input.checked) {
+            label?.classList.add('wrong');
+          }
+        });
+        if (selected.value === q.correct) correct++;
+      }
+    });
+
+    if (answered < questions.length) {
+      alert('Please answer all questions before submitting.');
+      return;
+    }
+
+    const score = Math.round((correct / questions.length) * 100);
+    const passed = score >= PASS_THRESHOLD;
+
+    submitBtn.style.display = 'none';
+    if (resultsEl) resultsEl.style.display = 'block';
+
+    saveProgress(passed, score);
+
+    if (passed) {
+      if (passEl) passEl.style.display = 'flex';
+      if (failEl) failEl.style.display = 'none';
+      if (scoreText) scoreText.textContent = `You scored ${score}% (${correct}/${questions.length} correct).`;
+
+      try { (window).umami?.track('academy-quiz-pass', { module: moduleSlug, score }); } catch(_) {}
+
+      if (isFinal) {
+        if (nextActions) nextActions.style.display = 'none';
+        if (completionEl) completionEl.style.display = 'block';
+        fireCompletion(score);
+        try { (window).umami?.track('academy-complete', { score }); } catch(_) {}
+      } else if (nextModuleSlug) {
+        if (nextActions) {
+          nextActions.style.display = 'block';
+          nextActions.innerHTML = `<a href="/module/${nextModuleSlug}" class="btn btn-primary">Next: ${nextModuleTitle ?? 'Next Module'} &rarr;</a>`;
+        }
+      }
+    } else {
+      if (passEl) passEl.style.display = 'none';
+      if (failEl) failEl.style.display = 'flex';
+      if (failText) failText.textContent = `You scored ${score}% (${correct}/${questions.length} correct). ${PASS_THRESHOLD}% required to pass.`;
+      if (retryBtn) retryBtn.style.display = 'inline-flex';
+      try { (window).umami?.track('academy-quiz-fail', { module: moduleSlug, score }); } catch(_) {}
+    }
+  });
+
+  retryBtn?.addEventListener('click', () => {
+    // Reset quiz
+    const questionsContainer = document.getElementById('quiz-questions');
+    questionsContainer?.querySelectorAll('input[type="radio"]').forEach(input => {
+      (input).checked = false;
+      (input).disabled = false;
+    });
+    questionsContainer?.querySelectorAll('.quiz-option').forEach(el => {
+      el.classList.remove('correct', 'wrong');
+    });
+    submitBtn.style.display = 'inline-flex';
+    if (resultsEl) resultsEl.style.display = 'none';
+    if (retryBtn) retryBtn.style.display = 'none';
+  });
+</script>
+
+<style>
+  .quiz-wrapper {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+
+  .quiz-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .quiz-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .quiz-instructions {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .quiz-question {
+    margin-bottom: 1.75rem;
+  }
+
+  .quiz-q-text {
+    font-size: 0.975rem;
+    font-weight: 500;
+    margin-bottom: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .quiz-q-num {
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-right: 0.25rem;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .quiz-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .quiz-option:hover {
+    border-color: var(--color-text-muted);
+    background: var(--color-bg-secondary);
+  }
+
+  .quiz-option input[type="radio"] {
+    flex-shrink: 0;
+    accent-color: var(--color-primary);
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .quiz-option-label {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .quiz-option.correct {
+    border-color: var(--color-accent-2);
+    background: rgba(16, 185, 129, 0.08);
+  }
+
+  .quiz-option.wrong {
+    border-color: var(--color-primary);
+    background: rgba(207, 21, 21, 0.08);
+  }
+
+  .quiz-actions {
+    margin-top: 1rem;
+  }
+
+  #quiz-submit {
+    padding: 0.875rem 2rem;
+    font-size: 0.975rem;
+  }
+
+  .quiz-results {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .quiz-pass,
+  .quiz-fail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 8px;
+  }
+
+  .quiz-pass {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: var(--color-accent-2);
+  }
+
+  .quiz-fail {
+    background: rgba(207, 21, 21, 0.08);
+    border: 1px solid rgba(207, 21, 21, 0.2);
+    color: var(--color-primary);
+  }
+
+  .quiz-result-headline {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .quiz-score-text {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .quiz-next-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .quiz-retry {
+    align-self: flex-start;
+  }
+
+  /* Completion */
+  .quiz-completion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(207, 21, 21, 0.08), rgba(139, 92, 246, 0.08));
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .completion-badge {
+    width: 80px;
+    height: 80px;
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+  }
+
+  .quiz-completion h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .quiz-completion p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    max-width: 400px;
+  }
+
+  .cert-verify-text {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cert-link {
+    font-size: 0.85rem;
+    color: var(--color-accent-1);
+    text-decoration: underline;
+    word-break: break-all;
+  }
+
+  .completion-share {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .completion-share p {
+    font-size: 0.875rem;
+  }
+
+  .linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    padding: 0.6rem 1.25rem;
+  }
+</style>

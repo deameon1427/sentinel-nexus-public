@@ -1,0 +1,342 @@
+---
+import { getCollection } from 'astro:content';
+import AcademyLayout from '../../../layouts/AcademyLayout.astro';
+import ModuleGate from '../../../components/ModuleGate.astro';
+import AcademyQuiz from '../../../components/AcademyQuiz.astro';
+
+export async function getStaticPaths() {
+  const allModules = (await getCollection('academy', ({ data }) => !data.draft))
+    .sort((a, b) => a.data.moduleNumber - b.data.moduleNumber);
+
+  return allModules.map((mod, idx) => {
+    const nextMod = allModules[idx + 1] ?? null;
+    return {
+      params: { slug: mod.slug },
+      props: {
+        module: mod,
+        moduleIndex: idx,
+        totalModules: allModules.length,
+        nextModuleSlug: nextMod?.slug ?? null,
+        nextModuleTitle: nextMod?.data.title ?? null,
+      },
+    };
+  });
+}
+
+const { module, moduleIndex, totalModules, nextModuleSlug, nextModuleTitle } = Astro.props;
+const { Content } = await module.render();
+
+const isFinalModule = module.data.isFinal;
+const hasNextModule = !!nextModuleSlug && !isFinalModule;
+const moduleLabel = isFinalModule
+  ? 'Final Assessment'
+  : `Module ${module.data.moduleNumber} of ${totalModules - 1}`;
+
+const pillarColors: Record<string, string> = {
+  security: 'var(--color-primary)',
+  implementation: 'var(--color-accent-1)',
+  governance: 'var(--color-accent-3)',
+};
+---
+
+<AcademyLayout
+  title={`${module.data.title} | Sentinel Nexus Academy`}
+  description={module.data.description}
+>
+  <div class="module-page">
+    <div class="academy-container">
+
+      <!-- Module breadcrumb -->
+      <div class="module-breadcrumb">
+        <a href="/">Academy</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>{moduleLabel}</span>
+      </div>
+
+      <!-- Module header -->
+      <div class="module-header">
+        <div class="module-meta-top">
+          <span class={`module-badge ${isFinalModule ? 'badge-final' : ''}`}>{moduleLabel}</span>
+          <span class="module-duration">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {module.data.duration}
+          </span>
+        </div>
+        <h1 class="module-title">{module.data.title}</h1>
+        <p class="module-description">{module.data.description}</p>
+
+        {module.data.pillar.length > 0 && (
+          <div class="module-pillars">
+            {module.data.pillar.map(p => (
+              <span class="pillar-tag" style={`border-color: ${pillarColors[p] ?? 'var(--color-border)'}; color: ${pillarColors[p] ?? 'var(--color-text-muted)'}`}>
+                {p}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <!-- Progress bar -->
+        <div class="progress-bar-wrapper" aria-label={`Progress: ${moduleIndex + 1} of ${totalModules}`}>
+          <div class="progress-bar-track">
+            <div
+              class="progress-bar-fill"
+              style={`width: ${Math.round(((moduleIndex + 1) / totalModules) * 100)}%`}
+            ></div>
+          </div>
+          <span class="progress-label">{moduleIndex + 1} / {totalModules} complete</span>
+        </div>
+      </div>
+
+      <!-- Gated content -->
+      <ModuleGate>
+        <article class="module-content">
+          <Content />
+        </article>
+
+        {module.data.quiz.length > 0 && (
+          <AcademyQuiz
+            questions={module.data.quiz}
+            moduleSlug={module.slug}
+            isFinal={isFinalModule}
+            nextModuleSlug={nextModuleSlug ?? undefined}
+            nextModuleTitle={nextModuleTitle ?? undefined}
+          />
+        )}
+
+        {module.data.quiz.length === 0 && hasNextModule && (
+          <div class="next-module-cta">
+            <a href={`/module/${nextModuleSlug}`} class="btn btn-primary">
+              Next: {nextModuleTitle} &rarr;
+            </a>
+          </div>
+        )}
+      </ModuleGate>
+
+    </div>
+  </div>
+</AcademyLayout>
+
+<style>
+  .module-page {
+    padding: 2.5rem 0 5rem;
+  }
+
+  .module-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .module-breadcrumb a {
+    color: var(--color-primary);
+    transition: opacity 0.2s;
+  }
+
+  .module-breadcrumb a:hover { opacity: 0.8; }
+
+  .breadcrumb-sep {
+    opacity: 0.4;
+  }
+
+  .module-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .module-meta-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .module-badge {
+    display: inline-block;
+    background: rgba(207, 21, 21, 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgba(207, 21, 21, 0.25);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .badge-final {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--color-accent-3);
+    border-color: rgba(139, 92, 246, 0.25);
+  }
+
+  .module-duration {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .module-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .module-description {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .module-pillars {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .pillar-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid;
+    border-radius: 4px;
+  }
+
+  .progress-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .progress-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--color-bg-secondary);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  .progress-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  /* Module content prose */
+  .module-content {
+    line-height: 1.75;
+    color: var(--color-text);
+  }
+
+  .module-content :global(h2) {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-text);
+  }
+
+  .module-content :global(h3) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    color: var(--color-text);
+  }
+
+  .module-content :global(p) {
+    margin-bottom: 1.25rem;
+    font-size: 0.975rem;
+  }
+
+  .module-content :global(ul),
+  .module-content :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .module-content :global(li) {
+    margin-bottom: 0.5rem;
+    font-size: 0.975rem;
+  }
+
+  .module-content :global(blockquote) {
+    border-left: 3px solid var(--color-primary);
+    padding: 0.75rem 1.25rem;
+    background: var(--color-bg-card);
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .module-content :global(code) {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.15em 0.4em;
+    font-size: 0.875em;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  .module-content :global(pre) {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .module-content :global(pre code) {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .module-content :global(strong) {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .module-content :global(a) {
+    color: var(--color-accent-1);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .module-content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2.5rem 0;
+  }
+
+  .next-module-cta {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .next-module-cta .btn {
+    padding: 0.875rem 2rem;
+    font-size: 0.975rem;
+  }
+</style>

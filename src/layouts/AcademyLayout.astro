@@ -1,0 +1,294 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = "Free AI security certification for practitioners. Build the skills to implement, secure, and govern AI systems responsibly.",
+  noindex = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>(function(){
+  var KEY = 'sn_ab_theme';
+  var SESS = 'sn_ab_session';
+  var v = 'dark';
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (!raw) {
+      v = Math.random() < 0.5 ? 'dark' : 'light';
+      localStorage.setItem(KEY, JSON.stringify({ v: v, converted: false, bounced: false, assignedAt: Date.now() }));
+    } else {
+      var s = JSON.parse(raw);
+      if (s.converted) {
+        v = s.v;
+      } else if (s.bounced && !sessionStorage.getItem(SESS)) {
+        localStorage.setItem('sn_ab_pending', s.v);
+        v = s.v === 'dark' ? 'light' : 'dark';
+        s.v = v; s.bounced = false;
+        localStorage.setItem(KEY, JSON.stringify(s));
+      } else {
+        v = s.v;
+      }
+    }
+    sessionStorage.setItem(SESS, '1');
+  } catch(e) {}
+  document.documentElement.setAttribute('data-theme', v);
+  window.__snVariant = v;
+})();
+</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://sentinel-nexus.com/og-image.png" />
+    <meta property="og:site_name" content="Sentinel Nexus Academy" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- TODO: Create an "academy.sentinel-nexus.com" website in Umami dashboard and replace the ID below -->
+    <script defer src="https://umami.sentinel-nexus.com/script.js" data-website-id="REPLACE_WITH_ACADEMY_UMAMI_ID"></script>
+  </head>
+  <body>
+    <header class="academy-header">
+      <div class="academy-container">
+        <a href="/" class="academy-logo">
+          <img src="/images/icon-academy.png" alt="Sentinel Nexus Academy" class="logo-icon" />
+          <div class="academy-logo-text">
+            <span class="academy-brand">Sentinel Nexus</span>
+            <span class="academy-label">Academy</span>
+          </div>
+        </a>
+        <a href="https://sentinel-nexus.com" class="academy-back-link">sentinel-nexus.com &rarr;</a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="academy-footer">
+      <div class="academy-container">
+        <p>&copy; {new Date().getFullYear()} Sentinel Nexus. All rights reserved.</p>
+        <a href="https://sentinel-nexus.com/privacy">Privacy Policy</a>
+      </div>
+    </footer>
+
+    <script>(function(){
+  var KEY = 'sn_ab_theme';
+  function markBounce() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var s = JSON.parse(raw);
+      if (!s.converted) { s.bounced = true; localStorage.setItem(KEY, JSON.stringify(s)); }
+    } catch(e) {}
+  }
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') markBounce();
+  });
+  window.addEventListener('beforeunload', markBounce);
+})();
+</script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-secondary: #12121a;
+    --color-bg-card: #1a1a24;
+    --color-text: #e4e4e7;
+    --color-text-muted: #a1a1aa;
+    --color-primary: #cf1515;
+    --color-primary-hover: #ef4444;
+    --color-accent-1: #3b82f6;
+    --color-accent-2: #10b981;
+    --color-accent-3: #8b5cf6;
+    --color-border: #27272a;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --max-width: 1200px;
+  }
+
+  [data-theme="light"] {
+    --color-bg: #f8f8fc;
+    --color-bg-secondary: #f0f0f6;
+    --color-bg-card: #ffffff;
+    --color-text: #18181b;
+    --color-text-muted: #52525b;
+    --color-primary: #cf1515;
+    --color-primary-hover: #b91c1c;
+    --color-accent-1: #2563eb;
+    --color-accent-2: #059669;
+    --color-accent-3: #7c3aed;
+    --color-border: #d4d4d8;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main { flex: 1; }
+
+  .academy-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-sans);
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-text-muted);
+    background: var(--color-bg-card);
+  }
+
+  /* Academy Header */
+  .academy-header {
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.25rem 0;
+    background: rgba(10, 10, 15, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  [data-theme="light"] .academy-header {
+    background: rgba(248, 248, 252, 0.95);
+  }
+
+  .academy-header .academy-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .academy-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+
+  .academy-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .academy-brand {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .academy-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+  }
+
+  .academy-back-link {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .academy-back-link:hover {
+    color: var(--color-text);
+  }
+
+  /* Academy Footer */
+  .academy-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 1.5rem 0;
+    background: var(--color-bg-secondary);
+    margin-top: 4rem;
+  }
+
+  .academy-footer .academy-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .academy-footer a {
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .academy-footer a:hover {
+    color: var(--color-primary);
+  }
+</style>

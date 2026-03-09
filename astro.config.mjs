@@ -8,7 +8,7 @@ import rehypeKatex from 'rehype-katex';
 export default defineConfig({
   site: 'https://sentinel-nexus.com',
   integrations: [sitemap({
-    filter: (page) => !page.includes('/lp/'),
+    filter: (page) => !page.includes('/lp/') && !page.includes('/academy/verify'),
   })],
   markdown: {
     remarkPlugins: [remarkMath],

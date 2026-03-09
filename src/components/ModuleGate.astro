@@ -1,0 +1,103 @@
+---
+// ModuleGate.astro
+// Wraps module content; checks localStorage for sn_academy_token
+// If absent: shows enrollment CTA. If present: reveals content.
+---
+
+<div id="module-gate-wrapper">
+  <!-- Lock overlay: visible by default until JS reveals content -->
+  <div id="gate-lock" class="gate-lock">
+    <div class="gate-lock-inner">
+      <div class="gate-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h2>Enroll to Access This Module</h2>
+      <p>This certification is free. Enter your business email to unlock all modules and earn your certificate.</p>
+      <a href="/" class="btn btn-primary gate-cta">Enroll Free &rarr;</a>
+      <p class="gate-note">Already enrolled? Make sure you're using the same browser where you signed up.</p>
+    </div>
+  </div>
+
+  <!-- Content: hidden by default, revealed by JS if token exists -->
+  <div id="gate-content" class="gate-content-hidden">
+    <slot />
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var token = '';
+    try { token = localStorage.getItem('sn_academy_token') ?? ''; } catch(_) {}
+
+    const lock = document.getElementById('gate-lock');
+    const content = document.getElementById('gate-content');
+
+    if (token) {
+      if (lock) lock.style.display = 'none';
+      if (content) content.classList.remove('gate-content-hidden');
+    }
+  });
+</script>
+
+<style>
+  .gate-lock {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+  }
+
+  .gate-lock-inner {
+    max-width: 480px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .gate-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .gate-lock-inner h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .gate-lock-inner p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .gate-cta {
+    margin-top: 0.5rem;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+
+  .gate-note {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    opacity: 0.8;
+  }
+
+  .gate-content-hidden {
+    display: none;
+  }
+</style>

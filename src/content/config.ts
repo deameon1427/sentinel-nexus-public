@@ -67,4 +67,25 @@ const whitepapers = defineCollection({
   }),
 });
 
-export const collections = { blog, 'case-studies': caseStudies, whitepapers };
+const academy = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(160),
+    moduleNumber: z.number(),
+    duration: z.string(),
+    pillar: z.array(z.enum(['implementation', 'security', 'governance'])),
+    isFinal: z.boolean().default(false),
+    draft: z.boolean().default(false),
+    quiz: z.array(z.object({
+      question: z.string(),
+      options: z.array(z.object({
+        id: z.string(),
+        label: z.string(),
+      })),
+      correct: z.string(),
+    })).default([]),
+  }),
+});
+
+export const collections = { blog, 'case-studies': caseStudies, whitepapers, academy };
