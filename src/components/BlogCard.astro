@@ -21,7 +21,7 @@ const pillarLabels: Record<string, string> = {
 ---
 
 <article class="blog-card" data-pillar={post.data.pillar}>
-  <a href={`/blog/${post.slug}`} class="card-link">
+  <a href={`/blog/${post.id}`} class="card-link">
     {post.data.image && (
       <div class="card-image">
         <img src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />

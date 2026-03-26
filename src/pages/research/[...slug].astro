@@ -1,12 +1,12 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import WhitepaperGate from '../../components/WhitepaperGate.astro';
 
 export async function getStaticPaths() {
   const whitepapers = await getCollection('whitepapers');
   return whitepapers.map((wp) => ({
-    params: { slug: wp.slug },
+    params: { slug: wp.id },
     props: wp,
   }));
 }
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'whitepapers'>;
 
 const whitepaper = Astro.props;
-const { Content } = await whitepaper.render();
+const { Content } = await render(whitepaper);
 
 const pillarColors: Record<string, string> = {
   implementation: 'var(--color-accent-1)',
@@ -95,7 +95,7 @@ const formattedDate = whitepaper.data.pubDate.toLocaleDateString('en-US', {
 
         <hr class="section-divider" />
 
-        <WhitepaperGate slug={whitepaper.slug} previewLength={whitepaper.data.previewLength}>
+        <WhitepaperGate slug={whitepaper.id} previewLength={whitepaper.data.previewLength}>
           <div slot="preview" class="paper-body preview-body">
             <Content />
           </div>

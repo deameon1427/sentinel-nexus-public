@@ -21,7 +21,7 @@ const pillarLabels: Record<string, string> = {
 ---
 
 <article class="case-study-card">
-  <a href={`/case-studies/${caseStudy.slug}`} class="card-link">
+  <a href={`/case-studies/${caseStudy.id}`} class="card-link">
     {caseStudy.data.image && (
       <div class="card-image">
         <img src={caseStudy.data.image} alt={caseStudy.data.imageAlt || caseStudy.data.title} loading="lazy" />

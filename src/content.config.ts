@@ -1,7 +1,12 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/blog',
+    generateId: ({ entry }) => entry.replace(/\.mdx?$/, ''),
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string().max(160),
@@ -18,7 +23,11 @@ const blog = defineCollection({
 });
 
 const caseStudies = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/case-studies',
+    generateId: ({ entry }) => entry.replace(/\.mdx?$/, ''),
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string().max(160),
@@ -50,7 +59,11 @@ const caseStudies = defineCollection({
 });
 
 const whitepapers = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/whitepapers',
+    generateId: ({ entry }) => entry.replace(/\.mdx?$/, ''),
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string().max(160),
@@ -68,7 +81,11 @@ const whitepapers = defineCollection({
 });
 
 const academy = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/academy',
+    generateId: ({ entry }) => entry.replace(/\.mdx?$/, ''),
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string().max(160),

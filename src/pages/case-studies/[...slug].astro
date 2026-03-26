@@ -1,11 +1,11 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const caseStudies = await getCollection('case-studies');
   return caseStudies.map((caseStudy) => ({
-    params: { slug: caseStudy.slug },
+    params: { slug: caseStudy.id },
     props: caseStudy,
   }));
 }
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'case-studies'>;
 
 const caseStudy = Astro.props;
-const { Content } = await caseStudy.render();
+const { Content } = await render(caseStudy);
 
 const pillarColors: Record<string, string> = {
   implementation: 'var(--color-accent-1)',

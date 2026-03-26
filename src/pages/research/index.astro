@@ -38,7 +38,7 @@ const pillarLabels: Record<string, string> = {
         <div class="whitepapers-grid">
           {whitepapers.map((wp) => (
             <article class="whitepaper-card">
-              <a href={`/research/${wp.slug}`} class="card-image-link">
+              <a href={`/research/${wp.id}`} class="card-image-link">
                 <img src={wp.data.image} alt={wp.data.imageAlt || wp.data.title} class="card-image" />
               </a>
               <div class="card-body">
@@ -55,12 +55,12 @@ const pillarLabels: Record<string, string> = {
                   </span>
                 </div>
                 <h2 class="card-title">
-                  <a href={`/research/${wp.slug}`}>{wp.data.title}</a>
+                  <a href={`/research/${wp.id}`}>{wp.data.title}</a>
                 </h2>
                 <p class="card-abstract">{wp.data.abstract.slice(0, 160)}...</p>
                 <div class="card-footer">
                   <span class="card-author">By {wp.data.author}</span>
-                  <a href={`/research/${wp.slug}`} class="read-link">Read Paper &rarr;</a>
+                  <a href={`/research/${wp.id}`} class="read-link">Read Paper &rarr;</a>
                 </div>
               </div>
             </article>

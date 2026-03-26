@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import AcademyLayout from '../../../layouts/AcademyLayout.astro';
 import ModuleGate from '../../../components/ModuleGate.astro';
 import AcademyQuiz from '../../../components/AcademyQuiz.astro';
@@ -11,12 +11,12 @@ export async function getStaticPaths() {
   return allModules.map((mod, idx) => {
     const nextMod = allModules[idx + 1] ?? null;
     return {
-      params: { slug: mod.slug },
+      params: { slug: mod.id },
       props: {
         module: mod,
         moduleIndex: idx,
         totalModules: allModules.length,
-        nextModuleSlug: nextMod?.slug ?? null,
+        nextModuleSlug: nextMod?.id ?? null,
         nextModuleTitle: nextMod?.data.title ?? null,
       },
     };
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 }
 
 const { module, moduleIndex, totalModules, nextModuleSlug, nextModuleTitle } = Astro.props;
-const { Content } = await module.render();
+const { Content } = await render(module);
 
 const isFinalModule = module.data.isFinal;
 const hasNextModule = !!nextModuleSlug && !isFinalModule;
@@ -96,7 +96,7 @@ const pillarColors: Record<string, string> = {
         {module.data.quiz.length > 0 && (
           <AcademyQuiz
             questions={module.data.quiz}
-            moduleSlug={module.slug}
+            moduleSlug={module.id}
             isFinal={isFinalModule}
             nextModuleSlug={nextModuleSlug ?? undefined}
             nextModuleTitle={nextModuleTitle ?? undefined}
