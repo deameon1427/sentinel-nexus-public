@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Sentinel Nexus public website - a business site for an AI implementation, security, and governance consulting firm. Built with Astro 5.x as a static site.
+Sentinel Nexus public website - a business site for an AI implementation, security, and governance consulting firm. Built with Astro 6.x as a static site.
 
 ## Commands
 
@@ -18,10 +18,12 @@ npm run preview  # Preview production build locally
 
 ### Content Collections
 
-The site uses Astro's content collections for blog posts and case studies, defined in `src/content/config.ts`:
+The site uses Astro's content collections (Astro v6 content layer), defined in `src/content.config.ts`:
 
 - **blog** (`src/content/blog/`): Blog posts with required `pillar` field (implementation | security | governance)
 - **case-studies** (`src/content/case-studies/`): Gated case studies with metrics schema
+- **whitepapers** (`src/content/whitepapers/`): Email-gated whitepapers with abstract and preview
+- **academy** (`src/content/academy/`): Academy curriculum modules (5 modules, module-5 is isFinal)
 
 ### Routing
 
